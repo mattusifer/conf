@@ -106,12 +106,15 @@
     ;; markdown
     markdown-mode
     markdown-preview-mode
+
+    ;; shell
+    exec-path-from-shell
     ))
 
 ;; copy important environment variables from the user shell
-; (exec-path-from-shell-initialize)
-; (exec-path-from-shell-copy-env "AWS_ACCESS_KEY_ID")
-; (exec-path-from-shell-copy-env "AWS_SECRET_ACCESS_KEY")
+(exec-path-from-shell-initialize)
+(exec-path-from-shell-copy-env "AWS_ACCESS_KEY_ID")
+(exec-path-from-shell-copy-env "AWS_SECRET_ACCESS_KEY")
 
 (dolist (p my-packages)
   (when (not (package-installed-p p))
