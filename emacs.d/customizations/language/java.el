@@ -5,7 +5,7 @@
 (setq help-at-pt-timer-delay 0.1)
 (setq eclim-problems-show-pos t)
 (help-at-pt-set-timer)
-(require 'ac-emacs-eclim-source)
+(require 'ac-emacs-eclim)
 (add-hook 'java-mode-hook 'ac-emacs-eclim-config)
 (require 'company-emacs-eclim)
 (company-emacs-eclim-setup)

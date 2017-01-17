@@ -81,7 +81,7 @@
     coffee-mode
 
     ;; java
-    emacs-eclim
+    eclim
 
     ;; auto-complete
     auto-complete
