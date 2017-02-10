@@ -17,4 +17,5 @@
   (interactive)
   (split-window-right -100)
   (windmove-right)
-  (multi-term))
+  (multi-term)
+  (linum-mode -1))
