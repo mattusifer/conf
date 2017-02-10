@@ -145,7 +145,6 @@
 (load "misc.el")
 
 ;; pipe into emacs
-(server-start)
 (load "tty-format.el")
 (load "e-sink.el")
 
@@ -183,7 +182,7 @@
 (global-set-key (kbd "C-c C-k") 'kill-region)
 (global-set-key (kbd "C-c a") 'org-agenda) 
 (global-set-key (kbd "C-c f") 'neotree)
-(global-set-key (kbd "C-c t") 'create-small-terminal)
+(global-set-key (kbd "C-c t") 'create-or-show-small-terminal)
 (global-set-key (kbd "C-c m s") 'magit-status)
 (global-set-key (kbd "C-c m p") 'magit-push)
 (global-set-key (kbd "C-c C-j") 'term-line-mode)
@@ -217,6 +216,8 @@
 ;; show agenda
 (org-agenda-list)
 (delete-other-windows)
+
+(server-start)
 
 (setq frame-resize-pixelwise t)
 

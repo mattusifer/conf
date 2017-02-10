@@ -13,9 +13,13 @@
 ;; emacs terminal conf
 (setq system-uses-terminfo nil)
 
-(defun create-small-terminal ()
+(defun create-or-show-small-terminal ()
   (interactive)
   (split-window-right -100)
   (windmove-right)
-  (multi-term)
-  (linum-mode -1))
+  (if (or (not (boundp 'current-terminal-buffer))
+          (not (get-buffer current-terminal-buffer)))
+      (progn (multi-term)
+             (linum-mode -1)
+             (setq current-terminal-buffer (buffer-name)))
+    (switch-to-buffer (get-buffer current-terminal-buffer))))

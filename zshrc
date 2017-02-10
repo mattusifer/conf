@@ -50,7 +50,7 @@ plugins=(git)
 source $ZSH/oh-my-zsh.sh
 
 # Preferred editor for local and remote sessions
-export EDITOR='emacs -nw'
+# export EDITOR='emacs -nw'
 
 # use zsh on remote machine
 zssh() {
