@@ -2,12 +2,8 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 export ZSH=${HOME}/.oh-my-zsh
 
-# Set name of the theme to load. Optionally, if you set this to "random"
-# it'll load a random theme each time that oh-my-zsh is loaded.
-# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="risto"
+export ZSH_THEME="risto"
 
-# Uncomment the following line to use case-sensitive completion.
 CASE_SENSITIVE="true"
 
 # Uncomment the following line to use hyphen-insensitive completion. Case
@@ -53,30 +49,8 @@ plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
-# User configuration
-
-# export MANPATH="/usr/local/man:$MANPATH"
-
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
 # Preferred editor for local and remote sessions
-# export EDITOR='emacs -nw'
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# ssh
-# export SSH_KEY_PATH="~/.ssh/dsa_id"
-
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
+export EDITOR='emacs -nw'
 
 # use zsh on remote machine
 zssh() {
@@ -167,6 +141,7 @@ function sshagent_init {
   if [[ -n "$NEW" ]]
   then
     ssh-add
+    ssh-add ~/.ssh/emr_deployer
   fi
          
   # Finally, show what keys are currently in the agent
@@ -174,3 +149,9 @@ function sshagent_init {
 }
 
 alias sa="sshagent_init"
+
+# start tmux
+if ! { [ "$TERM" = "screen" ] && [ -n "$TMUX" ]; }
+then
+  tmux attach || tmux new
+fi

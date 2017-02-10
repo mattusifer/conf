@@ -82,6 +82,8 @@
 
     ;; java
     eclim
+    ac-emacs-eclim
+    company-emacs-eclim
 
     ;; auto-complete
     auto-complete
@@ -109,12 +111,8 @@
 
     ;; shell
     exec-path-from-shell
+    multi-term
     ))
-
-;; copy important environment variables from the user shell
-(exec-path-from-shell-initialize)
-(exec-path-from-shell-copy-env "AWS_ACCESS_KEY_ID")
-(exec-path-from-shell-copy-env "AWS_SECRET_ACCESS_KEY")
 
 (dolist (p my-packages)
   (when (not (package-installed-p p))
@@ -185,6 +183,7 @@
 (global-set-key (kbd "C-c C-k") 'kill-region)
 (global-set-key (kbd "C-c a") 'org-agenda) 
 (global-set-key (kbd "C-c f") 'neotree)
+(global-set-key (kbd "C-c t") 'create-small-terminal)
 (global-set-key (kbd "C-c m s") 'magit-status)
 (global-set-key (kbd "C-c m p") 'magit-push)
 (global-set-key (kbd "C-}") 'paredit-forward-barf-sexp)
