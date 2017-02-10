@@ -15,5 +15,6 @@
 
 (defun create-small-terminal ()
   (interactive)
-  (split-window-right 100)
+  (split-window-right -100)
+  (windmove-right)
   (multi-term))
