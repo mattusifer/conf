@@ -186,6 +186,7 @@
 (global-set-key (kbd "C-c t") 'create-small-terminal)
 (global-set-key (kbd "C-c m s") 'magit-status)
 (global-set-key (kbd "C-c m p") 'magit-push)
+(global-set-key (kbd "C-c C-j") 'term-line-mode)
 (global-set-key (kbd "C-}") 'paredit-forward-barf-sexp)
 (global-set-key (kbd "C-{") 'paredit-backward-barf-sexp)
 
