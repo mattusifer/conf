@@ -241,6 +241,11 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(coffee-tab-width 2))
+ '(coffee-tab-width 2)
+ '(custom-safe-themes
+   (quote
+    ("6077e0de8ac8f10c8be7578c209bcfb6c5bbf0bd2be93a24cd74efae6aca520a" default)))
+ '(eclim-eclipse-dirs (quote (eclipse-installation-dir)))
+ '(eclim-executable (concat eclipse-installation-dir "eclim")))
 (put 'downcase-region 'disabled nil)
 (put 'upcase-region 'disabled nil)

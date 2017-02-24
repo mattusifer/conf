@@ -9,6 +9,8 @@
 (exec-path-from-shell-initialize)
 (exec-path-from-shell-copy-env "AWS_ACCESS_KEY_ID")
 (exec-path-from-shell-copy-env "AWS_SECRET_ACCESS_KEY")
+(exec-path-from-shell-copy-env "SPARK_HOME")
+(exec-path-from-shell-copy-env "PYTHONPATH")
 
 ;; emacs terminal conf
 (setq system-uses-terminfo nil)

@@ -49,6 +49,18 @@ plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
+# spark setup
+# note: requires py4j
+#   $ pip install py4j
+export SPARK_HOME=~/src/apache/spark-2.0.1-bin-hadoop2.7
+export PYTHONPATH=$SPARK_HOME/python/build
+export PYTHONPATH=$SPARK_HOME/python/:$PYTHONPATH
+
+# virtualenvwrapper setup
+export WORKON_HOME=$HOME/.virtualenvs
+export PROJECT_HOME=$HOME/src
+source /usr/local/bin/virtualenvwrapper.sh
+
 # Preferred editor for local and remote sessions
 # export EDITOR='emacs -nw'
 
@@ -56,7 +68,7 @@ source $ZSH/oh-my-zsh.sh
 zssh() {
   if [ "$2" = "tar" ]
   then
-    gtar c -C${HOME} .oh-my-zsh .zshrc .emacs.d | ssh $1 'tar mx -C${HOME}' 
+    tar c -C${HOME} .oh-my-zsh .zshrc .emacs.d | ssh $1 'tar mx -C${HOME}' 
   fi
   ssh -t $1 "/bin/zsh"
 }
