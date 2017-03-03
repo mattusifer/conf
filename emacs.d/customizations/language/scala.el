@@ -1,5 +1,5 @@
 (require 'ensime)
-(setq ensime-startup-snapshot-notification nil)
+(setq ensime-startup-notification nil)
 ;; (add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
 
 (defun get-last-occurrence (substr string start)
@@ -23,6 +23,7 @@
     (let ((process-connection-type nil))  ; use a pipe
       (start-process "scala-repl" "*scala*"  "sbt" "-J-Xms3G" "-J-Xmx6G" "compile" "console"))
     (set-buffer "*scala*")
+    (linum-mode -1)
     (special-mode)
     (scala-mode))  
   ;; execute

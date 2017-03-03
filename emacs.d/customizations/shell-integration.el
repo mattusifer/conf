@@ -3,14 +3,7 @@
 (when (memq window-system '(mac ns))
   (exec-path-from-shell-initialize)
   (exec-path-from-shell-copy-envs
-   '("PATH")))
-
-;; copy important environment variables from the user shell
-(exec-path-from-shell-initialize)
-(exec-path-from-shell-copy-env "AWS_ACCESS_KEY_ID")
-(exec-path-from-shell-copy-env "AWS_SECRET_ACCESS_KEY")
-(exec-path-from-shell-copy-env "SPARK_HOME")
-(exec-path-from-shell-copy-env "PYTHONPATH")
+   '("PATH" "AWS_ACCESS_KEY_ID" "AWS_SECRET_ACCESS_KEY" "SPARK_HOME" "PYTHONPATH")))
 
 ;; emacs terminal conf
 (setq system-uses-terminfo nil)
