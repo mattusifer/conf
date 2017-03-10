@@ -197,6 +197,9 @@
 (setq scroll-step            1
       scroll-conservatively  10000)
 
+;; show useless whitespace
+(setq show-trailing-whitespace t)
+
 ;;;;
 ;; On-load Customizations
 ;;;;
