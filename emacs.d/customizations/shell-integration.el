@@ -16,5 +16,7 @@
           (not (get-buffer current-terminal-buffer)))
       (progn (multi-term)
              (linum-mode -1)
+             (setq comint-move-point-for-output nil)
+             (setq comint-scroll-show-maximum-output nil)
              (setq current-terminal-buffer (buffer-name)))
     (switch-to-buffer (get-buffer current-terminal-buffer))))
