@@ -20,6 +20,8 @@
 (defvar my-packages
   '(better-defaults
 
+    use-package
+
     ;; makes handling lisp expressions much, much easier
     ;; Cheatsheet: http://www.emacswiki.org/emacs/PareditCheatsheet
     paredit
@@ -112,6 +114,15 @@
     ;; shell
     exec-path-from-shell
     multi-term
+
+    ;; emacs-slack dependencies
+    oauth2
+    lui
+    request
+    alert
+    websocket
+    circe
+    emojify
     ))
 
 (dolist (p my-packages)
@@ -163,6 +174,10 @@
 (load "language/scala.el")
 (load "language/java.el")
 (load "language/python.el")
+
+;; slack
+(add-to-list 'load-path "~/.emacs.d/customizations/slack/emacs-slack/")
+(load "slack/emacs-slack/config.el")
 
 ;;;;
 ;; Custom Key Mappings
@@ -249,6 +264,9 @@
    (quote
     ("6077e0de8ac8f10c8be7578c209bcfb6c5bbf0bd2be93a24cd74efae6aca520a" default)))
  '(eclim-eclipse-dirs (quote (eclipse-installation-dir)))
- '(eclim-executable (concat eclipse-installation-dir "eclim")))
+ '(eclim-executable (concat eclipse-installation-dir "eclim"))
+ '(package-selected-packages
+   (quote
+    (use-package tagedit sql-indent smex scss-mode real-auto-save rainbow-delimiters python-mode projectile php-mode paredit neotree multiple-cursors multi-term markdown-preview-mode magit js2-mode ido-ubiquitous expand-region exec-path-from-shell ensime elpy company-emacs-eclim column-marker coffee-mode clojure-mode-extra-font-locking cider better-defaults ace-jump-mode ac-emacs-eclim))))
 (put 'downcase-region 'disabled nil)
 (put 'upcase-region 'disabled nil)

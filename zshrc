@@ -23,8 +23,8 @@ export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/src
 source /usr/local/bin/virtualenvwrapper.sh
 
-# emacs!
-export EDITOR='emacsclient'
+# emacs -nw within emacs ends badly
+export EDITOR='nano'
 
 # use zsh on remote machine
 zssh() {
