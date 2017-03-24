@@ -177,7 +177,7 @@
 
 ;; slack
 (add-to-list 'load-path "~/.emacs.d/customizations/slack/emacs-slack/")
-(load "slack/emacs-slack/config.el")
+(load "slack/config.el")
 
 ;;;;
 ;; Custom Key Mappings
