@@ -17,9 +17,6 @@
      (string-trim (with-temp-buffer
              (insert-file-contents "~/.emacs.d/customizations/slack/client-secret")
              (buffer-string))))
-
-   ;; :token "159348907925.159378136869.76c288338c"
-   ;; :subscribed-channels '(test-rename rrrrr)
    )
   )
 
