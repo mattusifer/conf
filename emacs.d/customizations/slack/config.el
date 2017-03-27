@@ -28,11 +28,12 @@
 (use-package alert
   :commands (alert)
   :init
-  (setq alert-default-style 'message))
+  (setq alert-default-style 'fringe))
 
 ;; key bindings
 (global-set-key (kbd "C-c s g") 'slack-group-select)
 (global-set-key (kbd "C-c s c") 'slack-channel-select)
 (global-set-key (kbd "C-c s i") 'slack-im-select)
+(global-set-key (kbd "C-c s a") 'slack-all-room-select)
 
 (add-hook 'slack-mode-hook (lambda () (local-set-key (kbd "C-c C-q") 'close-buffer-and-window)))
