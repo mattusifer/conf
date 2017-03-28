@@ -34,6 +34,7 @@
 (global-set-key (kbd "C-c s g") 'slack-group-select)
 (global-set-key (kbd "C-c s c") 'slack-channel-select)
 (global-set-key (kbd "C-c s i") 'slack-im-select)
-(global-set-key (kbd "C-c s a") 'slack-all-room-select)
+(global-set-key (kbd "C-c s a") 'slack-select-rooms)
+(global-set-key (kbd "C-c s s") 'slack-select-rooms-with-unread-messages)
 
 (add-hook 'slack-mode-hook (lambda () (local-set-key (kbd "C-c C-q") 'close-buffer-and-window)))

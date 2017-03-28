@@ -123,16 +123,6 @@
      (slack-room-create-buffer selected
                                (slack-team-find (oref selected team-id))))))
 
-(defun slack-all-room-select ()
-  (interactive)
-  (let ((team (slack-team-select)))
-    (slack-room-select
-     (cl-loop for team in (list team)
-              for rooms = (append (oref team groups)
-                                  (oref team ims)
-                                  (oref team channels))
-              nconc rooms))))
-
 (cl-defun slack-room-list-update (url success team &key (sync t))
   (slack-request
    url
@@ -383,6 +373,16 @@
      (cl-loop for team in (list team)
               append (with-slots (groups ims channels) team
                        (append ims groups channels))))))
+
+(defun slack-select-rooms-with-unread-messages ()
+  (interactive)
+  (let ((team (slack-team-select)))
+    (slack-room-select
+     (cl-loop for team in (list team)
+              append (with-slots (groups ims channels) team
+                       (remove-if-not (lambda (room)
+                                        (> (oref room unread-count-display) 0))
+                                      (append ims groups channels)))))))
 
 (defun slack-create-room (url team success)
   (slack-request
