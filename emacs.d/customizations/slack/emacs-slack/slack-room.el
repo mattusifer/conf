@@ -376,13 +376,16 @@
 
 (defun slack-select-rooms-with-unread-messages ()
   (interactive)
-  (let ((team (slack-team-select)))
-    (slack-room-select
-     (cl-loop for team in (list team)
-              append (with-slots (groups ims channels) team
-                       (remove-if-not (lambda (room)
-                                        (> (oref room unread-count-display) 0))
-                                      (append ims groups channels)))))))
+  (let* ((team (slack-team-select))
+        (list
+         (cl-loop for team in (list team)
+                  append (with-slots (groups ims channels) team
+                           (remove-if-not (lambda (room)
+                                            (> (oref room unread-count-display) 0))
+                                          (append ims groups channels))))))
+    (if (null list)
+        (message "No new messages")
+      (slack-room-select list))))
 
 (defun slack-create-room (url team success)
   (slack-request
