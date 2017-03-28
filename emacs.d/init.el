@@ -135,6 +135,10 @@
 ;; projectile -- enable caching
 (setq projectile-enable-caching t)
 
+;; email
+;; requires 'mu' to be installed on the system
+(ignore-errors (load "mu4e/config.el"))
+
 ;;;;
 ;; Customization
 ;;;;
@@ -267,6 +271,9 @@
  '(eclim-executable (concat eclipse-installation-dir "eclim"))
  '(package-selected-packages
    (quote
-    (use-package tagedit sql-indent smex scss-mode real-auto-save rainbow-delimiters python-mode projectile php-mode paredit neotree multiple-cursors multi-term markdown-preview-mode magit js2-mode ido-ubiquitous expand-region exec-path-from-shell ensime elpy company-emacs-eclim column-marker coffee-mode clojure-mode-extra-font-locking cider better-defaults ace-jump-mode ac-emacs-eclim))))
+    (use-package tagedit sql-indent smex scss-mode real-auto-save rainbow-delimiters python-mode projectile php-mode paredit neotree multiple-cursors multi-term markdown-preview-mode magit js2-mode ido-ubiquitous expand-region exec-path-from-shell ensime elpy company-emacs-eclim column-marker coffee-mode clojure-mode-extra-font-locking cider better-defaults ace-jump-mode ac-emacs-eclim)))
+ '(send-mail-function (quote smtpmail-send-it))
+ '(smtpmail-smtp-server "smtp.gmail.com")
+ '(smtpmail-smtp-service 25))
 (put 'downcase-region 'disabled nil)
 (put 'upcase-region 'disabled nil)

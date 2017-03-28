@@ -1,0 +1,26 @@
+#
+# mattusifer@gmail.com
+#
+IMAPAccount mattusifer
+Host imap.gmail.com
+Port 993
+User mattusifer@gmail.com
+PassCmd "awk '/^mattusifer/{print $2;}' $HOME/.imapinfo"
+AuthMechs PLAIN
+SSLType IMAPS
+CertificateFile ~/gmail-cert.pem
+
+IMAPStore mattusifer-remote
+Account mattusifer
+
+MaildirStore mattusifer-local
+Path ~/mail/mattusifer/
+Inbox ~/mail/mattusifer/INBOX
+
+Channel mattusifer
+Master :mattusifer-remote:
+Slave :mattusifer-local:
+Patterns "INBOX"
+Create Both
+Expunge Both
+SyncState *
