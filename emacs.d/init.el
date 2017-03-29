@@ -135,16 +135,16 @@
 ;; projectile -- enable caching
 (setq projectile-enable-caching t)
 
-;; email
-;; requires 'mu' to be installed on the system
-(ignore-errors (load "mu4e/config.el"))
-
 ;;;;
 ;; Customization
 ;;;;
 
 ;; set load path
 (add-to-list 'load-path "~/.emacs.d/customizations")
+
+;; email
+;; requires 'mu' to be installed on the system
+(load "email/config.el")
 
 ;; setup exec-path-from-shell so that Emacs will use the correct
 ;; environment variables

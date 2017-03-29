@@ -1,26 +1,62 @@
 #
 # mattusifer@gmail.com
 #
-IMAPAccount mattusifer
+IMAPAccount personal-gmail
 Host imap.gmail.com
-Port 993
 User mattusifer@gmail.com
 PassCmd "awk '/^mattusifer/{print $2;}' $HOME/.imapinfo"
 AuthMechs PLAIN
 SSLType IMAPS
 CertificateFile ~/gmail-cert.pem
 
-IMAPStore mattusifer-remote
-Account mattusifer
+# remote storage
+IMAPStore personal-gmail-remote
+Account personal-gmail
 
-MaildirStore mattusifer-local
-Path ~/mail/mattusifer/
-Inbox ~/mail/mattusifer/INBOX
+# local-storage
+MaildirStore personal-gmail-local
+Path ~/.mbsyncmaildir/personal-gmail/
+Inbox ~/.mbsyncmaildir/personal-gmail/INBOX
 
-Channel mattusifer
-Master :mattusifer-remote:
-Slave :mattusifer-local:
+Channel personal-gmail-inbox
+Master :personal-gmail-remote:
+Slave :personal-gmail-local:
 Patterns "INBOX"
 Create Both
 Expunge Both
 SyncState *
+
+Channel personal-gmail-trash
+Master :personal-gmail-remote:"[Gmail]/Bin"
+Slave :personal-gmail-local:"[Gmail].Bin"
+Create Both
+Expunge Both
+SyncState *
+
+Channel personal-gmail-sent
+Master :personal-gmail-remote:"[Gmail]/Sent Mail"
+Slave :personal-gmail-local:"[Gmail].Sent Mail"
+Create Both
+Expunge Both
+SyncState *
+
+Channel personal-gmail-all
+Master :personal-gmail-remote:"[Gmail]/All Mail"
+Slave :personal-gmail-local:"[Gmail].All Mail"
+Create Both
+Expunge Both
+SyncState *
+
+Channel personal-gmail-starred
+Master :personal-gmail-remote:"[Gmail]/Starred"
+Slave :personal-gmail-local:"[Gmail].Starred"
+Create Both
+Expunge Both
+SyncState *
+
+Group personal-gmail
+Channel personal-gmail-inbox
+Channel personal-gmail-sent
+Channel personal-gmail-trash
+Channel personal-gmail-all
+Channel personal-gmail-starred
