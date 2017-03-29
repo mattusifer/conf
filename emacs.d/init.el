@@ -187,26 +187,53 @@
 ;; Custom Key Mappings
 ;;;;
 
-(global-set-key (kbd "C-x C-m") 'execute-extended-command)
-(global-set-key (kbd "C-c C-m") 'execute-extended-command)
-(global-set-key (kbd "C-=") 'er/expand-region)
+;; ace jump
 (global-set-key (kbd "C-c M-SPC") 'ace-jump-mode)
+
+;; multi cursor
 (global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
 (global-set-key (kbd "C->") 'mc/mark-next-like-this)
 (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
 (global-set-key (kbd "C-S-c C->") 'mc/mark-all-like-this)
+
+;; killing
 (global-set-key (kbd "C-w") 'backward-kill-word)
 (global-set-key (kbd "C-d") 'kill-word)
 (global-set-key (kbd "C-x C-k") 'kill-region)
 (global-set-key (kbd "C-c C-k") 'kill-region)
+
+;; agenda
 (global-set-key (kbd "C-c a") 'org-agenda) 
-(global-set-key (kbd "C-c f") 'neotree)
+
+;; terminal
 (global-set-key (kbd "C-c t") 'create-or-show-small-terminal)
+
+;; magit
 (global-set-key (kbd "C-c m s") 'magit-status)
 (global-set-key (kbd "C-c m p") 'magit-push)
-(global-set-key (kbd "C-c C-j") 'term-line-mode)
+
+;; parediting
 (global-set-key (kbd "C-}") 'paredit-forward-barf-sexp)
 (global-set-key (kbd "C-{") 'paredit-backward-barf-sexp)
+
+;; quicker movement
+(global-set-key (kbd "C-S-n")
+                (lambda ()
+                  (interactive)
+                  (ignore-errors (next-line 5))))
+(global-set-key (kbd "C-S-p")
+                (lambda ()
+                  (interactive)
+                  (ignore-errors (previous-line 5))))
+(global-set-key (kbd "C-S-f")
+                (lambda ()
+                  (interactive)
+                  (ignore-errors (forward-char 5))))
+(global-set-key (kbd "C-S-b")
+                (lambda ()
+                  (interactive)
+                  (ignore-errors (backward-char 5))))
+
 
 ;; swap super and meta on OSX
 (setq mac-option-modifier 'super)
@@ -242,9 +269,6 @@
 (server-start)
 
 (setq frame-resize-pixelwise t)
-
-;; show neotree
-;; (neotree)
 
 ;;;;
 ;; Auto-generated stuff
