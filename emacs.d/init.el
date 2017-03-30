@@ -37,10 +37,11 @@
     ;; https://github.com/clojure-emacs/cider
     cider
 
-    ;; allow ido usage in as many contexts as possible. see
-    ;; customizations/navigation.el line 23 for a description
-    ;; of ido
+    ;; allow ido usage in as many contexts as possible
     ido-ubiquitous
+
+    ;; diminish 
+    diminish
 
     ;; Enhances M-x to allow easier execution of commands. Provides
     ;; a filterable list of possible commands in the minibuffer
@@ -68,6 +69,9 @@
 
     ;; multiple-cursors
     multiple-cursors
+
+    ;; dired
+    dired-details
 
     ;; expand region
     expand-region
@@ -153,10 +157,14 @@
 ;; agenda api integrations
 (load "org-agenda-api-integrations.el")
 
+;; git
+(load "magit/config.el")
+
 ;; configure emacs
 (load "navigation.el")
 (load "ui.el")
 (load "editing.el")
+(load "windows.el")
 (load "misc.el")
 
 ;; pipe into emacs
@@ -170,6 +178,9 @@
 (ac-config-default)
 (global-company-mode t)
 
+;; clean up dired
+(setq-default dired-details-hidden-string "--- ")
+
 ;; Langauage-specific
 (load "language/elisp.el")
 (load "language/clojure.el")
@@ -182,6 +193,16 @@
 ;; slack
 (add-to-list 'load-path "~/.emacs.d/customizations/slack/emacs-slack/")
 (load "slack/config.el")
+
+;; diminish
+(diminish 'wrap-region-mode)
+(diminish 'yas/minor-mode)
+
+;; backup files - save them elsewhere
+(setq backup-directory-alist
+      `(("." . ,(expand-file-name
+                 (concat user-emacs-directory "backups")))))
+(setq vc-make-backup-files t)
 
 ;;;;
 ;; Custom Key Mappings
@@ -201,16 +222,14 @@
 (global-set-key (kbd "C-d") 'kill-word)
 (global-set-key (kbd "C-x C-k") 'kill-region)
 (global-set-key (kbd "C-c C-k") 'kill-region)
+(global-set-key (kbd "C-c C-q")
+               (lambda () (interactive) (kill-buffer) (delete-window)))
 
 ;; agenda
 (global-set-key (kbd "C-c a") 'org-agenda) 
 
 ;; terminal
 (global-set-key (kbd "C-c t") 'create-or-show-small-terminal)
-
-;; magit
-(global-set-key (kbd "C-c m s") 'magit-status)
-(global-set-key (kbd "C-c m p") 'magit-push)
 
 ;; parediting
 (global-set-key (kbd "C-}") 'paredit-forward-barf-sexp)
@@ -234,6 +253,9 @@
                   (interactive)
                   (ignore-errors (backward-char 5))))
 
+;; webjump
+(global-set-key (kbd "C-x g") 'webjump)
+
 
 ;; swap super and meta on OSX
 (setq mac-option-modifier 'super)
@@ -254,6 +276,7 @@
 (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
+(global-linum-mode 0)
 
 ;; agenda config
 (setq org-agenda-files (remove-if-not 'file-exists-p

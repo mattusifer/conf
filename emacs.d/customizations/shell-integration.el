@@ -11,8 +11,10 @@
 
 (defun create-or-show-small-terminal ()
   (interactive)
-  (split-window-right -100)
-  (windmove-right)
+  (if (> (window-total-width) 200)
+      (progn
+        (split-window-horizontally)
+        (windmove-right)))
   (if (or (not (boundp 'current-terminal-buffer))
           (not (get-buffer current-terminal-buffer)))
       (progn (multi-term)
@@ -21,3 +23,5 @@
              (setq comint-scroll-show-maximum-output nil)
              (setq current-terminal-buffer (buffer-name)))
     (switch-to-buffer (get-buffer current-terminal-buffer))))
+
+(global-set-key (kbd "C-c C-j") 'term-line-mode)
