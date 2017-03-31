@@ -47,6 +47,8 @@
 ;; no bell
 (setq ring-bell-function 'ignore)
 
+(setq frame-resize-pixelwise t)
+
 ;; include filepath when visiting two identically named files
 (require 'uniquify)
 (setq uniquify-buffer-name-style 'forward)
@@ -82,6 +84,12 @@
 ;; No need for ~ files when editing
 (setq create-lockfiles nil)
 
+;; save backups in the backups dir
+(setq backup-directory-alist
+      `(("." . ,(expand-file-name
+                 (concat user-emacs-directory "backups")))))
+(setq vc-make-backup-files t)
+
 ;; auto-complete
 (require 'company)
 (require 'cl)
@@ -103,6 +111,20 @@
 
 ;; highlight current line
 (global-hl-line-mode 1)
+
+;; swap super and meta on OSX
+(setq mac-option-modifier 'super)
+(setq mac-command-modifier 'meta)
+
+;; scrolling line-by-line
+(setq scroll-step            1
+      scroll-conservatively  10000)
+
+;; show useless whitespace
+(setq show-trailing-whitespace t)
+
+;; undo tree
+(global-undo-tree-mode)
 
 ;; run regexp searches by default
 (global-set-key (kbd "C-s") 'isearch-forward-regexp)
@@ -209,5 +231,58 @@
                    name (file-name-nondirectory new-name)))))))
 
 (global-set-key (kbd "C-x C-r") 'rename-current-buffer-file)
+
+;;;;;;;;;;
+;; misc keybindings
+
+;; ace jump
+(global-set-key (kbd "C-c M-SPC") 'ace-jump-mode)
+
+;; multi cursor
+(global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
+(global-set-key (kbd "C->") 'mc/mark-next-like-this)
+(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
+(global-set-key (kbd "C-S-c C->") 'mc/mark-all-like-this)
+
+;; killing
+(global-set-key (kbd "C-w") 'backward-kill-word)
+(global-set-key (kbd "C-d") 'kill-word)
+(global-set-key (kbd "C-x C-k") 'kill-region)
+(global-set-key (kbd "C-c C-k") 'kill-region)
+(global-set-key (kbd "C-c C-q")
+               (lambda () (interactive) (kill-buffer) (delete-window)))
+(global-set-key (kbd "C-c u") 'undo-tree-visualize)
+
+;; agenda
+(global-set-key (kbd "C-c a") 'org-agenda) 
+
+;; terminal
+(global-set-key (kbd "C-c t") 'create-or-show-small-terminal)
+
+;; parediting
+(global-set-key (kbd "C-}") 'paredit-forward-barf-sexp)
+(global-set-key (kbd "C-{") 'paredit-backward-barf-sexp)
+
+;; quicker movement
+(global-set-key (kbd "C-S-n")
+                (lambda ()
+                  (interactive)
+                  (ignore-errors (next-line 5))))
+(global-set-key (kbd "C-S-p")
+                (lambda ()
+                  (interactive)
+                  (ignore-errors (previous-line 5))))
+(global-set-key (kbd "C-S-f")
+                (lambda ()
+                  (interactive)
+                  (ignore-errors (forward-char 5))))
+(global-set-key (kbd "C-S-b")
+                (lambda ()
+                  (interactive)
+                  (ignore-errors (backward-char 5))))
+
+;; webjump
+(global-set-key (kbd "C-x g") 'webjump)
+
 
 (provide 'setup-ui)

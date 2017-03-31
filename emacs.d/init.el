@@ -15,8 +15,8 @@
 ;; projectile -- enable caching
 (setq projectile-enable-caching t)
 
-
 (require 'setup-email)
+(require 'setup-slack)
 
 (require 'setup-shell)
 
@@ -29,7 +29,7 @@
 (require 'setup-magit)
 
 ;; enable piping into emacs via:
-;; $ cmd | esink
+;; $ <cmd> | esink
 (require 'tty-format)
 (require 'e-sink)
 
@@ -42,99 +42,8 @@
 (require 'setup-java.el)
 (require 'setup-python.el)
 
-;; slack
-(add-to-list 'load-path "~/.emacs.d/settings/slack/emacs-slack/")
-(load "slack/config.el")
-
-;; backup files - save them elsewhere
-(setq backup-directory-alist
-      `(("." . ,(expand-file-name
-                 (concat user-emacs-directory "backups")))))
-(setq vc-make-backup-files t)
-
-;;;;
-;; Custom Key Mappings
-;;;;
-
-;; ace jump
-(global-set-key (kbd "C-c M-SPC") 'ace-jump-mode)
-
-;; multi cursor
-(global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
-(global-set-key (kbd "C->") 'mc/mark-next-like-this)
-(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
-(global-set-key (kbd "C-S-c C->") 'mc/mark-all-like-this)
-
-;; killing
-(global-set-key (kbd "C-w") 'backward-kill-word)
-(global-set-key (kbd "C-d") 'kill-word)
-(global-set-key (kbd "C-x C-k") 'kill-region)
-(global-set-key (kbd "C-c C-k") 'kill-region)
-(global-set-key (kbd "C-c C-q")
-               (lambda () (interactive) (kill-buffer) (delete-window)))
-(global-set-key (kbd "C-c u") 'undo-tree-visualize)
-
-;; agenda
-(global-set-key (kbd "C-c a") 'org-agenda) 
-
-;; terminal
-(global-set-key (kbd "C-c t") 'create-or-show-small-terminal)
-
-;; parediting
-(global-set-key (kbd "C-}") 'paredit-forward-barf-sexp)
-(global-set-key (kbd "C-{") 'paredit-backward-barf-sexp)
-
-;; quicker movement
-(global-set-key (kbd "C-S-n")
-                (lambda ()
-                  (interactive)
-                  (ignore-errors (next-line 5))))
-(global-set-key (kbd "C-S-p")
-                (lambda ()
-                  (interactive)
-                  (ignore-errors (previous-line 5))))
-(global-set-key (kbd "C-S-f")
-                (lambda ()
-                  (interactive)
-                  (ignore-errors (forward-char 5))))
-(global-set-key (kbd "C-S-b")
-                (lambda ()
-                  (interactive)
-                  (ignore-errors (backward-char 5))))
-
-;; webjump
-(global-set-key (kbd "C-x g") 'webjump)
-
-
-;; swap super and meta on OSX
-(setq mac-option-modifier 'super)
-(setq mac-command-modifier 'meta)
-
-;; scrolling line-by-line
-(setq scroll-step            1
-      scroll-conservatively  10000)
-
-;; show useless whitespace
-(setq show-trailing-whitespace t)
-
-;; agenda config
-(setq org-agenda-files (remove-if-not 'file-exists-p
-                                      (list "~/Dropbox/symlinks/emacs/org-mode/work.org"
-                                            "~/Dropbox/symlinks/emacs/org-mode/home.org")))
-
-;; undo tree
-(global-undo-tree-mode)
-
-;; notifications
-(org-agenda-to-appt)
-
-;; show agenda
-(org-agenda-list)
-(delete-other-windows)
-
-(server-start)
-
-(setq frame-resize-pixelwise t)
+(unless (server-running-p)
+  (server-start))
 
 ;;;;
 ;; Auto-generated stuff

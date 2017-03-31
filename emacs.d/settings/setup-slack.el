@@ -1,3 +1,5 @@
+(require 'slack)
+
 ;; slack functions
 (defun read-secret-key (path)
   (ignore-errors
