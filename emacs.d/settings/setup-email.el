@@ -1,9 +1,11 @@
+(require 'mu4e)
+
 ;; various settings
-(setq mu4e-mu-binary "/usr/local/bin/mu"
+(setq mu4e-mu-binary (expand-file-name "vendor/mu/mu/mu" user-emacs-directory)
       mu4e-compose-dont-reply-to-self t
 
       ;; retrieval
-      mu4e-get-mail-command "mbsync -V personal-gmail"
+      mu4e-get-mail-command "mbsync -V personal-gmail || [ $? -eq 1 ]"
       mu4e-update-interval  60 ;; seconds
 
       ;; speed
