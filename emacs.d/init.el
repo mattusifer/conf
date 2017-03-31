@@ -45,9 +45,7 @@
 (unless (server-running-p)
   (server-start))
 
-;;;;
-;; Auto-generated stuff
-;;;;
+;; auto-generated stuff
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
