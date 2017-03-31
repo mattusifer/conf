@@ -15,10 +15,7 @@
 
 (defun install-custom-packages ()
   (packages-install
-   '(
-     ;; obvious ones
-     better-defaults
-     use-package
+   '(use-package
      ido-ubiquitous
      smex
      magit
@@ -84,7 +81,7 @@
      exec-path-from-shell
      multi-term
 
-     ;; emacs-slack deps
+     ;; slack
      oauth2
      lui
      request
@@ -102,10 +99,26 @@
    (install-custom-packages)))
 
 ;; Add external projects to load path
-(dolist (project (directory-files vendor-dir t "\\w+"))
-  (when (file-directory-p project)
-    (if (string= (car (last (split-string project "/"))) "mu")
-        (add-to-list 'load-path (concat project "/mu4e"))
-      (add-to-list 'load-path project))))
+(defun search-for-elisp-dir (dir level)
+  (dolist (project (directory-files dir t "\\w+"))
+    (when (file-directory-p project)
+      (let ((project-lisp-files
+             (delq nil
+                   (mapcar (lambda (subdir) (string-match ".el$" subdir))
+                           (directory-files project t "\\w+"))))
+            (project-directories
+             (delq nil
+                   (mapcar (lambda (subdir)
+                             (when (file-directory-p subdir)
+                               subdir))
+                           (directory-files project t "\\w+")))))
+        (if (and (null project-lisp-files) (not (null project-directories)))
+            (when (< level 2)
+                (dolist (subdir project-directories)
+                  (search-for-elisp-dir subdir (+ level 1))))
+          (add-to-list 'load-path project))))))
+
+;; begin search at vendor dir
+(search-for-elisp-dir vendor-dir 1)
 
 (provide 'setup-package)
