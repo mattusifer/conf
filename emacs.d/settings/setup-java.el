@@ -70,3 +70,5 @@
 
 (add-hook 'java-mode-hook (lambda () (local-set-key (kbd "C-c j e") 'eval-java-region)))
 (add-hook 'java-mode-hook (lambda () (local-set-key (kbd "C-c j k") 'eval-java-buffer)))
+
+(provide 'setup-java)

@@ -109,3 +109,5 @@
   (local-set-key (kbd "C-x TAB") 'go-to-admin-url))
 
 (add-hook 'org-agenda-mode-hook 'map-org-mode-keys)
+
+(provide 'setup-org-agenda-api-integrations)

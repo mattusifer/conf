@@ -1,5 +1,3 @@
-;; Sets up exec-path-from shell
-;; https://github.com/purcell/exec-path-from-shell
 (when (memq window-system '(mac ns))
   (exec-path-from-shell-initialize)
   (exec-path-from-shell-copy-envs
@@ -9,7 +7,10 @@
 ;; emacs terminal conf
 (setq system-uses-terminfo nil)
 
+;; todo: setup SSH agent
+
 (defun create-or-show-small-terminal ()
+  "Pop open a terminal"
   (interactive)
   (if (> (window-total-width) 200)
       (progn
@@ -25,3 +26,8 @@
     (switch-to-buffer (get-buffer current-terminal-buffer))))
 
 (global-set-key (kbd "C-c C-j") 'term-line-mode)
+
+(setq-default sh-basic-offset 2)
+(setq-default sh-indentation 2)
+
+(provide 'setup-shell)

@@ -16,8 +16,8 @@
   (slack-register-team
    :name "healthverity"
    :default t
-   :client-id (read-secret-key "~/.emacs.d/customizations/slack/client-id")
-   :client-secret (read-secret-key "~/.emacs.d/customizations/slack/client-secret")
+   :client-id (read-secret-key (expand-file-name "slack-client-id" user-emacs-directory))
+   :client-secret (read-secret-key (expand-file-name "slack-client-secret" user-emacs-directory))
    )
   )
 (use-package alert
@@ -31,3 +31,5 @@
 (global-set-key (kbd "C-c s i") 'slack-im-select)
 (global-set-key (kbd "C-c s a") 'slack-select-rooms)
 (global-set-key (kbd "C-c s s") 'slack-select-rooms-with-unread-messages)
+
+(provide 'setup-slack)

@@ -14,3 +14,5 @@
 
 (add-hook 'python-mode-hook 'highlight-indentation-mode)
 (add-hook 'python-mode-hook 'elpy-mode)
+
+(provide 'setup-python)

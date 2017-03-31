@@ -26,3 +26,5 @@
 
 ;; ember
 (add-to-list 'auto-mode-alist '("\\.hbs\\'" . html-mode))
+
+(provide 'setup-javascript)

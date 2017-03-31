@@ -1,12 +1,11 @@
-;; mu4e config
-(add-to-list 'load-path "~/src/djcb/mu-0.9.9.5/mu4e")
 (require 'mu4e)
 
+;; various settings
 (setq mu4e-mu-binary "/usr/local/bin/mu"
       mu4e-compose-dont-reply-to-self t
 
       ;; retrieval
-      mu4e-get-mail-command "mbsync personal-gmail"
+      mu4e-get-mail-command "mbsync -V personal-gmail"
       mu4e-update-interval  60 ;; seconds
 
       ;; speed
@@ -44,3 +43,5 @@
 ;;     :name  "Big messages"
 ;;     :query "size:5M..500M"
 ;;     :key ?b))
+
+(provide 'setup-email)

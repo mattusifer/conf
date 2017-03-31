@@ -27,3 +27,4 @@
 (global-set-key (kbd "C-c m s") 'magit-status)
 (global-set-key (kbd "C-c m p") 'magit-push)
 
+(provide 'setup-magit)

@@ -1,163 +1,49 @@
-;;;;
-;; Packages
-;;;;
+;; set up dependencies
+(setq vendor-dir
+      (expand-file-name "vendor" user-emacs-directory))
 
-;; Define package repositories
-(require 'package)
-(package-initialize)
+(setq settings-dir
+      (expand-file-name "settings" user-emacs-directory))
 
-(add-to-list 'package-archives
-             '("marmalade" . "http://marmalade-repo.org/packages/") t)
-(add-to-list 'package-archives
-             '("tromey" . "http://tromey.com/elpa/") t)
-(add-to-list 'package-archives
-             '("melpa" . "http://melpa.milkbox.net/packages/") t)
+(add-to-list 'load-path settings-dir)
+(add-to-list 'load-path vendor-dir)
 
-;; refresh if needed
-(when (not package-archive-contents)
-  (package-refresh-contents))
-
-(defvar my-packages
-  '(better-defaults
-    use-package
-    ido-ubiquitous
-    smex
-    magit
-    auto-complete
-    company
-
-    ;; clojure/lisp
-    paredit
-    clojure-mode
-    clojure-mode-extra-font-locking
-    cider
-    rainbow-delimiters
-
-    ;; project navigation
-    projectile
-    neotree
-    dired-details
-
-    ;; html
-    tagedit
-
-    ;; misc editing
-    ace-jump-mode
-    undo-tree
-    real-auto-save
-    multiple-cursors
-    expand-region
-    column-marker
-
-    ;; python
-    python-mode
-    elpy
-
-    ;; coffeescript
-    coffee-mode
-
-    ;; java
-    eclim
-    ac-emacs-eclim
-    company-emacs-eclim
-
-    ;; sql
-    sql-indent
-
-    ;; php
-    php-mode
-    
-    ;; javascript
-    js2-mode
-
-    ;; scss
-    scss-mode
-
-    ;; scala
-    scala-mode
-    ensime
-    
-    ;; markdown
-    markdown-mode
-    markdown-preview-mode
-
-    ;; shell
-    exec-path-from-shell
-    multi-term
-
-    ;; emacs-slack deps
-    oauth2
-    lui
-    request
-    alert
-    websocket
-    circe
-    emojify
-    ))
-
-(dolist (p my-packages)
-  (when (not (package-installed-p p))
-    (package-install p)))
-
-;; source from any downloaded elisp files found in ~/.emacs.d/vendor
-(add-to-list 'load-path "~/.emacs.d/vendor")
+;; configure
+(require 'setup-ui)
+(require 'setup-package)
 
 ;; projectile -- enable caching
 (setq projectile-enable-caching t)
 
-;;;;
-;; Customization
-;;;;
 
-;; set load path
-(add-to-list 'load-path "~/.emacs.d/customizations")
+(require 'setup-email)
 
-;; email
-;; requires 'mu' to be installed on the system
-(load "email/config.el")
+(require 'setup-shell)
 
-;; setup exec-path-from-shell so that Emacs will use the correct
-;; environment variables
-(load "shell-integration.el")
+;; I wrote these integrations when working in tech support to allow
+;; emacs to communicate directly with Zendesk for ticket management
+;; and Toggl for time logging. I don't use them anymore, but they
+;; could be useful at some point. Who knows.
+;; (require 'setup-org-agenda-api-integrations)
 
-;; agenda api integrations
-(load "org-agenda-api-integrations.el")
+(require 'setup-magit)
 
-;; git
-(load "magit/config.el")
+;; enable piping into emacs via:
+;; $ cmd | esink
+(require 'tty-format)
+(require 'e-sink)
 
-;; configure emacs
-(load "navigation.el")
-(load "ui.el")
-(load "editing.el")
-(load "windows.el")
-(load "misc.el")
-
-;; pipe into emacs
-(load "tty-format.el")
-(load "e-sink.el")
-
-;; auto-complete
-(require 'company)
-(require 'cl)
-(require 'auto-complete-config)
-(ac-config-default)
-(global-company-mode t)
-
-;; clean up dired
-(setq-default dired-details-hidden-string "--- ")
-
-;; Langauage-specific
-(load "language/elisp.el")
-(load "language/clojure.el")
-(load "language/javascript.el")
-(load "language/sql.el")
-(load "language/scala.el")
-(load "language/java.el")
-(load "language/python.el")
+;; language-specific configs
+(require 'setup-elisp.el)
+(require 'setup-clojure.el)
+(require 'setup-javascript.el)
+(require 'setup-sql.el)
+(require 'setup-scala.el)
+(require 'setup-java.el)
+(require 'setup-python.el)
 
 ;; slack
-(add-to-list 'load-path "~/.emacs.d/customizations/slack/emacs-slack/")
+(add-to-list 'load-path "~/.emacs.d/settings/slack/emacs-slack/")
 (load "slack/config.el")
 
 ;; backup files - save them elsewhere
@@ -230,12 +116,6 @@
 
 ;; show useless whitespace
 (setq show-trailing-whitespace t)
-
-; lose the UI
-(if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
-(if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
-(if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
-(global-linum-mode 0)
 
 ;; agenda config
 (setq org-agenda-files (remove-if-not 'file-exists-p
