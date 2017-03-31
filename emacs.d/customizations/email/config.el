@@ -2,41 +2,44 @@
 (add-to-list 'load-path "~/src/djcb/mu-0.9.9.5/mu4e")
 (require 'mu4e)
 
-(setq mu4e-mu-binary "/usr/local/bin/mu")
-(setq mu4e-compose-dont-reply-to-self t)
+(setq mu4e-mu-binary "/usr/local/bin/mu"
+      mu4e-compose-dont-reply-to-self t
 
-; (setq mu4e-contexts
-;    `( ,(make-mu4e-context
-;          :name "Personal Gmail"
-;          :enter-func (lambda () (mu4e-message "Entering Personal Gmail context"))
-;          :leave-func (lambda () (mu4e-message "Leaving Personal Gmail context"))
-;          ;; we match based on the contact-fields of the message
-;          :match-func (lambda (msg)
-;                        (when msg 
-;                          (mu4e-message-contact-field-matches msg 
-;                            :to "mattusifer@gmail.com")))
-;          :vars '( ( user-mail-address      . "mattusifer@gmail.com"  )
-;                   ( user-full-name         . "Matt Usifer" )
-;                   ( mu4e-compose-signature . "- Matt")))
-;       ))
+      ;; retrieval
+      mu4e-get-mail-command "mbsync personal-gmail"
+      mu4e-update-interval  60 ;; seconds
 
-;; set `mu4e-context-policy` and `mu4e-compose-policy` to tweak when mu4e should
-;; guess or ask the correct context, e.g.
+      ;; speed
+      ;; mu4e-index-cleanup nil      ;; don't do a full cleanup check
+      ;; mu4e-index-lazy-check t     ;; don't consider up-to-date dirs
 
-;; start with the first (default) context; 
-;; default is to ask-if-none (ask when there's no context yet, and none match)
-;; (setq mu4e-context-policy 'pick-first)
+      ;; maildir
+      mu4e-maildir       "~/.mbsyncmaildir/personal-gmail"  ;; top-level Maildir
+      mu4e-inbox-folder   "/inbox"                          ;; folder for sent messages
+      mu4e-sent-folder   "/sent"                            ;; folder for sent messages
+      mu4e-drafts-folder "/drafts"                          ;; unfinished messages
+      mu4e-trash-folder  "/trash"                           ;; trashed messages
+      mu4e-refile-folder "/all"                             ;; saved messages
 
-;; compose with the current context is no context matches;
-;; default is to ask 
-;; (setq mu4e-compose-context-policy nil)
+      user-mail-address "mattusifer@gmail.com"
+      user-full-name "Matt Usifer"
 
-;; refresh mail dir every 2 minutes
-(defun refresh-mail ()
-  (start-process-shell-command
-   "email-refresh" nil
-   "mbsync personal-gmail && pkill -2 -u $UID mu && sleep 1 && mu index"))
-(run-with-timer 0 (* 2 60) 'refresh-mail)
+      ;; sent mail
+      mu4e-sent-messages-behavior 'delete
+      message-send-mail-function 'smtpmail-send-it
+      smtpmail-smtp-server "smtp.gmail.com"
 
-;; keybindings
+      ;; attachments
+      mu4e-attachment-dir  "~/Downloads"
+      mu4e-view-show-images t
 
+      ;; html
+      mu4e-view-prefer-html t
+      )
+
+;; bookmarks example
+;; (add-to-list 'mu4e-bookmarks
+;;   (make-mu4e-bookmark
+;;     :name  "Big messages"
+;;     :query "size:5M..500M"
+;;     :key ?b))

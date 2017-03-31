@@ -16,7 +16,7 @@ Account personal-gmail
 # local-storage
 MaildirStore personal-gmail-local
 Path ~/.mbsyncmaildir/personal-gmail/
-Inbox ~/.mbsyncmaildir/personal-gmail/INBOX
+Inbox ~/.mbsyncmaildir/personal-gmail/inbox
 
 Channel personal-gmail-inbox
 Master :personal-gmail-remote:
@@ -28,28 +28,21 @@ SyncState *
 
 Channel personal-gmail-trash
 Master :personal-gmail-remote:"[Gmail]/Bin"
-Slave :personal-gmail-local:"[Gmail].Bin"
+Slave :personal-gmail-local:"bin"
 Create Both
 Expunge Both
 SyncState *
 
 Channel personal-gmail-sent
 Master :personal-gmail-remote:"[Gmail]/Sent Mail"
-Slave :personal-gmail-local:"[Gmail].Sent Mail"
+Slave :personal-gmail-local:"bin"
 Create Both
 Expunge Both
 SyncState *
 
 Channel personal-gmail-all
 Master :personal-gmail-remote:"[Gmail]/All Mail"
-Slave :personal-gmail-local:"[Gmail].All Mail"
-Create Both
-Expunge Both
-SyncState *
-
-Channel personal-gmail-starred
-Master :personal-gmail-remote:"[Gmail]/Starred"
-Slave :personal-gmail-local:"[Gmail].Starred"
+Slave :personal-gmail-local:"all"
 Create Both
 Expunge Both
 SyncState *
@@ -59,4 +52,3 @@ Channel personal-gmail-inbox
 Channel personal-gmail-sent
 Channel personal-gmail-trash
 Channel personal-gmail-all
-Channel personal-gmail-starred
