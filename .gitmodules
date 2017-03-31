@@ -4,3 +4,6 @@
 [submodule "mu"]
 	path = emacs.d/vendor/mu
 	url = git@github.com:djcb/mu.git
+[submodule "emacs-slack"]
+	path = emacs.d/vendor/emacs-slack
+	url = git@github.com:mattusifer/emacs-slack.git
