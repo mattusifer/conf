@@ -1,5 +1,3 @@
-(require 'mu4e)
-
 ;; various settings
 (setq mu4e-mu-binary "/usr/local/bin/mu"
       mu4e-compose-dont-reply-to-self t

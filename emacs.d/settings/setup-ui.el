@@ -1,12 +1,3 @@
-;; before setting up the UI - lose the UI 
-(if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
-(if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
-(if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
-(global-linum-mode 0)
-
-;; no splash
-(setq inhibit-startup-message t)
-
 ;;;;;;;;;;
 ;; ui
 

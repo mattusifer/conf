@@ -1,4 +1,15 @@
-;; set up dependencies
+;; before anything else - lose the UI 
+(if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
+(if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
+(if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
+(global-linum-mode 0)
+
+;; no splash
+(setq inhibit-startup-message t)
+
+(require 'package)
+(package-initialize)
+
 (setq vendor-dir
       (expand-file-name "vendor" user-emacs-directory))
 
@@ -9,8 +20,8 @@
 (add-to-list 'load-path vendor-dir)
 
 ;; configure
-(require 'setup-ui)
 (require 'setup-package)
+(require 'setup-ui)
 
 ;; projectile -- enable caching
 (setq projectile-enable-caching t)
@@ -34,16 +45,15 @@
 (require 'e-sink)
 
 ;; language-specific configs
-(require 'setup-elisp.el)
-(require 'setup-clojure.el)
-(require 'setup-javascript.el)
-(require 'setup-sql.el)
-(require 'setup-scala.el)
-(require 'setup-java.el)
-(require 'setup-python.el)
+(require 'setup-elisp)
+(require 'setup-clojure)
+(require 'setup-javascript)
+(require 'setup-sql)
+(require 'setup-scala)
+(require 'setup-java)
+(require 'setup-python)
 
-(unless (server-running-p)
-  (server-start))
+(server-start)
 
 ;; auto-generated stuff
 

@@ -1,7 +1,3 @@
-;; Initialize packages
-(require 'package)
-(package-initialize)
-
 ;; build repo
 (add-to-list 'package-archives
              '("marmalade" . "http://marmalade-repo.org/packages/") t)
@@ -104,5 +100,12 @@
   (error
    (package-refresh-contents)
    (install-custom-packages)))
+
+;; Add external projects to load path
+(dolist (project (directory-files vendor-dir t "\\w+"))
+  (when (file-directory-p project)
+    (if (string= (car (last (split-string project "/"))) "mu")
+        (add-to-list 'load-path (concat project "/mu4e"))
+      (add-to-list 'load-path project))))
 
 (provide 'setup-package)
