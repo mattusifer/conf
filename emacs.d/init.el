@@ -19,64 +19,34 @@
 
 (defvar my-packages
   '(better-defaults
-
     use-package
-
-    ;; makes handling lisp expressions much, much easier
-    ;; Cheatsheet: http://www.emacswiki.org/emacs/PareditCheatsheet
-    paredit
-
-    ;; key bindings and code colorization for Clojure
-    ;; https://github.com/clojure-emacs/clojure-mode
-    clojure-mode
-
-    ;; extra syntax highlighting for clojure
-    clojure-mode-extra-font-locking
-
-    ;; integration with a Clojure REPL
-    ;; https://github.com/clojure-emacs/cider
-    cider
-
-    ;; allow ido usage in as many contexts as possible
     ido-ubiquitous
-
-    ;; diminish 
-    diminish
-
-    ;; Enhances M-x to allow easier execution of commands. Provides
-    ;; a filterable list of possible commands in the minibuffer
-    ;; http://www.emacswiki.org/emacs/Smex
     smex
+    magit
+    auto-complete
+    company
+
+    ;; clojure/lisp
+    paredit
+    clojure-mode
+    clojure-mode-extra-font-locking
+    cider
+    rainbow-delimiters
 
     ;; project navigation
     projectile
     neotree
-
-    ;; auto save
-    real-auto-save
-
-    ;; colorful parenthesis matching
-    rainbow-delimiters
-
-    ;; edit html tags like sexps
-    tagedit
-
-    ;; git integration
-    magit
-
-    ;; ace-jump-mode
-    ace-jump-mode
-
-    ;; multiple-cursors
-    multiple-cursors
-
-    ;; dired
     dired-details
 
-    ;; expand region
-    expand-region
+    ;; html
+    tagedit
 
-    ;; column marker
+    ;; misc editing
+    ace-jump-mode
+    undo-tree
+    real-auto-save
+    multiple-cursors
+    expand-region
     column-marker
 
     ;; python
@@ -90,10 +60,6 @@
     eclim
     ac-emacs-eclim
     company-emacs-eclim
-
-    ;; auto-complete
-    auto-complete
-    company
 
     ;; sql
     sql-indent
@@ -119,7 +85,7 @@
     exec-path-from-shell
     multi-term
 
-    ;; emacs-slack dependencies
+    ;; emacs-slack deps
     oauth2
     lui
     request
@@ -194,10 +160,6 @@
 (add-to-list 'load-path "~/.emacs.d/customizations/slack/emacs-slack/")
 (load "slack/config.el")
 
-;; diminish
-(diminish 'wrap-region-mode)
-(diminish 'yas/minor-mode)
-
 ;; backup files - save them elsewhere
 (setq backup-directory-alist
       `(("." . ,(expand-file-name
@@ -224,6 +186,7 @@
 (global-set-key (kbd "C-c C-k") 'kill-region)
 (global-set-key (kbd "C-c C-q")
                (lambda () (interactive) (kill-buffer) (delete-window)))
+(global-set-key (kbd "C-c u") 'undo-tree-visualize)
 
 ;; agenda
 (global-set-key (kbd "C-c a") 'org-agenda) 
@@ -268,10 +231,6 @@
 ;; show useless whitespace
 (setq show-trailing-whitespace t)
 
-;;;;
-;; On-load Customizations
-;;;;
-
 ; lose the UI
 (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
@@ -282,6 +241,10 @@
 (setq org-agenda-files (remove-if-not 'file-exists-p
                                       (list "~/Dropbox/symlinks/emacs/org-mode/work.org"
                                             "~/Dropbox/symlinks/emacs/org-mode/home.org")))
+
+;; undo tree
+(global-undo-tree-mode)
+
 ;; notifications
 (org-agenda-to-appt)
 

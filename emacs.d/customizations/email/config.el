@@ -35,6 +35,7 @@
 
       ;; html
       mu4e-view-prefer-html t
+      mu4e-html2text-command "textutil -stdin -format html -convert txt -stdout || html2text -utf8 -width 72"
       )
 
 ;; bookmarks example

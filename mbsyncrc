@@ -27,15 +27,15 @@ Expunge Both
 SyncState *
 
 Channel personal-gmail-trash
-Master :personal-gmail-remote:"[Gmail]/Bin"
-Slave :personal-gmail-local:"bin"
+Master :personal-gmail-remote:"[Gmail]/Trash"
+Slave :personal-gmail-local:"trash"
 Create Both
 Expunge Both
 SyncState *
 
 Channel personal-gmail-sent
 Master :personal-gmail-remote:"[Gmail]/Sent Mail"
-Slave :personal-gmail-local:"bin"
+Slave :personal-gmail-local:"sent"
 Create Both
 Expunge Both
 SyncState *
