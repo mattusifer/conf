@@ -1,20 +1,21 @@
+# from mu documentation
 mu:
-	cd emacs.d/vendor/mu
-	autoreconf -i && ./configure && make  # from mu documentation
+	autoreconf -im emacs.d/vendor/mu/
 
 emacs:	mu
-	ln -s emacs.d ~/.emacs.d
+	rm -r ~/.emacs.d
+	ln -s $(shell pwd)/emacs.d/ ~/.emacs.d
 
 sbt: 
-	ln -s sbt ~/.sbt
+	ln -si $(shell pwd)/sbt ~/.sbt
 
 zsh:
-	ln -s zshrc ~/.zshrc
+	ln -si $(shell pwd)/zshrc ~/.zshrc
 
 tmux:
-	ln -s tmux.conf ~/.tmux.conf
+	ln -si $(shell pwd)/tmux.conf ~/.tmux.conf
 
 mbsync:
-	ln -s mbsyncrc ~/.mbsyncrc
+	ln -si $(shell pwd)/mbsyncrc ~/.mbsyncrc
 
 all: sbt zsh tmux mbsync emacs
