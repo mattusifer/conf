@@ -1,3 +1,6 @@
+(require 'package)
+(package-initialize)
+
 ;; build repo
 (add-to-list 'package-archives
              '("marmalade" . "http://marmalade-repo.org/packages/") t)
@@ -15,7 +18,8 @@
 
 (defun install-custom-packages ()
   (packages-install
-   '(use-package
+   '(better-defaults
+     use-package
      ido-ubiquitous
      smex
      magit
@@ -33,6 +37,7 @@
      projectile
      neotree
      dired-details
+     helm
 
      ;; html
      tagedit
@@ -59,6 +64,9 @@
 
      ;; sql
      sql-indent
+
+     ;; elisp
+     multi
 
      ;; php
      php-mode
@@ -114,8 +122,7 @@
                            (directory-files project t "\\w+")))))
         (if (and (null project-lisp-files) (not (null project-directories)))
             (when (< level 2)
-                (dolist (subdir project-directories)
-                  (search-for-elisp-dir subdir (+ level 1))))
+              (search-for-elisp-dir project (+ level 1)))
           (add-to-list 'load-path project))))))
 
 ;; begin search at vendor dir

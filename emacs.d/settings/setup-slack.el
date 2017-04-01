@@ -18,8 +18,8 @@
   (slack-register-team
    :name "healthverity"
    :default t
-   :client-id (read-secret-key (expand-file-name "slack-client-id" user-emacs-directory))
-   :client-secret (read-secret-key (expand-file-name "slack-client-secret" user-emacs-directory))
+   :client-id (read-secret-key (expand-file-name "secrets/slack-client-id" user-emacs-directory))
+   :client-secret (read-secret-key (expand-file-name "secrets/slack-client-secret" user-emacs-directory))
    )
   )
 (use-package alert

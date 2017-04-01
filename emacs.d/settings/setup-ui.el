@@ -68,6 +68,7 @@
 
 ;; projectile
 (projectile-global-mode)
+(setq projectile-enable-caching t)
 
 ;;;;;;;;;;
 ;; editing
@@ -106,6 +107,13 @@
 ;; swap super and meta on OSX
 (setq mac-option-modifier 'super)
 (setq mac-command-modifier 'meta)
+
+;; fix weird clipboard error on OSX
+(defun ns-get-pasteboard ()
+  "Returns the value of the pasteboard, or nil for unsupported formats."
+  (condition-case nil
+      (ns-get-selection-interval 'CLIPBOARD)
+    (quit nil)))
 
 ;; scrolling line-by-line
 (setq scroll-step            1

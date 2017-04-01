@@ -7,3 +7,6 @@
 [submodule "emacs-slack"]
 	path = emacs.d/vendor/emacs-slack
 	url = git@github.com:mattusifer/emacs-slack.git
+[submodule "spotify"]
+	path = emacs.d/vendor/spotify
+	url = git@github.com:danielfm/spotify.el.git

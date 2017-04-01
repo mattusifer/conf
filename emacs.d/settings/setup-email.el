@@ -6,7 +6,7 @@
 
       ;; retrieval
       mu4e-get-mail-command "mbsync -V personal-gmail || [ $? -eq 1 ]"
-      mu4e-update-interval  60 ;; seconds
+      mu4e-update-interval  600 ;; seconds
 
       ;; speed
       ;; mu4e-index-cleanup nil      ;; don't do a full cleanup check
