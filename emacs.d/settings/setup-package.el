@@ -9,6 +9,8 @@
 (add-to-list 'package-archives
              '("melpa" . "http://melpa.milkbox.net/packages/") t)
 
+(setq load-prefer-newer t)
+
 (defun packages-install (packages)
   "Install all packages in the list that haven't already been installed"
   (dolist (it packages)
@@ -38,6 +40,7 @@
      neotree
      dired-details
      helm
+     ag
 
      ;; html
      tagedit
