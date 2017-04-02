@@ -5,7 +5,7 @@ IMAPAccount personal-gmail
 Host imap.gmail.com
 User mattusifer@gmail.com
 PassCmd "awk '/^mattusifer/{print $2;}' $HOME/.imapinfo"
-AuthMechs PLAIN
+AuthMechs LOGIN
 SSLType IMAPS
 CertificateFile ~/gmail-cert.pem
 
