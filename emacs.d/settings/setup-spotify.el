@@ -1,4 +1,5 @@
 (require 'spotify)
+(require 'oauth2)
 
 (defun read-secret-key (path)
   (ignore-errors

@@ -93,7 +93,6 @@
      multi-term
 
      ;; slack
-     oauth2
      lui
      request
      alert

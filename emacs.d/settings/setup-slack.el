@@ -1,4 +1,5 @@
 (require 'slack)
+(require 'oauth2)
 
 ;; slack functions
 (defun read-secret-key (path)
