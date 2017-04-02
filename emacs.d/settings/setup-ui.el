@@ -73,7 +73,7 @@
 ;; async operations
 (require 'async-bytecomp)
 (async-bytecomp-package-mode 1)
-(autoload 'dired-async-mode "dired-async" nil t)
+(autoload 'dired-async-mode "dired-async.el" nil t)
 (dired-async-mode 1)
 
 
