@@ -7,3 +7,6 @@
 [submodule "emacs.d/vendor/spotify"]
 	path = emacs.d/vendor/spotify
 	url = git@github.com:mattusifer/spotify.el.git
+[submodule "emacs-async"]
+	path = emacs.d/vendor/emacs-async
+	url = git@github.com:jwiegley/emacs-async.git
