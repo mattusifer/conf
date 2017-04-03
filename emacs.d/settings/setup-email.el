@@ -45,6 +45,6 @@
 ;;     :key ?b))
 
 ;; start email in the background
-(mu4e t)
+;; (mu4e t)
 
 (provide 'setup-email)
