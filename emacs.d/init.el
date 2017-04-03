@@ -23,6 +23,9 @@
 (require 'setup-package)
 (require 'setup-ui)
 
+(require 'setup-yasnippet)
+(require 'setup-dashboard)
+
 (require 'setup-email)
 (require 'setup-slack)
 

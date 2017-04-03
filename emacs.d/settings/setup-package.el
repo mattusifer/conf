@@ -27,6 +27,7 @@
      magit
      auto-complete
      company
+     dashboard
 
      ;; clojure/lisp
      paredit
@@ -37,7 +38,6 @@
 
      ;; project navigation
      projectile
-     neotree
      dired-details
      helm
      ag
