@@ -110,22 +110,29 @@
 
 ;; Add external projects to load path
 (defun search-for-elisp-dir (dir level)
-  (dolist (project (directory-files dir t "\\w+"))
-    (when (file-directory-p project)
-      (let ((project-lisp-files
-             (delq nil
-                   (mapcar (lambda (subdir) (string-match ".el$" subdir))
-                           (directory-files project t "\\w+"))))
-            (project-directories
-             (delq nil
-                   (mapcar (lambda (subdir)
-                             (when (file-directory-p subdir)
-                               subdir))
-                           (directory-files project t "\\w+")))))
-        (if (and (null project-lisp-files) (not (null project-directories)))
-            (when (< level 2)
-              (search-for-elisp-dir project (+ level 1)))
-          (add-to-list 'load-path project))))))
+  (let ((exclusions '("yasnippet-snippets")))
+    
+    ;; filter out exclusions
+    (dolist (project (delq nil
+                           (mapcar (lambda (proj)
+                                     (when (not (member (car (last (split-string proj "/"))) exclusions))
+                                         proj))
+                                   (directory-files dir t "\\w+"))))
+      (when (file-directory-p project)
+        (let ((project-lisp-files
+               (delq nil
+                     (mapcar (lambda (subdir) (string-match ".el$" subdir))
+                             (directory-files project t "\\w+"))))
+              (project-directories
+               (delq nil
+                     (mapcar (lambda (subdir)
+                               (when (file-directory-p subdir)
+                                 subdir))
+                             (directory-files project t "\\w+")))))
+          (if (and (null project-lisp-files) (not (null project-directories)))
+              (when (< level 2)
+                (search-for-elisp-dir project (+ level 1)))
+            (add-to-list 'load-path project)))))))
 
 ;; begin search at vendor dir
 (search-for-elisp-dir vendor-dir 1)
