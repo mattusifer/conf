@@ -27,6 +27,7 @@
      auto-complete
      company
      dashboard
+     google-this
 
      ;; magit!
      magit
