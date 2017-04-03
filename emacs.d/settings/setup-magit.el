@@ -28,15 +28,20 @@
 ;; pop open github 
 (defun pop-open-github-repo ()
   (interactive)
-  (let ((upstream-url (magit-get "remote" "upstream" "url")))
+  (let ((upstream-url (magit-get "remote" "upstream" "url"))
+        (origin-url (magit-get "remote" "origin" "url")))
     (if (null upstream-url)
-        (message "No 'upstream' git remote is set on this repo")
+        (if (null origin-url)
+            (message "No 'upstream' or 'origin' git remote is set on this repo")
+          (browse-url (concat "https://www.github.com/"
+                            (car (split-string
+                                  (car (cdr (split-string
+                                             origin-url ":"))) "\\\.")))))
         (browse-url (concat "https://www.github.com/"
                             (car (split-string
                                   (car (cdr (split-string
                                              upstream-url ":"))) "\\\.")))))))
 
-;; useful kbd's
 (global-set-key (kbd "C-c m s") 'magit-status)
 (global-set-key (kbd "C-c m p") 'magit-push)
 (global-set-key (kbd "C-c m o") 'pop-open-github-repo)
