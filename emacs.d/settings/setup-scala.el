@@ -1,6 +1,5 @@
 (require 'ensime)
 (setq ensime-startup-notification nil)
-;; (add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
 
 (defun get-last-occurrence (substr string start)
   (let ((match-index (string-match substr string start)))

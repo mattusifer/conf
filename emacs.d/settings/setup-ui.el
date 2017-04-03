@@ -96,6 +96,13 @@
 (ac-config-default)
 (global-company-mode t)
 
+;; unbind <tab> everywhere in favor of yasnippet
+(define-key ac-mode-map (kbd "TAB") nil)
+(define-key ac-completing-map (kbd "TAB") nil)
+(define-key ac-completing-map [tab] nil)
+(define-key company-active-map [tab] nil)
+(define-key company-active-map (kbd "TAB") nil)
+
 ;; hippie-expand
 (global-set-key (kbd "M-/") 'hippie-expand)
 (setq hippie-expand-try-functions-list

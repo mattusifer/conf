@@ -24,9 +24,12 @@
      use-package
      ido-ubiquitous
      smex
-     magit
      auto-complete
      company
+     dashboard
+
+     ;; magit!
+     magit
 
      ;; clojure/lisp
      paredit
@@ -37,7 +40,6 @@
 
      ;; project navigation
      projectile
-     neotree
      dired-details
      helm
      ag
