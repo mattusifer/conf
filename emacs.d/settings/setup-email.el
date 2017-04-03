@@ -44,4 +44,7 @@
 ;;     :query "size:5M..500M"
 ;;     :key ?b))
 
+;; start email in the background
+(mu4e t)
+
 (provide 'setup-email)
