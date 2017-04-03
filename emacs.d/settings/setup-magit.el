@@ -25,22 +25,23 @@
   ad-do-it
   (delete-other-windows))
 
-;; pop open github 
-(defun pop-open-github-repo ()
-  (interactive)
+(defun get-github-url ()
   (let ((upstream-url (magit-get "remote" "upstream" "url"))
         (origin-url (magit-get "remote" "origin" "url")))
-    (if (null upstream-url)
-        (if (null origin-url)
-            (message "No 'upstream' or 'origin' git remote is set on this repo")
-          (browse-url (concat "https://www.github.com/"
+    (flet ((get-url (url)
+                    (concat "https://www.github.com/"
                             (car (split-string
                                   (car (cdr (split-string
-                                             origin-url ":"))) "\\\.")))))
-        (browse-url (concat "https://www.github.com/"
-                            (car (split-string
-                                  (car (cdr (split-string
-                                             upstream-url ":"))) "\\\.")))))))
+                                             url ":"))) "\\\.")))))
+      (if (null upstream-url)
+          (if (null origin-url)
+              (message "No 'upstream' or 'origin' git remote is set on this repo")
+            (get-url origin-url))
+        (get-url upstream-url)))))
+
+(defun pop-open-github-repo ()
+  (interactive)
+  (browse-url (get-github-url)))
 
 (global-set-key (kbd "C-c m s") 'magit-status)
 (global-set-key (kbd "C-c m p") 'magit-push)
