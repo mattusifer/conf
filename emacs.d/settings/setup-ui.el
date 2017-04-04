@@ -296,7 +296,8 @@
                   (interactive)
                   (ignore-errors (backward-char 5))))
 
-;; webjump is great and all, but really I only want to search google
+;; webjump is great and all, but really I only ever want to search
+;; google
 (google-this-mode 1)
 (global-set-key (kbd "C-x g") 'google-this-mode-submap)
 

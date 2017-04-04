@@ -24,10 +24,10 @@
 (require 'setup-ui)
 
 (require 'setup-yasnippet)
-(require 'setup-dashboard)
 
 (require 'setup-email)
 (require 'setup-slack)
+(require 'setup-org)
 
 (require 'setup-spotify)
 
@@ -59,4 +59,16 @@
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (load custom-file)
 
+;; start the server
 (server-start)
+
+;; opening screen
+
+;; dashboard
+;; (require 'setup-dashboard)
+
+;; org agenda
+(org-agenda-list)
+(delete-other-windows)
+
+
