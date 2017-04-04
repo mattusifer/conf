@@ -29,6 +29,11 @@
 ;; cursor
 (blink-cursor-mode nil)
 
+;; time
+(setq display-time-day-and-date t)
+(setq display-time-format "%Y-%m-%d %k:%M %p")
+(display-time-mode 1)
+
 ;; Changes all yes/no questions to y/n type
 (fset 'yes-or-no-p 'y-or-n-p)
 
