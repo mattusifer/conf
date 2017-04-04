@@ -26,6 +26,21 @@
     (switch-to-buffer (get-buffer current-terminal-buffer))))
 
 (global-set-key (kbd "C-c C-j") 'term-line-mode)
+(global-set-key (kbd "C-c t c") 'create-or-show-small-terminal)
+
+
+(require 'send-to-process)
+
+(defun send-line-to-terminal ()
+  (interactive)
+  (send-line-region-to-process "terminal<1>"))
+
+(defun send-buffer-to-terminal ()
+  (interactive)
+  (send-buffer-region-to-process "terminal<1>"))
+
+(global-set-key (kbd "C-c t e") 'send-line-to-terminal)
+(global-set-key (kbd "C-c t k") 'send-buffer-to-terminal)
 
 (setq-default sh-basic-offset 2)
 (setq-default sh-indentation 2)

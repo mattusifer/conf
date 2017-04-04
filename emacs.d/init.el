@@ -16,7 +16,11 @@
 (setq settings-dir
       (expand-file-name "settings" user-emacs-directory))
 
+(setq settings-common-dir
+      (expand-file-name "settings/common" user-emacs-directory))
+
 (add-to-list 'load-path settings-dir)
+(add-to-list 'load-path settings-common-dir)
 (add-to-list 'load-path vendor-dir)
 
 ;; configure

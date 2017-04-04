@@ -276,9 +276,6 @@
 ;; agenda
 (global-set-key (kbd "C-c a") 'org-agenda) 
 
-;; terminal
-(global-set-key (kbd "C-c t") 'create-or-show-small-terminal)
-
 ;; parediting
 (global-set-key (kbd "C-}") 'paredit-forward-barf-sexp)
 (global-set-key (kbd "C-{") 'paredit-backward-barf-sexp)

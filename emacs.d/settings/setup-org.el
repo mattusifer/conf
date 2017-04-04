@@ -16,6 +16,9 @@
         (ics-file (expand-file-name "hv-cal.ics" user-emacs-directory))
         (org-file "~/Dropbox/symlinks/emacs/org-mode/calendar.org"))
     
+    (when (file-exists-p ics-file)
+      (delete-file ics-file))
+
     (url-copy-file (read-secret-key url-location) ics-file)
     (start-process-shell-command (concat url-location " calendar-refresh")  nil
                                  (concat ical2org " < " ics-file " > " org-file))
