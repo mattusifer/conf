@@ -6,7 +6,8 @@ emacs:	mu
 	rm -r ~/.emacs.d
 	ln -s $(shell pwd)/emacs.d/ ~/.emacs.d
 
-sbt: 
+sbt:
+	rm -r ~/.sbt
 	ln -si $(shell pwd)/sbt ~/.sbt
 
 zsh:
