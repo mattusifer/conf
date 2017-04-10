@@ -19,10 +19,10 @@
   "Get the base directory of the current project"
   (substring str 0 (get-last-occurrence "src" str 0)))
 
-(defun evaluate-string (execution-fn
-                        repl-process-name
-                        repl-create-cmd-args
-                        repl-mode)
+(defun send-string-to-repl (execution-fn
+                            repl-process-name
+                            repl-create-cmd-args
+                            repl-mode)
   "
 Evaluate a string in a repl - will pop one open if it
 doesn't already exist
@@ -38,8 +38,8 @@ doesn't already exist
     ;; use a pipe
     (let ((process-connection-type nil)
           (repl-buffer-name (concat "*" repl-process-name "*")))
-      (apply 'start-process (append '(repl-process-name repl-buffer-name)
-                                    'repl-create-cmd-args))
+      (apply 'start-process (append (list repl-process-name repl-buffer-name)
+                                    repl-create-cmd-args))
       (set-buffer repl-buffer-name))
     (linum-mode -1)
     (special-mode)
