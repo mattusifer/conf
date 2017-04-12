@@ -55,7 +55,7 @@
                             (magit-get-current-branch))))
       (if (and (not (null upstream-url)) (not (null origin-url)))
           (get-url upstream-url origin-url)
-        (message "No 'upstream' or 'origin' git remote is set on this repo")))))
+        (message "Both 'upstream' and 'origin' need to be set to open PR.")))))
 
 (defun pop-open-github-repo ()
   (interactive)
