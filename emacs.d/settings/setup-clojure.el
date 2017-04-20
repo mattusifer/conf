@@ -43,4 +43,8 @@
 (add-to-list 'auto-mode-alist '("\\.cljs.*$" . clojure-mode))
 (add-to-list 'auto-mode-alist '("lein-env" . enh-ruby-mode))
 
+;; fix 'Protocol Family' issue in cider
+;; https://github.com/clojure-emacs/cider/issues/1960
+(setq cider-lein-parameters "repl :headless :host localhost")
+
 (provide 'setup-clojure)
