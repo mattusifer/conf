@@ -4,7 +4,7 @@
 ;; load theme
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
 (add-to-list 'load-path "~/.emacs.d/themes")
-(load-theme 'tomorrow-night t)
+(load-theme 'monokai t)
 
 ;; font size
 (set-face-attribute 'default nil :height 130)

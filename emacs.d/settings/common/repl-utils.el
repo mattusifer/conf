@@ -23,10 +23,8 @@
                             repl-process-name
                             repl-create-cmd-args
                             repl-mode)
-  "
-Evaluate a string in a repl - will pop one open if it
-doesn't already exist
-"
+  "Evaluate a string in a repl - will pop one open if it doesn't already exist"
+
   (let ((repl-buffer-name (concat "*" repl-process-name "*")))
 
     ;; start process if it hasn't started yet
