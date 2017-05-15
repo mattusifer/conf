@@ -17,6 +17,8 @@ source $ZSH/oh-my-zsh.sh
 export SPARK_HOME=~/src/apache/spark-2.0.1-bin-hadoop2.7
 export PYTHONPATH=$SPARK_HOME/python/build
 export PYTHONPATH=$SPARK_HOME/python/:$PYTHONPATH
+export PYTHONPATH=$SPARK_HOME/python/lib:$PYTHONPATH
+export PYTHONPATH=$SPARK_HOME/python/lib/py4j-0.10.3-src.zip:$PYTHONPATH
 
 # virtualenvwrapper setup
 export WORKON_HOME=$HOME/.virtualenvs
