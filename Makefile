@@ -19,4 +19,7 @@ tmux:
 mbsync:
 	ln -si $(shell pwd)/mbsyncrc ~/.mbsyncrc
 
-all: sbt zsh tmux mbsync emacs
+flake8:
+	ln -si $(shell pwd)/config ~/.config
+
+all: sbt zsh tmux mbsync emacs flake8
