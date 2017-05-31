@@ -16,17 +16,19 @@
 (add-hook 'python-mode-hook 'highlight-indentation-mode)
 (add-hook 'python-mode-hook 'elpy-mode)
 
-(defvar python-set-proj-dir-code 
-  "import os
-home = os.path.expanduser('~')
-while os.path.isfile('__init__.py') and (os.getcwd() != home):
-    os.chdir('..')
-del os")
-
 (defun python-setup-current-project ()
-  (let ((process (get-buffer-process (current-buffer))))
-    (python-shell-send-string python-set-proj-dir-code process)
-    (message "Setup project path")))
+  (with-temp-buffer
+    (let ((python-set-proj-dir-code
+           "
+import os
+home = os.path.expanduser('~')
+while os.path.isfile('__init__.py') and (os.getcwd() != home): os.chdir('..')
+del os
+
+"))
+      (insert python-set-proj-dir-code)
+      (elpy-shell-send-region-or-buffer)
+      (message "Setup project path"))))
 
 (add-hook 'inferior-python-mode-hook 'python-setup-current-project)
 

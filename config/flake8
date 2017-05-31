@@ -1,4 +1,20 @@
 [flake8]
-max-line-length = 100
+max-line-length = 150
 ignore =
-       E203 # space before colon
+       # import *
+       F403,
+
+       # line continuation underindented
+       E128,
+
+       # space before colon in dict
+       E203,
+
+       # missing whitespace around operator
+       E225,
+
+       # missing whitespace after ,
+       E231,
+
+       # expected 2 blank lines...
+       E302
