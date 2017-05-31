@@ -1,8 +1,12 @@
 [flake8]
 max-line-length = 150
 ignore =
-       # import *
+       # import * errors
        F403,
+       F405,
+
+       # line continuation overindented
+       E126,
 
        # line continuation underindented
        E128,
