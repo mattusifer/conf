@@ -22,6 +22,7 @@ ignore =
 
        # expected 2 blank lines...
        E302,
+       E305,
 
        # import * errors
        F403,
