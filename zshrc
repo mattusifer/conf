@@ -20,13 +20,15 @@ export PYTHONPATH=$SPARK_HOME/python/:$PYTHONPATH
 export PYTHONPATH=$SPARK_HOME/python/lib:$PYTHONPATH
 export PYTHONPATH=$SPARK_HOME/python/lib/py4j-0.10.3-src.zip:$PYTHONPATH
 
-# virtualenvwrapper setup
+# virtualenvwrapper setup (if it exists)
 export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/src
-source /usr/local/bin/virtualenvwrapper.sh
+source /usr/local/bin/virtualenvwrapper.sh 2> /dev/null       \
+  || source /usr/local/bin/virtualenvwrapper.sh 2> /dev/null  \
+  || true
 
 # emacs -nw within emacs ends badly
-export EDITOR='nano'
+export EDITOR='vim'
 
 # use zsh on remote machine
 zssh() {

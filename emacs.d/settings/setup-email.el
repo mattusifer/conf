@@ -16,7 +16,7 @@
       mu4e-maildir       "~/.mbsyncmaildir/personal-gmail"  ;; top-level Maildir
       mu4e-inbox-folder   "/inbox"                          ;; folder for sent messages
       mu4e-sent-folder   "/sent"                            ;; folder for sent messages
-      mu4e-drafts-folder "/drafts"                          ;; unfinished messages
+      mu4e-drafts-folder   "/drafts"                        ;; folder for draft messages
       mu4e-trash-folder  "/trash"                           ;; trashed messages
       mu4e-refile-folder "/all"                             ;; saved messages
 

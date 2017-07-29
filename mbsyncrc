@@ -40,6 +40,13 @@ Create Both
 Expunge Both
 SyncState *
 
+Channel personal-gmail-drafts
+Master :personal-gmail-remote:"[Gmail]/Drafts"
+Slave :personal-gmail-local:"drafts"
+Create Both
+Expunge Both
+SyncState *
+
 Channel personal-gmail-all
 Master :personal-gmail-remote:"[Gmail]/All Mail"
 Slave :personal-gmail-local:"all"
@@ -50,5 +57,6 @@ SyncState *
 Group personal-gmail
 Channel personal-gmail-inbox
 Channel personal-gmail-sent
+Channel personal-gmail-drafts
 Channel personal-gmail-trash
 Channel personal-gmail-all

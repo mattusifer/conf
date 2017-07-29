@@ -1,25 +1,49 @@
+arch-deps:
+	sudo pacman -S isync 2> /dev/null || echo "Not on an arch system"
+
 # from mu documentation
 mu:
-	autoreconf -im emacs.d/vendor/mu/
+	rm -rf ~/gmail-cert.pem
+	ln -s $(shell pwd)/emacs.d/gmail-cert.pem ~/gmail-cert.pem
+
+	mkdir -p ~/.mbsyncmaildir/personal-gmail
+	mbsync -V personal-gmail
+	mu index --maildir=~/.mbsyncmaildir
+
+	cd emacs.d/vendor/mu && autoreconf -i && ./configure && make && sudo make install
 
 emacs:	mu
-	rm -r ~/.emacs.d
+	touch ~/Dropbox/symlinks/emacs/org-mode/work.org
+	touch ~/Dropbox/symlinks/emacs/org-mode/home.org
+	touch emacs.d/custom.el
+	rm -rf ~/.emacs.d
 	ln -s $(shell pwd)/emacs.d/ ~/.emacs.d
 
+git:
+	git config --global user.name "Matt Usifer"
+	git config --global user.email "mattusifer@gmail.com"
+
 sbt:
-	rm -r ~/.sbt
+	rm -rf ~/.sbt
 	ln -si $(shell pwd)/sbt ~/.sbt
 
+# flake8 config
+python:
+	rm -rf ~/.config
+	ln -si $(shell pwd)/config ~/.config
+
 zsh:
+	chsh -s $(shell which zsh)
+
+	rm -rf ~/.zshrc
 	ln -si $(shell pwd)/zshrc ~/.zshrc
 
 tmux:
+	rm -rf ~/.tmux.conf
 	ln -si $(shell pwd)/tmux.conf ~/.tmux.conf
 
 mbsync:
+	rm -rf ~/.mbsyncrc
 	ln -si $(shell pwd)/mbsyncrc ~/.mbsyncrc
 
-flake8:
-	ln -si $(shell pwd)/config ~/.config
-
-all: sbt zsh tmux mbsync emacs flake8
+all: arch-deps git sbt python zsh tmux mbsync emacs
