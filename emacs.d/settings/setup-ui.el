@@ -7,7 +7,15 @@
 (load-theme 'monokai t)
 
 ;; font size
-(set-face-attribute 'default nil :height 100)
+(if (eq system-type 'darwin)
+
+    ; OS X
+    (set-face-attribute 'default nil :height 130)
+
+  ; linux
+  (set-face-attribute 'default nil :height 100)
+)
+
 
 ;; maximize frame
 (setq initial-frame-alist '((top . 0) (left . -1)))

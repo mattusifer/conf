@@ -24,6 +24,9 @@ ignore =
        E302,
        E305,
 
+       # module import not at the top of file
+       E402,
+
        # import * errors
        F403,
        F405,

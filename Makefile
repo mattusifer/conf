@@ -6,11 +6,15 @@ mu:
 	rm -rf ~/gmail-cert.pem
 	ln -s $(shell pwd)/emacs.d/gmail-cert.pem ~/gmail-cert.pem
 
-	mkdir -p ~/.mbsyncmaildir/personal-gmail
-	mbsync -V personal-gmail
-	mu index --maildir=~/.mbsyncmaildir
+	@if [ -d '~/.mbsyncmaildir' ]; then \
+		mkdir -p ~/.mbsyncmaildir/personal-gmail; \
+		mbsync -V personal-gmail; \
+	fi
 
-	cd emacs.d/vendor/mu && autoreconf -i && ./configure && make && sudo make install
+	@if [ -d '/usr/bin/mu' ]; then \
+		cd emacs.d/vendor/mu && autoreconf -i && ./configure && make && sudo make install; \
+		mu index --maildir=~/.mbsyncmaildir; \
+	fi
 
 emacs:	mu
 	touch ~/Dropbox/symlinks/emacs/org-mode/work.org
@@ -33,7 +37,7 @@ python:
 	ln -si $(shell pwd)/config ~/.config
 
 zsh:
-	chsh -s $(shell which zsh)
+	chsh -s $(shell which zsh) || echo "Could not change the shell type to ZSH."
 
 	rm -rf ~/.zshrc
 	ln -si $(shell pwd)/zshrc ~/.zshrc
