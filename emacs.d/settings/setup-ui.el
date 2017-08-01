@@ -7,7 +7,7 @@
 (load-theme 'monokai t)
 
 ;; font size
-(set-face-attribute 'default nil :height 130)
+(set-face-attribute 'default nil :height 100)
 
 ;; maximize frame
 (setq initial-frame-alist '((top . 0) (left . -1)))
@@ -62,6 +62,13 @@
 (setq ido-auto-merge-work-directories-length -1)
 (setq ido-use-virtual-buffers t)
 (ido-ubiquitous-mode 1)
+
+(defadvice ido-find-file (after find-file-sudo activate)
+  "Attempt to open file as root if we don't have write permissions."
+  (unless (and buffer-file-name
+               (file-writable-p buffer-file-name))
+    (find-alternate-file (concat "/sudo:root@localhost:" buffer-file-name))))
+
 
 ;; Show a list of buffers
 (global-set-key (kbd "C-x C-b") 'ibuffer)
