@@ -1,6 +1,7 @@
 (require 'ensime)
 (require 'repl-utils)
 (setq ensime-startup-notification nil)
+(setq ensime-startup-snapshot-notification nil)
 
 (defun eval-scala-buffer ()
   "will evaluate entire buffer"

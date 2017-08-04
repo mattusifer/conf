@@ -27,8 +27,13 @@ source /usr/local/bin/virtualenvwrapper.sh 2> /dev/null       \
   || source /usr/local/bin/virtualenvwrapper.sh 2> /dev/null  \
   || true
 
-# emacs -nw within emacs ends badly
-export EDITOR='vim'
+# emacs
+export ALTERNATE_EDITOR=""
+export EDITOR="emacsclient -t"           # $EDITOR should open in terminal
+export VISUAL="emacsclient -c -a emacs"  # $VISUAL should open a GUI
+
+alias emax="emacsclient -t"
+alias emacsc="emacsclient -c -a emacs"
 
 # use zsh on remote machine
 zssh() {

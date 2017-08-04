@@ -4,7 +4,7 @@
 ;; load theme
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
 (add-to-list 'load-path "~/.emacs.d/themes")
-(load-theme 'monokai t)
+(load-theme 'tomorrow-night-bright t)
 
 ;; font size
 (if (eq system-type 'darwin)
@@ -287,6 +287,7 @@
 (global-set-key (kbd "C-c C-q")
                (lambda () (interactive) (kill-buffer) (delete-window)))
 (global-set-key (kbd "C-c u") 'undo-tree-visualize)
+(global-set-key (kbd "C-c C-x") 'delete-frame)
 
 ;; agenda
 (global-set-key (kbd "C-c a") 'org-agenda) 

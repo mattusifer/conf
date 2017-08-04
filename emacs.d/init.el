@@ -63,9 +63,6 @@
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (load custom-file)
 
-;; start the server
-(server-start)
-
 ;; opening screen
 
 ;; dashboard

@@ -1,4 +1,4 @@
-(when (memq window-system '(mac ns))
+(when (eq system-type 'darwin)
   (exec-path-from-shell-initialize)
   (exec-path-from-shell-copy-envs
    '("PATH" "AWS_ACCESS_KEY_ID" "AWS_SECRET_ACCESS_KEY" "SPARK_HOME" "PYTHONPATH")
