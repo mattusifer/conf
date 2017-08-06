@@ -102,6 +102,10 @@
      websocket
      circe
      emojify
+
+     ;; key themes
+     monokai-theme
+     base16-theme
      )))
 
 ;; install any packages that haven't been installed yet
