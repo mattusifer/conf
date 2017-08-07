@@ -11,6 +11,10 @@ HIST_STAMPS="yyyy-mm-dd"
 plugins=(git)
 source $ZSH/oh-my-zsh.sh
 
+# java
+export JAVA_HOME=/usr/lib/jvm/java-8-openjdk/jre
+export JDK_HOME=/usr/lib/jvm/java-8-openjdk
+
 # spark setup
 # note: requires py4j
 #   $ pip install py4j

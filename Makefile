@@ -27,7 +27,7 @@ git:
 	git config --global user.name "Matt Usifer"
 	git config --global user.email "mattusifer@gmail.com"
 
-sbt:
+scala:
 	rm -rf ~/.sbt
 	ln -si $(shell pwd)/sbt ~/.sbt
 
@@ -50,4 +50,4 @@ mbsync:
 	rm -rf ~/.mbsyncrc
 	ln -si $(shell pwd)/mbsyncrc ~/.mbsyncrc
 
-all: arch-deps git sbt python zsh tmux mbsync emacs
+all: arch-deps git scala python zsh tmux mbsync emacs
