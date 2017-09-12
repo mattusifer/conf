@@ -1,4 +1,5 @@
 (elpy-enable)
+(require 'pytest)
 
 (setq python-shell-interpreter "ipython"
       python-shell-interpreter-args "--simple-prompt --pprint")
@@ -31,5 +32,12 @@ del os
       (message "Setup project path"))))
 
 (add-hook 'inferior-python-mode-hook 'python-setup-current-project)
+
+(add-hook 'python-mode-hook
+          (lambda ()
+            (local-set-key (kbd "C-c p a") 'pytest-all)
+            (local-set-key (kbd "C-c p m") 'pytest-module)
+            (local-set-key (kbd "C-c p .") 'pytest-one)
+            (local-set-key (kbd "C-c p d") 'pytest-directory)))
 
 (provide 'setup-python)

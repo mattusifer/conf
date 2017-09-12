@@ -13,3 +13,6 @@
 [submodule "yasnippet-snippets"]
 	path = emacs.d/vendor/yasnippet-snippets
 	url = git@github.com:AndreaCrotti/yasnippet-snippets.git
+[submodule "emacs.d/vendor/pytest-el"]
+	path = emacs.d/vendor/pytest-el
+	url = git@github.com:ionrock/pytest-el.git
