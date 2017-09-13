@@ -55,6 +55,7 @@
      multiple-cursors
      expand-region
      column-marker
+     key-chord
 
      ;; python
      python-mode

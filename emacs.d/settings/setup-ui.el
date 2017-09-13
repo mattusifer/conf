@@ -1,6 +1,9 @@
 ;;;;;;;;;;
 ;; ui
 
+(require 'key-chord)
+(key-chord-mode +1)
+
 ;; load theme
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
 (add-to-list 'load-path "~/.emacs.d/themes")
@@ -201,6 +204,11 @@
     (quit nil)))
 
 (setq electric-indent-mode nil)
+
+;; gotochar
+(require 'iy-go-to-char)
+(key-chord-define-global "jk" 'iy-go-to-char)
+(key-chord-define-global "fd" 'iy-go-to-char-backward)
  
 ;;;;;;;;;;
 ;; window functions

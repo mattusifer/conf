@@ -16,3 +16,6 @@
 [submodule "emacs.d/vendor/pytest-el"]
 	path = emacs.d/vendor/pytest-el
 	url = git@github.com:ionrock/pytest-el.git
+[submodule "emacs.d/vendor/iy-go-to-char"]
+	path = emacs.d/vendor/iy-go-to-char
+	url = git@github.com:doitian/iy-go-to-char.git
