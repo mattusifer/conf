@@ -1,16 +1,13 @@
 ;;;;;;;;;;
-;; ui
+;; theme
 
-(require 'key-chord)
-(key-chord-mode +1)
-
-;; load theme
+;; load themes from submodules
 (let ((custom-theme-paths '("~/.emacs.d/vendor/themes/tomorrow-theme/GNU Emacs")))
   (dolist (element custom-theme-paths)
     (add-to-list 'custom-theme-load-path element)
     (add-to-list 'load-path element)))
 
-;; day of the week themes
+;; pick theme
 (setq todays-theme
       (let ((current-day (car (split-string (current-time-string)))))
         (cond ((equal current-day "Mon") 'tomorrow-night-bright)
@@ -21,6 +18,9 @@
               ((equal current-day "Sat") 'solarized-dark)
               ((equal current-day "Sun") 'gruvbox-light-hard))))
 (load-theme todays-theme t)
+
+;;;;;;;;;;
+;; ui
 
 ;; font size
 (if (eq system-type 'darwin)
@@ -218,11 +218,6 @@
 
 (setq electric-indent-mode nil)
 
-;; gotochar
-(require 'iy-go-to-char)
-(key-chord-define-global "jk" 'iy-go-to-char)
-(key-chord-define-global "fd" 'iy-go-to-char-backward)
- 
 ;;;;;;;;;;
 ;; window functions
 
@@ -290,6 +285,8 @@
 
 ;;;;;;;;;;
 ;; misc keybindings
+(require 'key-chord)
+(key-chord-mode +1)
 
 ;; ace jump
 (global-set-key (kbd "C-c M-SPC") 'ace-jump-mode)
@@ -341,6 +338,11 @@
                 (lambda ()
                   (interactive)
                   (ignore-errors (backward-char 5))))
+
+;; iy-go-to-char
+(require 'iy-go-to-char)
+(key-chord-define-global "jk" 'iy-go-to-char)
+(key-chord-define-global "hj" 'iy-go-to-char-backward)
 
 ;; webjump is great and all, but really I only ever want to search
 ;; google
