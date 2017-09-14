@@ -5,11 +5,13 @@
 (key-chord-mode +1)
 
 ;; load theme
-(add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
-(add-to-list 'load-path "~/.emacs.d/themes")
+(let ((custom-theme-paths '("~/.emacs.d/vendor/themes/tomorrow-theme/GNU Emacs")))
+  (dolist (element custom-theme-paths)
+    (add-to-list 'custom-theme-load-path element)
+    (add-to-list 'load-path element)))
 
 ;; day of the week themes
-(setq todays_theme 
+(setq todays-theme
       (let ((current-day (car (split-string (current-time-string)))))
         (cond ((equal current-day "Mon") 'tomorrow-night-bright)
               ((equal current-day "Tue") 'monokai)
@@ -18,7 +20,7 @@
               ((equal current-day "Fri") 'ujelly)
               ((equal current-day "Sat") 'solarized-dark)
               ((equal current-day "Sun") 'gruvbox-light-hard))))
-(load-theme todays_theme t)
+(load-theme todays-theme t)
 
 ;; font size
 (if (eq system-type 'darwin)

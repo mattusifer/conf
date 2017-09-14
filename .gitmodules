@@ -19,3 +19,6 @@
 [submodule "emacs.d/vendor/iy-go-to-char"]
 	path = emacs.d/vendor/iy-go-to-char
 	url = git@github.com:doitian/iy-go-to-char.git
+[submodule "emacs.d/vendor/themes/tomorrow-theme"]
+	path = emacs.d/vendor/themes/tomorrow-theme
+	url = git@github.com:chriskempson/tomorrow-theme.git

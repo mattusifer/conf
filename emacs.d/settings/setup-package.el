@@ -104,11 +104,12 @@
      circe
      emojify
 
-     ;; key themes
+     ;; themes
      monokai-theme
      base16-theme
      solarized-theme
      gruvbox-theme
+     ujelly-theme
      )))
 
 ;; install any packages that haven't been installed yet
