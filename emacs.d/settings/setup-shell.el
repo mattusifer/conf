@@ -9,9 +9,6 @@
 
 ;; todo: setup SSH agent
 
-;; eshell
-(add-to-list 'eshell-visual-commands "htop")
-
 (defun create-or-show-small-terminal ()
   "Pop open a terminal"
   (interactive)
