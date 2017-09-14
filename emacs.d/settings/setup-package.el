@@ -108,6 +108,7 @@
      monokai-theme
      base16-theme
      solarized-theme
+     gruvbox-theme
      )))
 
 ;; install any packages that haven't been installed yet

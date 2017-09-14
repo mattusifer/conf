@@ -9,16 +9,16 @@
 (add-to-list 'load-path "~/.emacs.d/themes")
 
 ;; day of the week themes
-(setq current-theme 
+(setq todays_theme 
       (let ((current-day (car (split-string (current-time-string)))))
         (cond ((equal current-day "Mon") 'tomorrow-night-bright)
               ((equal current-day "Tue") 'monokai)
               ((equal current-day "Wed") 'base16-google-dark)
-              ((equal current-day "Thu") 'solarized-dark)
+              ((equal current-day "Thu") 'gruvbox-dark-hard)
               ((equal current-day "Fri") 'ujelly)
-              ((equal current-day "Sat") 'solarized-light)
-              ((equal current-day "Sun") 'base16-google-light))))
-(load-theme current-theme t)
+              ((equal current-day "Sat") 'solarized-dark)
+              ((equal current-day "Sun") 'gruvbox-light-hard))))
+(load-theme todays_theme t)
 
 ;; font size
 (if (eq system-type 'darwin)
