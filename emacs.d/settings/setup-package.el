@@ -107,6 +107,7 @@
      ;; key themes
      monokai-theme
      base16-theme
+     solarized-theme
      )))
 
 ;; install any packages that haven't been installed yet
