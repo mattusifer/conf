@@ -14,9 +14,9 @@
         (cond ((equal current-day "Mon") 'tomorrow-night-bright)
               ((equal current-day "Tue") 'monokai)
               ((equal current-day "Wed") 'base16-google-dark)
-              ((equal current-day "Thu") 'solarized-light)
+              ((equal current-day "Thu") 'solarized-dark)
               ((equal current-day "Fri") 'ujelly)
-              ((equal current-day "Sat") 'solarized-dark)
+              ((equal current-day "Sat") 'solarized-light)
               ((equal current-day "Sun") 'base16-google-light))))
 (load-theme current-theme t)
 
