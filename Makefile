@@ -11,15 +11,18 @@ mu:
 		mbsync -V personal-gmail; \
 	fi
 
-	@if [ -d '/usr/bin/mu' ]; then \
-		cd emacs.d/vendor/mu && autoreconf -i && ./configure && make && sudo make install; \
-		mu index --maildir=~/.mbsyncmaildir; \
-	fi
+	command -v mu >/dev/null 2>&1 || { echo "I require foo but it's not installed.  Aborting." >&2; exit 1; }
+
+	cd emacs.d/vendor/mu && autoreconf -i && ./configure && make && sudo make install; \
+	mu index --maildir=~/.mbsyncmaildir; \
 
 emacs:	mu
 	touch ~/Dropbox/symlinks/emacs/org-mode/work.org
 	touch ~/Dropbox/symlinks/emacs/org-mode/home.org
+
 	touch emacs.d/custom.el
+	rm -rf emacs.d/elpa
+
 	rm -rf ~/.emacs.d
 	ln -s $(shell pwd)/emacs.d/ ~/.emacs.d
 
