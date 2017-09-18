@@ -67,6 +67,9 @@
 ;; no bell
 (setq ring-bell-function 'ignore)
 
+;; periodic reminder to step away
+(run-with-timer 0 (* 30 60) (lambda () (message "Consider taking a break!")))
+
 (setq frame-resize-pixelwise t)
 
 ;; include filepath when visiting two identically named files
@@ -93,7 +96,6 @@
                buffer-file-name
                (file-writable-p buffer-file-name))
     (find-alternate-file (concat "/sudo:root@localhost:" buffer-file-name))))
-
 
 ;; Show a list of buffers
 (global-set-key (kbd "C-x C-b") 'ibuffer)
