@@ -89,7 +89,8 @@
 
 (defadvice ido-find-file (after find-file-sudo activate)
   "Attempt to open file as root if we don't have write permissions."
-  (unless (and buffer-file-name
+  (unless (and (not (eq major-mode 'dired-mode))
+               buffer-file-name
                (file-writable-p buffer-file-name))
     (find-alternate-file (concat "/sudo:root@localhost:" buffer-file-name))))
 

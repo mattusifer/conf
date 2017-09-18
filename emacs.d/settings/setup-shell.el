@@ -9,7 +9,7 @@
 
 ;; todo: setup SSH agent
 
-(defun create-or-show-small-terminal ()
+(defun create-or-show-small-terminal-multiterm ()
   "Pop open a terminal"
   (interactive)
   (if (> (window-total-width) 200)
@@ -25,9 +25,24 @@
              (setq current-terminal-buffer (buffer-name)))
     (switch-to-buffer (get-buffer current-terminal-buffer))))
 
-(global-set-key (kbd "C-c C-j") 'term-line-mode)
-(global-set-key (kbd "C-c t c") 'create-or-show-small-terminal)
+;; multiterm
+(global-set-key (kbd "C-c t t") 'create-or-show-small-terminal-multiterm)
+(add-hook 'term-mode-hook (lambda () (local-set-key (kbd "C-c C-j") 'term-line-mode)))
 
+(defun create-or-show-small-terminal-eshell ()
+  "Pop open a terminal"
+  (interactive)
+  (if (> (window-total-width) 200)
+      (progn
+        (split-window-horizontally)
+        (windmove-right)))
+  (if (or (not (boundp 'current-terminal-buffer))
+          (not (get-buffer current-terminal-buffer)))
+      (progn (eshell)
+             (setq current-terminal-buffer (buffer-name)))
+    (switch-to-buffer (get-buffer current-terminal-buffer))))
+
+(global-set-key (kbd "C-c t c") 'create-or-show-small-terminal-eshell)
 
 ;; colorize compilation buffer
 (require 'ansi-color)
