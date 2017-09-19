@@ -12,8 +12,14 @@ plugins=(git)
 source $ZSH/oh-my-zsh.sh
 
 # java
-export JAVA_HOME=/usr/lib/jvm/java-8-openjdk/jre
-export JDK_HOME=/usr/lib/jvm/java-8-openjdk
+if [ $(uname) = "Darwin" ]
+then
+  export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_102.jdk/Contents/Home/jre
+  export JDK_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_102.jdk/Contents/Home
+else
+  export JAVA_HOME=/usr/lib/jvm/java-8-openjdk/jre
+  export JDK_HOME=/usr/lib/jvm/java-8-openjdk
+fi
 
 # spark setup
 # note: requires py4j
@@ -142,3 +148,4 @@ alias sa="sshagent_init"
 # then
 #   tmux attach || tmux new
 # fi
+

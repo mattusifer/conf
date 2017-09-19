@@ -1,23 +1,25 @@
 (when (eq system-type 'darwin)
   (exec-path-from-shell-initialize)
   (exec-path-from-shell-copy-envs
-   '("PATH" "AWS_ACCESS_KEY_ID" "AWS_SECRET_ACCESS_KEY" "SPARK_HOME" "PYTHONPATH")
-   ))
+   '("PATH" "AWS_ACCESS_KEY_ID" "AWS_SECRET_ACCESS_KEY" "SPARK_HOME" "PYTHONPATH")))
 
 ;; emacs terminal conf
 (setq system-uses-terminfo nil)
 
 ;; todo: setup SSH agent
 
+(require 'multi-term)
 (defun create-or-show-small-terminal-multiterm ()
-  "Pop open a terminal"
+  "Pop open a terminal. Will switch active buffer to current terminal buffer if it exists and is not visible."
   (interactive)
   (if (> (window-total-width) 200)
       (progn
         (split-window-horizontally)
         (windmove-right)))
   (if (or (not (boundp 'current-terminal-buffer))
-          (not (get-buffer current-terminal-buffer)))
+          (not (get-buffer current-terminal-buffer))
+          (and (boundp 'current-terminal-buffer)
+               (get-buffer-window current-terminal-buffer)))
       (progn (multi-term)
              (linum-mode -1)
              (setq comint-move-point-for-output nil)
@@ -25,9 +27,16 @@
              (setq current-terminal-buffer (buffer-name)))
     (switch-to-buffer (get-buffer current-terminal-buffer))))
 
+(defun next-multiterm-and-set-current ()
+  "Swap to different multi term buffer and set new current"
+  (interactive)
+  (multi-term-next)
+  (setq current-terminal-buffer (buffer-name)))
+
 ;; multiterm
 (global-set-key (kbd "C-c t c") 'create-or-show-small-terminal-multiterm)
 (add-to-list 'term-bind-key-alist '("C-c C-j" . term-line-mode))
+(add-to-list 'term-bind-key-alist '("C-c C-n" . next-multiterm-and-set-current))
 
 (defun create-or-show-small-terminal-eshell ()
   "Pop open a terminal"
@@ -56,13 +65,15 @@
 
 (defun send-line-to-terminal ()
   (interactive)
-  (if (not (boundp 'current-terminal-buffer))
+  (if (or (not (boundp 'current-terminal-buffer))
+          (not (get-buffer-window current-terminal-buffer)))
       (message "No current terminal open")
     (send-line-region-to-process current-terminal-buffer)))
 
 (defun send-buffer-to-terminal ()
   (interactive)
-  (if (not (boundp 'current-terminal-buffer))
+  (if (or (not (boundp 'current-terminal-buffer))
+          (not (get-buffer-window current-terminal-buffer)))
       (message "No current terminal open")
     (send-buffer-region-to-process current-terminal-buffer)))
 
