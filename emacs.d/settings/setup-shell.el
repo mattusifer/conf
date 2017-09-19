@@ -26,7 +26,7 @@
     (switch-to-buffer (get-buffer current-terminal-buffer))))
 
 ;; multiterm
-(global-set-key (kbd "C-c t t") 'create-or-show-small-terminal-multiterm)
+(global-set-key (kbd "C-c t c") 'create-or-show-small-terminal-multiterm)
 (add-hook 'term-mode-hook (lambda () (local-set-key (kbd "C-c C-j") 'term-line-mode)))
 
 (defun create-or-show-small-terminal-eshell ()
@@ -42,7 +42,7 @@
              (setq current-terminal-buffer (buffer-name)))
     (switch-to-buffer (get-buffer current-terminal-buffer))))
 
-(global-set-key (kbd "C-c t c") 'create-or-show-small-terminal-eshell)
+(global-set-key (kbd "C-c t t") 'create-or-show-small-terminal-eshell)
 
 ;; colorize compilation buffer
 (require 'ansi-color)
@@ -73,3 +73,4 @@
 (setq-default sh-indentation 2)
 
 (provide 'setup-shell)
+
