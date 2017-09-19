@@ -137,8 +137,8 @@ function sshagent_init {
 
 alias sa="sshagent_init"
 
-# start tmux
-if ! { [ "$TERM" = "screen" ] && [ -n "$TMUX" ]; }
-then
-  tmux attach || tmux new
-fi
+# # start tmux
+# if ! { [ "$TERM" = "screen" ] && [ -n "$TMUX" ]; }
+# then
+#   tmux attach || tmux new
+# fi

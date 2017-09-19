@@ -27,7 +27,7 @@
 
 ;; multiterm
 (global-set-key (kbd "C-c t c") 'create-or-show-small-terminal-multiterm)
-(add-hook 'term-mode-hook (lambda () (local-set-key (kbd "C-c C-j") 'term-line-mode)))
+(add-to-list 'term-bind-key-alist '("C-c C-j" . term-line-mode))
 
 (defun create-or-show-small-terminal-eshell ()
   "Pop open a terminal"
