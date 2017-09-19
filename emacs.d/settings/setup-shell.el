@@ -56,11 +56,15 @@
 
 (defun send-line-to-terminal ()
   (interactive)
-  (send-line-region-to-process "terminal<1>"))
+  (if (not (boundp 'current-terminal-buffer))
+      (message "No current terminal open")
+    (send-line-region-to-process current-terminal-buffer)))
 
 (defun send-buffer-to-terminal ()
   (interactive)
-  (send-buffer-region-to-process "terminal<1>"))
+  (if (not (boundp 'current-terminal-buffer))
+      (message "No current terminal open")
+    (send-buffer-region-to-process current-terminal-buffer)))
 
 (global-set-key (kbd "C-c t e") 'send-line-to-terminal)
 (global-set-key (kbd "C-c t k") 'send-buffer-to-terminal)
