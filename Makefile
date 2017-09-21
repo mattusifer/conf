@@ -42,8 +42,9 @@ python:
 zsh:
 	chsh -s $(shell which zsh) || echo "Could not change the shell type to ZSH."
 
-	rm -rf ~/.zshrc
+	rm -rf ~/.zshrc ~/.zshenv
 	ln -si $(shell pwd)/zshrc ~/.zshrc
+	ln -si $(shell pwd)/zshenv ~/.zshenv
 
 tmux:
 	rm -rf ~/.tmux.conf
