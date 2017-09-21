@@ -324,6 +324,9 @@
 (global-set-key (kbd "C-}") 'paredit-forward-barf-sexp)
 (global-set-key (kbd "C-{") 'paredit-backward-barf-sexp)
 
+;; expand region
+(global-set-key (kbd "C-*") 'er/expand-region)
+
 ;; quicker movement
 (global-set-key (kbd "C-S-n")
                 (lambda ()
