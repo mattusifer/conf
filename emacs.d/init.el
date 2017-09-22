@@ -45,11 +45,6 @@
 
 (require 'setup-magit)
 
-;; enable piping into emacs via:
-;; $ <cmd> | esink
-(require 'tty-format)
-(require 'e-sink)
-
 ;; language-specific configs
 (require 'setup-elisp)
 (require 'setup-clojure)
@@ -71,5 +66,3 @@
 ;; org agenda
 (org-agenda-list)
 (delete-other-windows)
-
-

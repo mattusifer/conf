@@ -17,6 +17,14 @@
               ((equal current-day "Fri") 'ujelly)
               ((equal current-day "Sat") 'solarized-dark)
               ((equal current-day "Sun") 'gruvbox-light-hard))))
+
+(defun apply-color-theme (frame)
+  "Apply color theme to a frame"
+  (select-frame frame)
+  (load-theme todays-theme t))
+
+(setq color-theme-is-global nil)
+(add-hook 'after-make-frame-functions 'apply-color-theme)
 (load-theme todays-theme t)
 
 ;;;;;;;;;;
@@ -354,5 +362,8 @@
 ;; google
 (google-this-mode 1)
 (global-set-key (kbd "C-x g") 'google-this-mode-submap)
+
+;; tramps3
+(global-set-key (kbd "C-c s f") 'tramps3-find-file)
 
 (provide 'setup-ui)
