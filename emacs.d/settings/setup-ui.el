@@ -326,7 +326,7 @@
                                 (kill-emacs)))
 
 ;; agenda
-(global-set-key (kbd "C-c a") 'org-agenda) 
+(global-set-key (kbd "C-c a") 'org-agenda)
 
 ;; parediting
 (global-set-key (kbd "C-}") 'paredit-forward-barf-sexp)
@@ -364,6 +364,7 @@
 (global-set-key (kbd "C-x g") 'google-this-mode-submap)
 
 ;; tramps3
-(global-set-key (kbd "C-c s f") 'tramps3-find-file)
+(require 'tramps3)
+(global-set-key (kbd "C-c s f") (lambda () (interactive) (tramps3-find-file)))
 
 (provide 'setup-ui)
