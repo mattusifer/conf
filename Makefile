@@ -1,4 +1,6 @@
 arch-deps:
+	git submodule init
+	git submodule update --remote
 	sudo pacman -S isync 2> /dev/null || echo "Not on an arch system"
 
 # from mu documentation
