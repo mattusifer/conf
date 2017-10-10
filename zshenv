@@ -25,3 +25,6 @@ export PROJECT_HOME=$HOME/src
 source /usr/local/bin/virtualenvwrapper.sh 2> /dev/null       \
   || source /usr/local/bin/virtualenvwrapper.sh 2> /dev/null  \
   || true
+
+export AWS_ACCESS_KEY_ID=$(grep aws_access_key_id ~/.aws/credentials | awk '{print $3}' || echo '')
+export AWS_SECRET_ACCESS_KEY=$(grep aws_secret_access_key ~/.aws/credentials | awk '{print $3}' || echo '')
