@@ -9,6 +9,13 @@
 ;; todo: setup SSH agent
 
 (require 'multi-term)
+(defun create-multiterm-buffer ()
+  (multi-term)
+  (linum-mode -1)
+  (setq comint-move-point-for-output nil)
+  (setq comint-scroll-show-maximum-output nil)
+  (setq current-terminal-buffer (buffer-name)))
+
 (defun create-or-show-small-terminal-multiterm ()
   "Pop open a terminal. Will switch active buffer to current terminal buffer if it exists and is not visible."
   (interactive)
@@ -20,11 +27,7 @@
           (not (get-buffer current-terminal-buffer))
           (and (boundp 'current-terminal-buffer)
                (get-buffer-window current-terminal-buffer)))
-      (progn (multi-term)
-             (linum-mode -1)
-             (setq comint-move-point-for-output nil)
-             (setq comint-scroll-show-maximum-output nil)
-             (setq current-terminal-buffer (buffer-name)))
+      (create-multiterm-buffer)
     (switch-to-buffer (get-buffer current-terminal-buffer))))
 
 (defun next-multiterm-and-set-current ()
@@ -33,8 +36,15 @@
   (multi-term-next)
   (setq current-terminal-buffer (buffer-name)))
 
+(defun new-multiterm-and-htop ()
+  "Create new multiterm buffer and run htop"
+  (interactive)
+  (create-multiterm-buffer)
+  (process-send-string current-terminal-buffer "htop\n"))
+
 ;; multiterm
 (global-set-key (kbd "C-c t c") 'create-or-show-small-terminal-multiterm)
+(global-set-key (kbd "C-c t h") 'new-multiterm-and-htop)
 (add-to-list 'term-bind-key-alist '("C-c C-j" . term-line-mode))
 (add-to-list 'term-bind-key-alist '("C-c C-n" . next-multiterm-and-set-current))
 
