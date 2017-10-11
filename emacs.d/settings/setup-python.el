@@ -1,8 +1,10 @@
 (elpy-enable)
 (require 'pytest)
 
+;; this is not backwards compatible to ipython versions <5!
 (setq python-shell-interpreter "ipython"
       python-shell-interpreter-args "--simple-prompt --pprint")
+
 (setq-default py-shell-name "ipython")
 (setq-default py-which-bufname "ipython")
 (setq py-python-command-args
