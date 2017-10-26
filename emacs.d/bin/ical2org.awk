@@ -101,7 +101,7 @@ BEGIN {
         print "#+AUTHOR:     ", author
         print "#+EMAIL:      ", emailaddress
         print "#+DESCRIPTION: converted using the ical2org awk script"
-        print "#+CATEGORY:    google"
+        print "#+CATEGORY:    hv"
         print "#+STARTUP:     hidestars"
         print "#+STARTUP:     overview"
         print ""

@@ -59,6 +59,7 @@
 
      ;; python
      python-mode
+     virtualenvwrapper
      elpy
 
      ;; coffeescript
