@@ -19,6 +19,12 @@ export PYTHONPATH=$SPARK_HOME/python/:$PYTHONPATH
 export PYTHONPATH=$SPARK_HOME/python/lib:$PYTHONPATH
 export PYTHONPATH=$SPARK_HOME/python/lib/py4j-0.10.3-src.zip:$PYTHONPATH
 
+# add hv code to python path
+if [ $(uname) = "Darwin" ]
+then
+  export PYTHONPATH=$HOME/src/hv/dewey:$PYTHONPATH
+fi
+
 # virtualenvwrapper setup (if it exists)
 export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/src

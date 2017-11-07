@@ -2,8 +2,16 @@
 max-line-length = 150
 ignore =
 
+       # bad indentation (comment)
+       E114,
+       E116,
+
+       # closing bracket does not match visual indentation
+       E124,
+
        # line continuation overindented
        E126,
+       E127,
 
        # line continuation underindented
        E128,
@@ -19,6 +27,12 @@ ignore =
 
        # missing whitespace after ,
        E231,
+
+       # unexpected spaces around kw/param equals
+       E251,
+
+       # at least 2 spaces before inline comment
+       E261,
 
        # expected 2 blank lines...
        E302,
