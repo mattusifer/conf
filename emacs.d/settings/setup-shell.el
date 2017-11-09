@@ -42,11 +42,17 @@
   (create-multiterm-buffer)
   (process-send-string current-terminal-buffer "htop\n"))
 
+(defun backward-terminal-search ()
+  "Use backward search in terminal"
+  (interactive)
+  (term-send-raw-string "\C-r"))
+
 ;; multiterm
 (global-set-key (kbd "C-c t c") 'create-or-show-small-terminal-multiterm)
 (global-set-key (kbd "C-c t h") 'new-multiterm-and-htop)
 (add-to-list 'term-bind-key-alist '("C-c C-j" . term-line-mode))
 (add-to-list 'term-bind-key-alist '("C-c C-n" . next-multiterm-and-set-current))
+(add-to-list 'term-bind-key-alist '("C-c C-r" . backward-terminal-search))
 
 (defun create-or-show-small-terminal-eshell ()
   "Pop open a terminal"
