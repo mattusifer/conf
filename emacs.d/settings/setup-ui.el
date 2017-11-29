@@ -81,6 +81,10 @@
 ;; periodic reminder to step away
 (run-with-timer 0 (* 30 60) (lambda () (message "Consider taking a break!")))
 
+;; zone out
+(require 'zone)
+(zone-when-idle 5)
+
 (setq frame-resize-pixelwise t)
 
 ;; include filepath when visiting two identically named files
@@ -231,6 +235,10 @@
     (quit nil)))
 
 (setq electric-indent-mode nil)
+
+;; clean up file on save
+(setq require-final-newline t)
+(add-hook 'before-save-hook 'whitespace-cleanup)
 
 ;;;;;;;;;;
 ;; window functions
