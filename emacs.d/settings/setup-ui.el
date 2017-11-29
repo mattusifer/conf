@@ -83,7 +83,7 @@
 
 ;; zone out
 (require 'zone)
-(zone-when-idle 5)
+(zone-when-idle (* 60 2))
 
 (setq frame-resize-pixelwise t)
 
