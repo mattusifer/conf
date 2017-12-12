@@ -81,10 +81,6 @@
 ;; periodic reminder to step away
 (run-with-timer 0 (* 30 60) (lambda () (message "Consider taking a break!")))
 
-;; zone out
-(require 'zone)
-(zone-when-idle (* 60 2))
-
 (setq frame-resize-pixelwise t)
 
 ;; include filepath when visiting two identically named files
@@ -94,6 +90,7 @@
 ;; Turn on recent file mode
 (setq recentf-save-file (concat user-emacs-directory ".recentf"))
 (require 'recentf)
+(setq recentf-auto-cleanup 'never) ;; don't try to stat files - because TRAMP
 (recentf-mode 1)
 (setq recentf-max-menu-items 40)
 
@@ -304,6 +301,10 @@
                    name (file-name-nondirectory new-name)))))))
 
 (global-set-key (kbd "C-x C-r") 'rename-current-buffer-file)
+
+;; windmove
+(when (fboundp 'windmove-default-keybindings)
+  (windmove-default-keybindings))
 
 ;;;;;;;;;;
 ;; misc keybindings
