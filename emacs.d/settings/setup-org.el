@@ -16,7 +16,7 @@
     (let ((ical2org (expand-file-name "bin/ical2org.awk" user-emacs-directory))
           (ics-file (expand-file-name "hv-cal.ics" user-emacs-directory))
           (org-file "~/Dropbox/symlinks/emacs/org-mode/calendar.org"))
-      
+
       (when (file-exists-p ics-file)
         (delete-file ics-file))
 
@@ -25,8 +25,8 @@
                                    (concat ical2org " < " ics-file " > " org-file))
       (delete-file ics-file))))
 
-;; healthverity calendar
-(run-with-timer 0 (* 60 5) 'refresh-calendar
+;; refresh healthverity calendar every 30 minutes
+(run-with-timer 0 (* 60 30) 'refresh-calendar
                 (expand-file-name "secrets/hv-calendar-url" user-emacs-directory))
 
 ;; notify appts
