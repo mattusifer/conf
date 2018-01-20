@@ -56,4 +56,7 @@ mbsync:
 	rm -rf ~/.mbsyncrc
 	ln -si $(shell pwd)/mbsyncrc ~/.mbsyncrc
 
-all: arch-deps git scala python zsh tmux mbsync emacs
+build-lein:
+	ln -s $(shell pwd)/lein ~/.lein
+
+all: arch-deps git scala python zsh tmux mbsync emacs lein
