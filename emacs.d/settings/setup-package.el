@@ -27,7 +27,8 @@
      auto-complete
      company
      dashboard
-     google-this
+     package-lint
+     dash
 
      ;; magit!
      magit
@@ -78,7 +79,7 @@
 
      ;; php
      php-mode
-     
+
      ;; javascript
      js2-mode
 
@@ -88,7 +89,7 @@
      ;; scala
      scala-mode
      ensime
-     
+
      ;; markdown
      markdown-mode
      markdown-preview-mode
@@ -123,7 +124,7 @@
 ;; Add external projects to load path
 (defun search-for-elisp-dir (dir level)
   (let ((exclusions '("yasnippet-snippets")))
-    
+
     ;; filter out exclusions
     (dolist (project (delq nil
                            (mapcar (lambda (proj)

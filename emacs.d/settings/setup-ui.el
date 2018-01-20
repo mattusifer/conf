@@ -370,11 +370,6 @@
 (key-chord-define-global "jk" 'iy-go-to-char)
 (key-chord-define-global "hj" 'iy-go-to-char-backward)
 
-;; webjump is great and all, but really I only ever want to search
-;; google
-(google-this-mode 1)
-(global-set-key (kbd "C-x g") 'google-this-mode-submap)
-
 ;; tramps3
 (require 'tramps3)
 (global-set-key (kbd "C-c s f") (lambda () (interactive) (tramps3-find-file)))
