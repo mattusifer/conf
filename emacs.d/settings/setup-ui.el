@@ -373,5 +373,6 @@
 ;; tramps3
 (require 'tramps3)
 (global-set-key (kbd "C-c s f") (lambda () (interactive) (tramps3-find-file)))
+;; (tramps3-mode)
 
 (provide 'setup-ui)
