@@ -370,9 +370,9 @@
 (key-chord-define-global "jk" 'iy-go-to-char)
 (key-chord-define-global "hj" 'iy-go-to-char-backward)
 
-;; tramps3
-(require 'tramps3)
-(global-set-key (kbd "C-c s f") (lambda () (interactive) (tramps3-find-file)))
-;; (tramps3-mode)
+;; s3ed
+(require 's3ed)
+(global-set-key (kbd "C-c s f") (lambda () (interactive) (s3ed-find-file)))
+;; (s3ed-mode)
 
 (provide 'setup-ui)
