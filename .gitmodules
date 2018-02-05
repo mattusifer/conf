@@ -22,6 +22,3 @@
 [submodule "emacs.d/vendor/themes/tomorrow-theme"]
 	path = emacs.d/vendor/themes/tomorrow-theme
 	url = git@github.com:chriskempson/tomorrow-theme.git
-[submodule "emacs.d/vendor/s3ed"]
-	path = emacs.d/vendor/s3ed
-	url = git@github.com:mattusifer/s3ed.git
