@@ -113,6 +113,9 @@
      solarized-theme
      gruvbox-theme
      ujelly-theme
+     kaolin-themes
+     material-theme
+     challenger-deep-theme
      )))
 
 ;; install any packages that haven't been installed yet
