@@ -13,11 +13,11 @@ fi
 # spark setup
 # note: requires py4j
 #   $ pip install py4j
-export SPARK_HOME=~/src/apache/spark-2.0.1-bin-hadoop2.7
+export SPARK_HOME=~/src/apache/spark-2.1.2-bin-hadoop2.7
 export PYTHONPATH=$SPARK_HOME/python/build
 export PYTHONPATH=$SPARK_HOME/python/:$PYTHONPATH
 export PYTHONPATH=$SPARK_HOME/python/lib:$PYTHONPATH
-export PYTHONPATH=$SPARK_HOME/python/lib/py4j-0.10.3-src.zip:$PYTHONPATH
+export PYTHONPATH=$SPARK_HOME/python/lib/py4j-0.10.4-src.zip:$PYTHONPATH
 
 # add hv code to python path
 if [ $(uname) = "Darwin" ]
