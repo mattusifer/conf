@@ -22,13 +22,13 @@
   "Apply color theme to a frame"
   (select-frame frame)
   ;; (load-theme todays-theme t)
-  (load-theme 'material t)
+  (load-theme 'tomorrow-night-bright t)
   )
 
 (setq color-theme-is-global nil)
 (add-hook 'after-make-frame-functions 'apply-color-theme)
 ;; (load-theme todays-theme t)
-(load-theme 'material t)
+(load-theme 'tomorrow-night-bright t)
 
 ;;;;;;;;;;
 ;; ui
