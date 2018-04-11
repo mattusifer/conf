@@ -122,7 +122,7 @@ alias sa="sshagent_init"
 
 local host_name="%{$fg[cyan]%}musifer"
 local path_string="%{$fg[white]%}%2~"
-local prompt_string="$"
+local prompt_string="%(!.#.$)"
 
 local return_status="%(?:%{$fg[green]%}$prompt_string:%{$fg[red]%}$prompt_string)"
 
