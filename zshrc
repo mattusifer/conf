@@ -23,7 +23,6 @@ zssh() {
   then
     rsync -rv --delete --exclude='.git/*' ~/.oh-my-zsh/ ${1}:.oh-my-zsh/
     scp ~/.zshrc ${1}:
-    scp ~/.zshenv ${1}:
   fi
   ssh -t $1 "/bin/zsh"
 }
@@ -123,7 +122,7 @@ alias sa="sshagent_init"
 
 local host_name="%{$fg[cyan]%}musifer"
 local path_string="%{$fg[white]%}%2~"
-local prompt_string="✦"
+local prompt_string="$"
 
 local return_status="%(?:%{$fg[green]%}$prompt_string:%{$fg[red]%}$prompt_string)"
 
