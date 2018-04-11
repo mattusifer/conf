@@ -19,9 +19,11 @@ alias emacsc="emacsclient -c -a emacs"
 
 # use zsh on remote machine
 zssh() {
-  if [ "$2" = "tar" ]
+  if [ "$2" = "sync" ]
   then
-    tar c -C${HOME} .oh-my-zsh .zshrc .emacs.d | ssh $1 'tar mx -C${HOME}' 
+    rsync -rv --delete --exclude='.git/*' ~/.oh-my-zsh/ ${1}:.oh-my-zsh/
+    scp ~/.zshrc ${1}:
+    scp ~/.zshenv ${1}:
   fi
   ssh -t $1 "/bin/zsh"
 }
@@ -108,16 +110,40 @@ function sshagent_init {
     ssh-add
     ssh-add ~/.ssh/emr_deployer
   fi
-         
+
   # Finally, show what keys are currently in the agent
   ssh-add -l
 }
 
 alias sa="sshagent_init"
 
+#
+# Main prompt
+#
+
+# local host_name="%{$fg[cyan]%}musifer"
+local path_string="%{$fg[yellow]%}%~"
+local prompt_string="»"
+
+# Make prompt_string red if the previous command failed.
+local return_status="%(?:%{$fg[blue]%}$prompt_string:%{$fg[red]%}$prompt_string)"
+
+PROMPT='${path_string} ${return_status} %{$reset_color%}'
+
+# oh-my-zsh $(git_prompt_info) puts 'dirty' behind branch
+git_custom_prompt() {
+  # branch name (.oh-my-zsh/plugins/git/git.plugin.zsh)
+  local branch=$(current_branch)
+  if [ -n "$branch" ]; then
+    # parse_git_dirty echoes PROMPT_DIRTY or PROMPT_CLEAN (.oh-my-zsh/lib/git.zsh)
+    echo "$(parse_git_dirty)$ZSH_THEME_GIT_PROMPT_PREFIX$branch$ZSH_THEME_GIT_PROMPT_SUFFIX"
+  fi
+}
+
+RPROMPT='$(git_custom_prompt) $(date "+%X")'
+
 # # start tmux
 # if ! { [ "$TERM" = "screen" ] && [ -n "$TMUX" ]; }
 # then
 #   tmux attach || tmux new
 # fi
-
