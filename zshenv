@@ -13,7 +13,7 @@ fi
 # spark setup
 # note: requires py4j
 #   $ pip install py4j
-export SPARK_HOME=~/src/apache/spark-2.1.2-bin-hadoop2.7
+export SPARK_HOME=~/src/apache/spark-2.2.1-bin-hadoop2.7
 export PYTHONPATH=$SPARK_HOME/python/build
 export PYTHONPATH=$SPARK_HOME/python/:$PYTHONPATH
 export PYTHONPATH=$SPARK_HOME/python/lib:$PYTHONPATH

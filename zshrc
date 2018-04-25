@@ -9,14 +9,6 @@ HIST_STAMPS="yyyy-mm-dd"
 plugins=(git)
 source $ZSH/oh-my-zsh.sh
 
-# emacs
-export ALTERNATE_EDITOR=""
-export EDITOR="emacsclient -t"           # $EDITOR should open in terminal
-export VISUAL="emacsclient -c -a emacs"  # $VISUAL should open a GUI
-
-alias emax="emacsclient -t"
-alias emacsc="emacsclient -c -a emacs"
-
 # use zsh on remote machine
 zssh() {
   if [ "$2" = "sync" ]

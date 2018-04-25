@@ -237,6 +237,14 @@
 (setq require-final-newline t)
 (add-hook 'before-save-hook 'whitespace-cleanup)
 
+;; crontab -e directly from emacs
+(defun crontab-e ()
+  (interactive)
+  (shell-command "crontab -l > crontab.txt")
+  (find-file "crontab.txt")
+  (add-hook 'after-save-hook (lambda () (shell-command "crontab crontab.txt"))
+            nil t))
+
 ;;;;;;;;;;
 ;; window functions
 
