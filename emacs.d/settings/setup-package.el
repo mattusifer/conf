@@ -81,6 +81,9 @@
      ;; php
      php-mode
 
+     ;; go
+     go-mode
+
      ;; javascript
      js2-mode
 
