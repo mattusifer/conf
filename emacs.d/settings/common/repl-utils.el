@@ -22,7 +22,7 @@
 (defun send-string-to-repl (execution-fn
                             repl-process-name
                             repl-create-cmd-args
-                            repl-mode)
+                            &optional repl-mode)
   "Evaluate a string in a repl - will pop one open if it doesn't already exist"
 
   (let ((repl-buffer-name (concat "*" repl-process-name "*")))
@@ -30,27 +30,28 @@
     ;; start process if it hasn't started yet
     (unless (get-process repl-process-name)
 
-      ;; look for a 'src' folder in the current dir
-      ;; if none exists, get the base dir
-      (if (not (member "src" (directory-files default-directory)))
-          (setq default-directory (get-base-dir default-directory)))
-      
       ;; use a pipe
       (let ((process-connection-type nil))
-        (apply 'start-process (append (list repl-process-name repl-buffer-name)
-                                      repl-create-cmd-args)))
+        (with-temp-buffer
+          ;; look for a 'src' folder in the current dir
+          ;; if none exists, get the base dir
+          (if (not (member "src" (directory-files default-directory)))
+              (setq default-directory (get-base-dir default-directory)))
+
+          (apply 'start-process (append (list repl-process-name repl-buffer-name)
+                                        repl-create-cmd-args))))
 
       (set-buffer repl-buffer-name)
       (linum-mode -1)
       (special-mode)
-      (if (not (null 'repl-mode)) (funcall repl-mode)))
+      (if (not (null repl-mode)) (funcall repl-mode)))
 
     ;; execute
     (funcall execution-fn)
 
     ;;display buffer
     (unless (get-buffer-window repl-buffer-name)
-      (display-buffer 
+      (display-buffer
        (get-buffer repl-buffer-name)
        '(display-buffer-pop-up-window
          (reusable-frames . 0)
@@ -58,7 +59,7 @@
 
 (defun send-buffer-region-to-repl (repl-process-name
                                    repl-create-cmd-args
-                                   repl-mode)
+                                   &optional repl-mode)
   (send-string-to-repl (lambda () (send-buffer-region-to-process repl-process-name))
                        repl-process-name
                        repl-create-cmd-args
@@ -66,7 +67,7 @@
 
 (defun send-line-region-to-repl (repl-process-name
                                  repl-create-cmd-args
-                                 repl-mode)
+                                 &optional repl-mode)
   (send-string-to-repl (lambda () (send-line-region-to-process repl-process-name))
                        repl-process-name
                        repl-create-cmd-args
