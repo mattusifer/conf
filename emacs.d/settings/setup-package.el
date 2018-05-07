@@ -81,6 +81,9 @@
      ;; php
      php-mode
 
+     ;; haskell
+     haskell-mode
+
      ;; go
      go-mode
 

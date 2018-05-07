@@ -50,6 +50,7 @@
 (require 'setup-clojure)
 (require 'setup-javascript)
 (require 'setup-sql)
+(require 'setup-haskell)
 (require 'setup-scala)
 (require 'setup-java)
 (require 'setup-python)
