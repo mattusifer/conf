@@ -73,4 +73,13 @@
                        repl-create-cmd-args
                        repl-mode))
 
+(defun send-custom-string-to-repl (custom-string
+                                   repl-process-name
+                                   repl-create-cmd-args
+                                   &optional repl-mode)
+  (send-string-to-repl (lambda () (process-send-string repl-process-name (concat custom-string "\n")))
+                       repl-process-name
+                       repl-create-cmd-args
+                       repl-mode))
+
 (provide 'repl-utils)
