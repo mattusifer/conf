@@ -9,8 +9,8 @@
       mu4e-update-interval  600 ;; seconds
 
       ;; speed
-      ;; mu4e-index-cleanup nil      ;; don't do a full cleanup check
-      ;; mu4e-index-lazy-check t     ;; don't consider up-to-date dirs
+      mu4e-index-cleanup nil      ;; don't do a full cleanup check
+      mu4e-index-lazy-check t     ;; don't consider up-to-date dirs
 
       ;; maildir
       mu4e-maildir       "~/.mbsyncmaildir/personal-gmail"  ;; top-level Maildir
