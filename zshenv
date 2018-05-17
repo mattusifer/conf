@@ -23,6 +23,9 @@ export PYTHONPATH=$SPARK_HOME/python/lib/py4j-0.10.4-src.zip:$PYTHONPATH
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
 
+# rust
+export PATH=$PATH:~/.cargo/bin
+
 # add hv code to python path
 if [ $(uname) = "Darwin" ]
 then

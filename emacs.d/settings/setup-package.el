@@ -61,6 +61,10 @@
      virtualenvwrapper
      elpy
 
+     ;; rust
+     rust-mode
+     toml-mode
+
      ;; coffeescript
      coffee-mode
 
