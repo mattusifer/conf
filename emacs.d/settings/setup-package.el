@@ -64,6 +64,9 @@
      ;; rust
      rust-mode
      toml-mode
+     cargo
+     racer
+     flycheck-rust
 
      ;; coffeescript
      coffee-mode

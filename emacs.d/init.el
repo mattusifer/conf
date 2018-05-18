@@ -53,6 +53,7 @@
 (require 'setup-haskell)
 (require 'setup-scala)
 (require 'setup-java)
+(require 'setup-rust)
 (require 'setup-python)
 
 ;; Keep custom settings out of init.el

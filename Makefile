@@ -36,6 +36,11 @@ scala:
 	rm -rf ~/.sbt
 	ln -si $(shell pwd)/sbt ~/.sbt
 
+rust:
+	mkdir -p ~/src/rust-lang/
+	git clone git@github.com:rust-lang/rust.git ~/src/rust-lang/rust
+	cargo install rustfmt racer --force
+
 # flake8 config
 python:
 	rm -rf ~/.config
@@ -59,4 +64,4 @@ mbsync:
 build-lein:
 	ln -s $(shell pwd)/lein ~/.lein
 
-all: arch-deps git scala python zsh tmux mbsync emacs lein
+all: arch-deps git scala rust python zsh tmux mbsync emacs lein
