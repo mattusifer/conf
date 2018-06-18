@@ -19,16 +19,6 @@ zssh() {
   ssh -t $1 "/bin/zsh"
 }
 
-# hv env setup
-if [[ "$HOME" = "/Users/musifer" ]]
-then
-  if [[ $(docker-machine ls | grep hv | grep Running) != "" ]]
-  then
-    echo "Setting up environment for machine 'hv'"
-    eval $(docker-machine env hv)
-  fi
-fi
-
 # config ssh agent
 function sshagent_findsockets {
   find /tmp -uid $(id -u) -type s -name agent.\* 2>/dev/null
