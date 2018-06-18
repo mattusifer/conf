@@ -20,7 +20,7 @@
   (packages-install
    '(better-defaults
      use-package
-     ido-ubiquitous
+     ido-completing-read+
      smex
      auto-complete
      company
@@ -40,7 +40,6 @@
 
      ;; project navigation
      projectile
-     dired-details
      helm
      ag
 
@@ -53,7 +52,6 @@
      real-auto-save
      multiple-cursors
      expand-region
-     column-marker
      key-chord
 
      ;; python
@@ -113,7 +111,6 @@
      multi-term
 
      ;; slack
-     lui
      request
      alert
      websocket
