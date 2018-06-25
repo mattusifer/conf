@@ -61,6 +61,9 @@
       ;; Mouse yank commands yank at point instead of at click.
       mouse-yank-at-point t)
 
+(add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
+(add-to-list 'default-frame-alist '(ns-appearance . dark))
+
 ;; cursor
 (blink-cursor-mode nil)
 
