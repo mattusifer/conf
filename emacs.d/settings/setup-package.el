@@ -53,6 +53,7 @@
      multiple-cursors
      expand-region
      key-chord
+     ripgrep
 
      ;; python
      python-mode
@@ -109,13 +110,6 @@
      ;; shell
      exec-path-from-shell
      multi-term
-
-     ;; slack
-     request
-     alert
-     websocket
-     circe
-     emojify
 
      ;; themes
      monokai-theme

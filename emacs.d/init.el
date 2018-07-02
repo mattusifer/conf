@@ -29,11 +29,7 @@
 
 (require 'setup-yasnippet)
 
-(require 'setup-email)
-(require 'setup-slack)
 (require 'setup-org)
-
-(require 'setup-spotify)
 
 (require 'setup-shell)
 
@@ -42,6 +38,11 @@
 ;; and Toggl for time logging. I don't use them anymore, but they
 ;; could be useful at some point. Who knows.
 ;; (require 'setup-org-agenda-api-integrations)
+
+;; Though I no longer use emacs as a client for email or slack, I'm
+;; keeping these here for reference.
+;; (require 'setup-email)
+;; (require 'setup-slack)
 
 (require 'setup-magit)
 
