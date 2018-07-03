@@ -323,7 +323,7 @@
 (key-chord-mode +1)
 
 ;; ace jump
-(global-set-key (kbd "C-c M-SPC") 'ace-jump-mode)
+(global-set-key (kbd "C-c M-SPC") 'avy-goto-char)
 
 ;; multi cursor
 (global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)

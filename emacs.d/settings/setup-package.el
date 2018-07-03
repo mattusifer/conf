@@ -47,7 +47,7 @@
      tagedit
 
      ;; misc editing
-     ace-jump-mode
+     avy
      undo-tree
      real-auto-save
      multiple-cursors
