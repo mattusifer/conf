@@ -29,8 +29,6 @@
 
 (require 'setup-yasnippet)
 
-(require 'setup-org)
-
 (require 'setup-shell)
 
 ;; I wrote these integrations when working in tech support to allow
@@ -42,6 +40,7 @@
 ;; Though I no longer use emacs as a client for email or slack, I'm
 ;; keeping these here for reference.
 ;; (require 'setup-email)
+;; (require 'setup-org)
 ;; (require 'setup-slack)
 
 (require 'setup-magit)

@@ -27,6 +27,7 @@
      dashboard
      package-lint
      dash
+     async
 
      ;; magit!
      magit

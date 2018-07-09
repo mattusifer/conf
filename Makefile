@@ -18,7 +18,7 @@ mu:
 	cd emacs.d/vendor/mu && autoreconf -i && ./configure && make && sudo make install; \
 	mu index --maildir=~/.mbsyncmaildir; \
 
-emacs:	mu
+emacs:
 	touch ~/Dropbox/symlinks/emacs/org-mode/work.org
 	touch ~/Dropbox/symlinks/emacs/org-mode/home.org
 
@@ -37,8 +37,8 @@ scala:
 	ln -si $(shell pwd)/sbt ~/.sbt
 
 rust:
-	mkdir -p ~/src/rust-lang/
-	git clone git@github.com:rust-lang/rust.git ~/src/rust-lang/rust
+	(mkdir -p ~/src/rust-lang/ && git clone git@github.com:rust-lang/rust.git ~/src/rust-lang/rust) ||  echo "src/rustlang already exists"
+
 	cargo install rustfmt racer --force
 
 # flake8 config
@@ -64,4 +64,4 @@ mbsync:
 build-lein:
 	ln -s $(shell pwd)/lein ~/.lein
 
-all: arch-deps git scala rust python zsh tmux mbsync emacs lein
+all: arch-deps git scala rust python zsh tmux emacs lein
