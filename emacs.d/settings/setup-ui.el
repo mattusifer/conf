@@ -81,9 +81,7 @@
 ;; no bell
 (setq ring-bell-function 'ignore)
 
-;; periodic reminder to step away
-(run-with-timer 0 (* 30 60) (lambda () (message "Consider taking a break!")))
-
+;; pixelwise resizing
 (setq frame-resize-pixelwise t)
 
 ;; include filepath when visiting two identically named files

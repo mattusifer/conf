@@ -28,7 +28,7 @@
 (defun get-github-url ()
   (let ((upstream-url (magit-get "remote" "upstream" "url"))
         (origin-url (magit-get "remote" "origin" "url")))
-    (flet ((get-url (url)
+    (cl-flet ((get-url (url)
                     (concat "https://www.github.com/"
                             (car (split-string
                                   (car (cdr (split-string
@@ -44,7 +44,7 @@
   (interactive)
   (let ((upstream-url (magit-get "remote" "upstream" "url"))
         (origin-url (magit-get "remote" "origin" "url")))
-    (flet ((get-url (upstream-url origin-url)
+    (cl-flet ((get-url (upstream-url origin-url)
                     (format "%s/compare/master...%s:%s"
                             (replace-regexp-in-string
                              (rx (and string-start (1+ any) "github.com:" (group (1+ any)) ".git" string-end))

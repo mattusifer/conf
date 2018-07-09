@@ -26,10 +26,10 @@ export PATH=$PATH:$GOPATH/bin
 # rust
 export PATH=$PATH:~/.cargo/bin
 
-# add hv code to python path
+# settings specific to my work computer (mac)
 if [ $(uname) = "Darwin" ]
 then
-  export PYTHONPATH=$HOME/src/hv/dewey:$PYTHONPATH
+  export BLACKFYNN_CODE_DIR=$HOME/src/bf
 fi
 
 # virtualenvwrapper setup (if it exists)

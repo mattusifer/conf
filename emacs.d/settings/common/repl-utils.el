@@ -15,6 +15,15 @@
         (get-last-occurrence substr string (+ match-index (length substr)))
       match-index)))
 
+(defun get-base-dir-or-parent (str)
+  "Get the base directory of the current project. If that base
+directory isn't itself a git repo, assume it's a subproject and
+return the parent of the base directory."
+  (let ((potential-dir (get-base-dir str)))
+    (if (member ".git" (directory-files potential-dir))
+        potential-dir
+      (mapconcat 'identity (butlast (split-string potential-dir "/") 2) "/") )))
+
 (defun get-base-dir (str)
   "Get the base directory of the current project"
   (substring str 0 (get-last-occurrence "src" str 0)))
@@ -36,7 +45,7 @@
           ;; look for a 'src' folder in the current dir
           ;; if none exists, get the base dir
           (if (not (member "src" (directory-files default-directory)))
-              (setq default-directory (get-base-dir default-directory)))
+              (setq default-directory (get-base-dir-or-parent default-directory)))
 
           (apply 'start-process (append (list repl-process-name repl-buffer-name)
                                         repl-create-cmd-args))))
