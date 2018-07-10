@@ -30,6 +30,16 @@ export PATH=$PATH:~/.cargo/bin
 if [ $(uname) = "Darwin" ]
 then
   export BLACKFYNN_CODE_DIR=$HOME/src/bf
+  export BLACKFYNN_API_KEY=$(
+    cat ~/.blackfynn/config.ini | tail +$(
+        cat ~/.blackfynn/config.ini | grep -nr '\[dev\]' | cut -d: -f2
+    ) | grep api_token | sed 's/api_token = //'
+  )
+  export BLACKFYNN_SECRET_KEY=$(
+    cat ~/.blackfynn/config.ini | tail +$(
+        cat ~/.blackfynn/config.ini | grep -nr '\[dev\]' | cut -d: -f2
+    ) | grep api_secret | sed 's/api_secret = //'
+  )
 fi
 
 # virtualenvwrapper setup (if it exists)

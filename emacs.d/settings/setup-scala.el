@@ -14,7 +14,7 @@ name of the subproject if true."
   "will evaluate entire buffer"
   (interactive)
   (let ((prefix
-         (if-let ((subproject (get-subproject path)))
+         (if-let ((subproject (get-subproject default-directory)))
              (concat subproject "/") "")))
     (send-buffer-region-to-repl "scala-repl" `("sbt" "-J-Xms3G" "-J-Xmx6G"
                                                ,(concat prefix "compile")
