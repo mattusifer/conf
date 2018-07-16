@@ -38,7 +38,7 @@ scala:
 
 rust:
 	(mkdir -p ~/src/rust-lang/ && git clone git@github.com:rust-lang/rust.git ~/src/rust-lang/rust) ||  echo "src/rustlang already exists"
-
+	curl https://sh.rustup.rs -sSf | sh
 	cargo install rustfmt racer --force
 
 # flake8 config

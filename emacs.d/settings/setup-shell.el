@@ -2,7 +2,7 @@
   (exec-path-from-shell-initialize)
   (exec-path-from-shell-copy-envs
    '("PATH" "AWS_ACCESS_KEY_ID" "AWS_SECRET_ACCESS_KEY" "SPARK_HOME" "PYTHONPATH"
-     "BLACKFYNN_API_KEY" "BLACKFYNN_SECRET_KEY")))
+     "BLACKFYNN_API_KEY" "BLACKFYNN_SECRET_KEY" "BLACKFYNN_NEXUS_USER" "BLACKFYNN_NEXUS_PW")))
 
 ;; emacs terminal conf
 (setq system-uses-terminfo nil)

@@ -42,7 +42,7 @@
 (defun get-pull-request-url ()
   "Open 'compare' github URL comparing current branch (on origin) to upstream/master"
   (interactive)
-  (let ((upstream-url (magit-get "remote" "upstream" "url"))
+  (let ((upstream-url (magit-get "remote" "origin" "url"))
         (origin-url (magit-get "remote" "origin" "url")))
     (cl-flet ((get-url (upstream-url origin-url)
                     (format "%s/compare/master...%s:%s"

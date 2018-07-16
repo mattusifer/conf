@@ -25,6 +25,7 @@ export PATH=$PATH:$GOPATH/bin
 
 # rust
 export PATH=$PATH:~/.cargo/bin
+export RUST_BACKTRACE=1
 
 # settings specific to my work computer (mac)
 if [ $(uname) = "Darwin" ]

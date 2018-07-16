@@ -63,8 +63,8 @@
 ;; opening screen
 
 ;; dashboard
-;; (require 'setup-dashboard)
+(require 'setup-dashboard)
 
-;; org agenda
-(org-agenda-list)
-(delete-other-windows)
+;; ;; org agenda
+;; (org-agenda-list)
+;; (delete-other-windows)
