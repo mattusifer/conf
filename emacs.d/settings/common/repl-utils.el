@@ -31,7 +31,7 @@ return the parent of the base directory."
 (defun send-string-to-repl (execution-fn
                             repl-process-name
                             repl-create-cmd-args
-                            &optional repl-mode)
+                            &optional repl-mode editable)
   "Evaluate a string in a repl - will pop one open if it doesn't already exist"
 
   (let ((repl-buffer-name (concat "*" repl-process-name "*")))
@@ -52,7 +52,9 @@ return the parent of the base directory."
 
       (set-buffer repl-buffer-name)
       (linum-mode -1)
-      (special-mode)
+
+      (if (not (bound-and-true-p editable))
+          (special-mode))
       (if (not (null repl-mode)) (funcall repl-mode)))
 
     ;; execute

@@ -4,56 +4,31 @@
    '("PATH" "AWS_ACCESS_KEY_ID" "AWS_SECRET_ACCESS_KEY" "SPARK_HOME" "PYTHONPATH"
      "BLACKFYNN_API_KEY" "BLACKFYNN_SECRET_KEY" "BLACKFYNN_NEXUS_USER" "BLACKFYNN_NEXUS_PW")))
 
-;; emacs terminal conf
-(setq system-uses-terminfo nil)
-
 ;; todo: setup SSH agent
 
-(require 'multi-term)
-(defun create-multiterm-buffer ()
-  (multi-term)
-  (linum-mode -1)
-  (setq comint-move-point-for-output nil)
-  (setq comint-scroll-show-maximum-output nil)
+(set-face-attribute 'comint-highlight-prompt nil
+                    :inherit nil)
+(setq comint-process-echoes t)
+
+(defun create-shell-buffer ()
+  (shell)
   (setq current-terminal-buffer (buffer-name)))
 
-(defun create-or-show-small-terminal-multiterm ()
+(defun create-or-show-small-terminal-shell ()
   "Pop open a terminal. Will switch active buffer to current terminal buffer if it exists and is not visible."
   (interactive)
   (if (> (window-total-width) 200)
       (progn
-        (split-window-horizontally)
-        (windmove-right)))
+        (split-window-horizontally)))
   (if (or (not (boundp 'current-terminal-buffer))
           (not (get-buffer current-terminal-buffer))
           (and (boundp 'current-terminal-buffer)
                (get-buffer-window current-terminal-buffer)))
-      (create-multiterm-buffer)
+      (create-shell-buffer)
     (switch-to-buffer (get-buffer current-terminal-buffer))))
 
-(defun next-multiterm-and-set-current ()
-  "Swap to different multi term buffer and set new current"
-  (interactive)
-  (multi-term-next)
-  (setq current-terminal-buffer (buffer-name)))
-
-(defun new-multiterm-and-htop ()
-  "Create new multiterm buffer and run htop"
-  (interactive)
-  (create-multiterm-buffer)
-  (process-send-string current-terminal-buffer "htop\n"))
-
-(defun backward-terminal-search ()
-  "Use backward search in terminal"
-  (interactive)
-  (term-send-raw-string "\C-r"))
-
-;; multiterm
-(global-set-key (kbd "C-c t c") 'create-or-show-small-terminal-multiterm)
-(global-set-key (kbd "C-c t h") 'new-multiterm-and-htop)
-(add-to-list 'term-bind-key-alist '("C-c C-j" . term-line-mode))
-(add-to-list 'term-bind-key-alist '("C-c C-n" . next-multiterm-and-set-current))
-(add-to-list 'term-bind-key-alist '("C-c C-r" . backward-terminal-search))
+;; shell
+(global-set-key (kbd "C-c t c") 'create-or-show-small-terminal-shell)
 
 (defun create-or-show-small-terminal-eshell ()
   "Pop open a terminal"

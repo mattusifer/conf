@@ -111,12 +111,11 @@ local return_status="%(?:%{$fg[green]%}$prompt_string:%{$fg[red]%}$prompt_string
 git_custom_prompt() {
   local branch=$(current_branch)
   if [ -n "$branch" ]; then
-    echo "$(parse_git_dirty) %{$fg[yellow]%}$branch%{$reset_color%}"
+    echo "$(parse_git_dirty)%{$fg[yellow]%}$branch%{$reset_color%}"
   fi
 }
 
-PROMPT='${path_string} ${return_status} %{$reset_color%}'
-RPROMPT='$(git_custom_prompt)'
+PROMPT='${path_string} $(git_custom_prompt) ${return_status} %{$reset_color%}'
 
 # # start tmux
 # if ! { [ "$TERM" = "screen" ] && [ -n "$TMUX" ]; }

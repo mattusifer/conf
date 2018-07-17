@@ -71,6 +71,9 @@
      ;; coffeescript
      coffee-mode
 
+     ;; groovy
+     groovy-mode
+
      ;; java
      eclim
      ac-emacs-eclim
@@ -110,7 +113,6 @@
 
      ;; shell
      exec-path-from-shell
-     multi-term
 
      ;; themes
      monokai-theme

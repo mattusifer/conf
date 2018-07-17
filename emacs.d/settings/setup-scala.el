@@ -29,7 +29,13 @@ name of the subproject if true."
                                              ,(concat prefix "compile")
                                              ,(concat prefix "console")))))
 
+(defun open-sbt ()
+  (interactive)
+  (let ((default-directory (get-base-dir-or-parent default-directory)))
+    (async-shell-command "sbt -J-Xms3G -J-Xmx6G" "*sbt*")))
+
 (add-hook 'scala-mode-hook (lambda () (local-set-key (kbd "C-c C-e") 'eval-scala-region)))
 (add-hook 'scala-mode-hook (lambda () (local-set-key (kbd "C-c C-k") 'eval-scala-buffer)))
+(add-hook 'scala-mode-hook (lambda () (local-set-key (kbd "C-c C-p") 'open-sbt)))
 
 (provide 'setup-scala)
