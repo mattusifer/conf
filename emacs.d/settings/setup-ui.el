@@ -7,28 +7,16 @@
     (add-to-list 'custom-theme-load-path element)
     (add-to-list 'load-path element)))
 
-;; pick theme
-(setq todays-theme
-      (let ((current-day (car (split-string (current-time-string)))))
-        (cond ((equal current-day "Mon") 'tomorrow-night-bright)
-              ((equal current-day "Tue") 'monokai)
-              ((equal current-day "Wed") 'base16-google-dark)
-              ((equal current-day "Thu") 'gruvbox-dark-hard)
-              ((equal current-day "Fri") 'ujelly)
-              ((equal current-day "Sat") 'solarized-dark)
-              ((equal current-day "Sun") 'gruvbox-light-hard))))
-
 (defun apply-color-theme (frame)
   "Apply color theme to a frame"
   (select-frame frame)
-  ;; (load-theme todays-theme t)
-  (load-theme 'monokai t)
+  (load-theme 'tomorrow-night-eighties t)
   )
-
 (setq color-theme-is-global nil)
 (add-hook 'after-make-frame-functions 'apply-color-theme)
-;; (load-theme todays-theme t)
-(load-theme 'monokai t)
+
+;; load theme in current window
+(load-theme 'tomorrow-night-eighties t)
 
 ;;;;;;;;;;
 ;; ui
@@ -40,8 +28,7 @@
     (set-face-attribute 'default nil :height 130)
 
   ; linux
-  (set-face-attribute 'default nil :height 100)
-)
+  (set-face-attribute 'default nil :height 100))
 
 
 ;; maximize frame
@@ -79,21 +66,8 @@
 (setq-default frame-title-format "%b (%f)")
 
 ;; mode line format
-(setq-default display-time-format "%F %H:%M")
-(defun simple-mode-line-render (left right)
-  "Return a string of `window-width' length containing LEFT, and RIGHT
- aligned respectively."
-  (let* ((available-width (- (window-width) (length left) 2)))
-    (format (format " %%s %%%ds " available-width) left right)))
-(setq-default mode-line-format
-              '((:eval (simple-mode-line-render
-                        ;; left
-                        (format-mode-line `(" " mode-line-modified
-                                            " %[" mode-line-buffer-identification "%] %2 %m %2 "
-                                            "%l/" ,(number-to-string (line-number-at-pos (point-max)))))
-                        (format-mode-line '(mode-line-misc-info
-                                            display-time-string
-                                            mode-line-end-spaces))))))
+(require 'zerodark-modeline)
+(zerodark-setup-modeline-format)
 
 ;; no bell
 (setq ring-bell-function 'ignore)

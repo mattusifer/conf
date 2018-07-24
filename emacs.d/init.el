@@ -25,9 +25,8 @@
 
 ;; configure
 (require 'setup-package)
-(require 'setup-ui)
 
-(require 'setup-yasnippet)
+(require 'setup-ui)
 
 (require 'setup-shell)
 
@@ -42,6 +41,8 @@
 ;; (require 'setup-email)
 ;; (require 'setup-org)
 ;; (require 'setup-slack)
+
+(require 'setup-yasnippet)
 
 (require 'setup-magit)
 
@@ -59,8 +60,6 @@
 ;; Keep custom settings out of init.el
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (load custom-file)
-
-;; opening screen
 
 ;; dashboard
 (require 'setup-dashboard)

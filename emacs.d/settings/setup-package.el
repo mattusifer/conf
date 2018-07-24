@@ -28,6 +28,7 @@
      package-lint
      dash
      async
+     all-the-icons
 
      ;; magit!
      magit
@@ -46,6 +47,9 @@
 
      ;; html
      tagedit
+
+     ;; terraform
+     terraform-mode
 
      ;; misc editing
      avy
@@ -123,6 +127,10 @@
      kaolin-themes
      material-theme
      challenger-deep-theme
+     doom-themes
+     moe-theme
+     zenburn-theme
+     nord-theme
      )))
 
 ;; install any packages that haven't been installed yet
