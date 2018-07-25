@@ -131,6 +131,7 @@
      moe-theme
      zenburn-theme
      nord-theme
+     dracula-theme
      )))
 
 ;; install any packages that haven't been installed yet
