@@ -72,6 +72,21 @@
 (require 'zerodark-modeline)
 (zerodark-setup-modeline-format)
 
+;; diminish modes in the modeline
+(defun modeline-set-lighter (minor-mode lighter)
+  (when (assq minor-mode minor-mode-alist)
+    (setcar (cdr (assq minor-mode minor-mode-alist)) lighter)))
+
+(defun modeline-remove-lighter (minor-mode)
+  (modeline-set-lighter minor-mode ""))
+
+(eval-after-load "projectile" '(modeline-remove-lighter 'projectile-mode))
+(eval-after-load "undo-tree" '(modeline-remove-lighter 'undo-tree-mode))
+(eval-after-load "auto-complete" '(modeline-remove-lighter 'auto-complete-mode))
+(eval-after-load "paredit" '(modeline-remove-lighter 'paredit-mode))
+(modeline-remove-lighter 'auto-revert-mode)
+
+
 ;; no bell
 (setq ring-bell-function 'ignore)
 

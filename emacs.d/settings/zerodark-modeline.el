@@ -123,7 +123,7 @@
                    (`interrupted (propertize "⛔ Interrupted"
                                              'face (zerodark-face-when-active 'zerodark-error-face)))
                    (`suspicious  ""))))
-      (propertize text
+      (propertize (concat text "  ")
                   'help-echo "Show Flycheck Errors"
                   'local-map (make-mode-line-mouse-map
                               'mouse-1 #'flycheck-list-errors)))))
@@ -215,19 +215,19 @@ The result is cached for one second to avoid hiccups."
         (light (if (true-color-p) "#ccd4e3" "#d7d7d7"))
         (comment (if (true-color-p) "#687080" "#707070"))
         (purple "#c678dd")
-        (mode-line (if "#1c2129" "#222222")))
+        (mode-line (if "#1c2129" "#111111")))
     (custom-set-faces
      ;; Mode line faces
      `(mode-line ((,class (:background ,mode-line
                                        :height 0.9
                                        :foreground ,light
                                        :box ,(when zerodark-use-paddings-in-mode-line
-                                               (list :line-width 6 :color mode-line))))))
+                                               (list :line-width 5 :color mode-line))))))
      `(mode-line-inactive ((,class (:background ,mode-line
                                                 :height 0.9
                                                 :foreground ,comment
                                                 :box ,(when zerodark-use-paddings-in-mode-line
-                                                        (list :line-width 6 :color mode-line))))))
+                                                        (list :line-width 5 :color mode-line))))))
      `(anzu-mode-line ((,class :inherit mode-line :foreground ,purple :weight bold)))
      ))
 
@@ -241,13 +241,13 @@ The result is cached for one second to avoid hiccups."
                   ,zerodark-modeline-modified
                   " "
                   ,zerodark-modeline-buffer-identification
-                  ,zerodark-modeline-position
+                  "  %l/"
+                  (:eval (number-to-string (line-number-at-pos (point-max))))
                   ,(if zerodark-theme-display-vc-status
                        zerodark-modeline-vc
                      "")
                   "  "
                   (:eval (zerodark-modeline-flycheck-status))
-                  "  "
                   mode-line-modes mode-line-misc-info mode-line-end-spaces
                   )))
 

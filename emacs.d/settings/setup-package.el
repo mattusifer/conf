@@ -19,7 +19,6 @@
 (defun install-custom-packages ()
   (packages-install
    '(better-defaults
-     use-package
      ido-completing-read+
      smex
      auto-complete
