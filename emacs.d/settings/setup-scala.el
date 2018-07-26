@@ -3,6 +3,12 @@
 (setq ensime-startup-notification nil)
 (setq ensime-startup-snapshot-notification nil)
 
+;; remove ensime highlighting for implicit conversion
+(setq ensime-sem-high-faces
+      '((implicitConversion nil)
+        (implicitParams nil)))
+(setq ensime-implicit-gutter-icons nil)
+
 (defun get-subproject (path)
   "See if the file in PATH is within a subproject. Return the
 name of the subproject if true."
@@ -16,26 +22,38 @@ name of the subproject if true."
   (let ((prefix
          (if-let ((subproject (get-subproject default-directory)))
              (concat subproject "/") "")))
-    (send-buffer-region-to-repl "scala-repl" `("sbt" "-J-Xms3G" "-J-Xmx6G"
-                                               ,(concat prefix "compile")
-                                               ,(concat prefix "console")))))
+    (send-buffer-region-to-repl-buffer "*scala-repl*"
+                                       (format "sbt -J-Xms3G -J-Xmx6G -J-XX:MaxMetaspaceSize=2G %s %s"
+                                               (concat prefix "compile")
+                                               (concat prefix "console")))))
 
 (defun eval-scala-region ()
   (interactive)
   (let ((prefix
          (if-let ((subproject (get-subproject default-directory)))
              (concat subproject "/") "")))
-    (send-line-region-to-repl "scala-repl" `("sbt" "-J-Xms3G" "-J-Xmx6G"
-                                             ,(concat prefix "compile")
-                                             ,(concat prefix "console")))))
+    (send-line-region-to-repl-buffer "*scala-repl*"
+                                     (format "sbt -J-Xms3G -J-Xmx6G -J-XX:MaxMetaspaceSize=2G %s %s"
+                                             (concat prefix "compile")
+                                             (concat prefix "console")))))
 
 (defun open-sbt ()
   (interactive)
   (let ((default-directory (get-base-dir-or-parent default-directory)))
-    (async-shell-command "sbt -J-Xms3G -J-Xmx6G" "*sbt*")))
+    (async-shell-command "sbt -J-Xms3G -J-Xmx6G -J-XX:MaxMetaspaceSize=2G" "*sbt*")))
+
+(defun open-scala-scratch-buffer ()
+  (interactive)
+  (if (one-window-p)
+      (split-window-horizontally))
+  (other-window 1)
+  (switch-to-buffer "scala-scratch")
+  (scala-mode)
+  (setq default-directory "/"))
 
 (add-hook 'scala-mode-hook (lambda () (local-set-key (kbd "C-c C-e") 'eval-scala-region)))
 (add-hook 'scala-mode-hook (lambda () (local-set-key (kbd "C-c C-k") 'eval-scala-buffer)))
 (add-hook 'scala-mode-hook (lambda () (local-set-key (kbd "C-c C-p") 'open-sbt)))
+(add-hook 'scala-mode-hook (lambda () (local-set-key (kbd "C-c C-s") 'open-scala-scratch-buffer)))
 
 (provide 'setup-scala)

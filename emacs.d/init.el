@@ -53,6 +53,7 @@
 (require 'setup-sql)
 (require 'setup-haskell)
 (require 'setup-scala)
+(require 'setup-gremlin)
 (require 'setup-java)
 (require 'setup-rust)
 (require 'setup-python)
