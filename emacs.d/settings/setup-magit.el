@@ -70,4 +70,7 @@
 (global-set-key (kbd "C-c m o") 'pop-open-github-repo)
 (global-set-key (kbd "C-c m r") 'pop-open-github-pr)
 
+;; magithub
+(magithub-feature-autoinject t)
+
 (provide 'setup-magit)

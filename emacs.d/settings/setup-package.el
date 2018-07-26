@@ -31,6 +31,7 @@
 
      ;; magit!
      magit
+     magithub
 
      ;; clojure/lisp
      paredit
