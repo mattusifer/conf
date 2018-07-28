@@ -54,9 +54,6 @@
 (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
 (add-to-list 'default-frame-alist '(ns-appearance . dark))
 
-;; cursor
-(blink-cursor-mode nil)
-
 ;; time
 (setq display-time-day-and-date t)
 (setq display-time-format "%Y-%m-%d %k:%M %p")
@@ -66,7 +63,7 @@
 (fset 'yes-or-no-p 'y-or-n-p)
 
 ;; title format
-(setq-default frame-title-format "%b (%f)")
+(setq-default frame-title-format "%b")
 
 ;; mode line format
 (require 'zerodark-modeline)

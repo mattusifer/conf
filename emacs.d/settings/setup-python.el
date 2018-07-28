@@ -1,5 +1,5 @@
 (elpy-enable)
-(require 'pytest)
+(require 'python-pytest)
 
 ;; this is not backwards compatible to ipython versions <5!
 (setq python-shell-interpreter "ipython"
@@ -41,12 +41,5 @@
 ;;       (message "Setup project path"))))
 
 ;; (add-hook 'inferior-python-mode-hook 'python-setup-current-project)
-
-(add-hook 'python-mode-hook
-          (lambda ()
-            (local-set-key (kbd "C-c p a") 'pytest-all)
-            (local-set-key (kbd "C-c p m") 'pytest-module)
-            (local-set-key (kbd "C-c p .") 'pytest-one)
-            (local-set-key (kbd "C-c p d") 'pytest-directory)))
 
 (provide 'setup-python)

@@ -206,6 +206,16 @@ The result is cached for one second to avoid hiccups."
 ;;                                             display-time-string
 ;;                                             mode-line-end-spaces))))))
 
+(defun zerodark-line-number ()
+  "Setup the line numbering"
+  (interactive)
+  (if (member 'linum-mode (mapcar #'car minor-mode-alist))
+      (concat (number-to-string (line-number-at-pos))
+              "/" (number-to-string (line-number-at-pos (point-max))))
+    ""))
+
+(line-number-at-pos)
+
 (defun zerodark-setup-modeline-format ()
   "Setup the mode-line format for zerodark."
   (interactive)
@@ -241,8 +251,7 @@ The result is cached for one second to avoid hiccups."
                   ,zerodark-modeline-modified
                   " "
                   ,zerodark-modeline-buffer-identification
-                  "  %l/"
-                  (:eval (number-to-string (line-number-at-pos (point-max))))
+                  ,zerodark-modeline-position
                   ,(if zerodark-theme-display-vc-status
                        zerodark-modeline-vc
                      "")

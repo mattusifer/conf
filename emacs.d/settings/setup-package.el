@@ -28,6 +28,7 @@
      dash
      async
      all-the-icons
+     iy-go-to-char
 
      ;; magit!
      magit
@@ -64,6 +65,7 @@
      python-mode
      virtualenvwrapper
      elpy
+     python-pytest
 
      ;; rust
      rust-mode
