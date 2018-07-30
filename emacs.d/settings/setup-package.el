@@ -29,6 +29,7 @@
      async
      all-the-icons
      iy-go-to-char
+     switch-window
 
      ;; magit!
      magit
