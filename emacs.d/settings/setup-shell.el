@@ -91,4 +91,7 @@
 (setq-default sh-basic-offset 2)
 (setq-default sh-indentation 2)
 
+(add-hook 'shell-mode-hook (lambda() (set (make-local-variable 'global-linum-mode) nil)))
+(add-hook 'shell-mode-hook (lambda() (set (make-local-variable 'global-font-lock-mode) nil)))
+
 (provide 'setup-shell)

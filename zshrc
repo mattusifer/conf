@@ -118,8 +118,6 @@ git_custom_prompt() {
 PROMPT='${path_string} ${return_status} %{$reset_color%}'
 RPROMPT='$(git_custom_prompt)'
 
-# start tmux
-if ! { [ "$TERM" = "screen" ] && [ -n "$TMUX" ]; }
-then
-  tmux attach || tmux new
+if [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
+  exec startx
 fi

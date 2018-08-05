@@ -68,3 +68,4 @@
 ;; ;; org agenda
 ;; (org-agenda-list)
 ;; (delete-other-windows)
+(put 'erase-buffer 'disabled nil)
