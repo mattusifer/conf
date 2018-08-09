@@ -54,7 +54,7 @@ font-3 = FontAwesome:size=11
 
 modules-left = i3
 modules-center = xwindow
-modules-right = cpu memory eth volume date powermenu
+modules-right = cpu memory eth volume battery date
 
 tray-position = right
 tray-padding = 0
@@ -110,6 +110,35 @@ label-focused-foreground = ${colors.primary}
 label-focused-padding = 5
 
 label-urgent-padding = 5
+
+[module/battery]
+type = internal/battery
+battery = BAT0
+adapter = AC
+full-at = 98
+
+format-charging = <animation-charging> <label-charging>
+format-charging-underline = #ffb52a
+
+format-discharging = <ramp-capacity> <label-discharging>
+format-discharging-underline = ${self.format-charging-underline}
+
+format-full-prefix = " "
+format-full-prefix-foreground = ${colors.foreground}
+format-full-underline = ${self.format-charging-underline}
+
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-foreground = ${colors.foreground}
+
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-3 = 
+animation-charging-4 = 
+animation-charging-foreground = ${colors.foreground}
+animation-charging-framerate = 750
 
 [module/cpu]
 type = internal/cpu

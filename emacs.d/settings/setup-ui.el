@@ -24,6 +24,11 @@
 ;;;;;;;;;;
 ;; ui
 
+;; font
+(add-to-list 'default-frame-alist '(font . "Hack"))
+(set-face-attribute 'default nil
+            :family "Hack")
+
 ;; font size
 (if (eq system-type 'darwin)
 
@@ -31,8 +36,7 @@
     (set-face-attribute 'default nil :height 130)
 
   ; linux
-  (set-face-attribute 'default nil :height 100))
-
+  (set-face-attribute 'default nil :height 105))
 
 ;; maximize frame
 (setq initial-frame-alist '((top . 0) (left . -1)))
