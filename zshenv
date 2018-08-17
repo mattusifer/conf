@@ -30,7 +30,7 @@ export RUST_BACKTRACE=1
 # settings specific to my work computer (mac)
 if [ $(uname) = "Darwin" ]
 then
-  source ~/.blackfynn/env_vars
+  source ~/.blackfynn/env_vars || echo "Env vars file not found!"
 fi
 
 # virtualenvwrapper setup (if it exists)
