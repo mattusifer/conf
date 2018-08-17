@@ -12,15 +12,19 @@
 
 (defun create-shell-buffer ()
   (ansi-term "/bin/zsh")
-  (setq current-terminal-buffer (buffer-name)))
+  (make-shell-buffer-current))
+
+(defun make-shell-buffer-current ()
+  (interactive)
+  (setq current-terminal-buffer (buffer-name))
+  (message (format "Current terminal set to %s" (buffer-name))))
 
 (defun create-or-show-small-terminal-shell ()
   "Pop open a terminal. Will switch active buffer to current terminal buffer if it exists and is not visible."
   (interactive)
-  (if (> (window-total-width) 200)
-      (progn
-        (split-window-horizontally)
-        (other-window 1)))
+  (when (> (window-total-width) 200)
+    (split-window-horizontally)
+    (other-window 1))
   (if (or (not (boundp 'current-terminal-buffer))
           (not (get-buffer current-terminal-buffer))
           (and (boundp 'current-terminal-buffer)
@@ -30,6 +34,7 @@
 
 ;; shell
 (global-set-key (kbd "C-c t c") 'create-or-show-small-terminal-shell)
+(global-set-key (kbd "C-c t m") 'make-shell-buffer-current)
 
 (defun create-or-show-small-terminal-eshell ()
   "Pop open a terminal"
@@ -41,7 +46,7 @@
   (if (or (not (boundp 'current-terminal-buffer))
           (not (get-buffer current-terminal-buffer)))
       (progn (eshell)
-             (setq current-terminal-buffer (buffer-name)))
+             (make-shell-buffer-current))
     (switch-to-buffer (get-buffer current-terminal-buffer))))
 
 (global-set-key (kbd "C-c t t") 'create-or-show-small-terminal-eshell)

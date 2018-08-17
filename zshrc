@@ -118,6 +118,10 @@ git_custom_prompt() {
 PROMPT='${path_string} ${return_status} %{$reset_color%}'
 RPROMPT='$(git_custom_prompt)'
 
-if [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
+if [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]
+then
   exec startx
+elif ! { [ -n "$STY" ]; }
+then
+  screen -DR
 fi

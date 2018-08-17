@@ -21,7 +21,7 @@ directory isn't itself a git repo, assume it's a subproject and
 return the parent of the base directory."
   (if (member ".git" (directory-files str)) str
     (let ((potential-dir (get-base-dir str)))
-      (if (member ".git" (directory-files potential-dir))a
+      (if (member ".git" (directory-files potential-dir))
         potential-dir
         (mapconcat 'identity (butlast (split-string potential-dir "/") 2) "/") ))))
 
@@ -36,9 +36,10 @@ return the parent of the base directory."
   (when (not (get-buffer repl-buffer-name))
     ;; look for a 'src' folder in the current dir
     ;; if none exists, get the base dir
-    (if (not (member "src" (directory-files default-directory)))
-        (setq default-directory (get-base-dir-or-parent default-directory)))
-    (async-shell-command repl-create-cmd repl-buffer-name))
+    (let ((default-directory
+            (if (not (member "src" (directory-files default-directory)))
+                (get-base-dir-or-parent default-directory) default-directory)))
+      (async-shell-command repl-create-cmd repl-buffer-name)))
 
   (funcall execution-fn)
 

@@ -27,6 +27,7 @@
 (require 'setup-package)
 
 (require 'setup-ui)
+(require 'setup-purposes)
 
 (require 'setup-shell)
 
@@ -69,3 +70,5 @@
 ;; (org-agenda-list)
 ;; (delete-other-windows)
 (put 'erase-buffer 'disabled nil)
+(put 'upcase-region 'disabled nil)
+(put 'downcase-region 'disabled nil)

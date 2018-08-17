@@ -39,8 +39,16 @@ name of the subproject if true."
 
 (defun open-sbt ()
   (interactive)
-  (let ((default-directory (get-base-dir-or-parent default-directory)))
-    (async-shell-command "sbt -J-Xms3G -J-Xmx6G -J-XX:MaxMetaspaceSize=2G" "*sbt*")))
+  (when (> (window-total-width) 200)
+    (split-window-horizontally)
+    (other-window 1))
+  (sbt:run-sbt nil t))
+
+(defun ensime-sbt-do-fmt ()
+  (interactive)
+  (sbt:command "fmt"))
+
+(bind-key "C-c C-v F" 'ensime-sbt-do-fmt scala-mode-map)
 
 (defun open-scala-scratch-buffer ()
   (interactive)

@@ -27,9 +27,17 @@
      package-lint
      dash
      async
+     eyebrowse
+     window-purpose
      all-the-icons
      iy-go-to-char
      switch-window
+
+     ;; docker
+     dockerfile-mode
+
+     ;; yaml
+     yaml-mode
 
      ;; magit!
      magit

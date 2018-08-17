@@ -38,10 +38,6 @@
   ; linux
   (set-face-attribute 'default nil :height 105))
 
-;; maximize frame
-(setq initial-frame-alist '((top . 0) (left . -1)))
-(toggle-frame-maximized)
-
 ;; various settings
 (setq ;; killing/yanking interacts with the clipboard
       x-select-enable-clipboard t
@@ -139,6 +135,10 @@
 
 ;; winner
 (winner-mode t)
+
+;; eyebrowse workspaces
+(eyebrowse-mode t)
+(setq eyebrowse-new-workspace t)
 
 ;;;;;;;;;;
 ;; editing
@@ -360,13 +360,15 @@
                (lambda () (interactive) (kill-buffer) (delete-window)))
 (global-set-key (kbd "C-c u") 'undo-tree-visualize)
 
-;; exit out of frame without killing emacs
-(global-set-key (kbd "C-c x") 'delete-frame)
-
 ;; kill emacs and server
 (global-set-key (kbd "C-x c") (lambda () (interactive)
                                 (save-some-buffers)
                                 (kill-emacs)))
+
+;; frames
+(global-set-key (kbd "C-c w 0") 'delete-frame)
+(global-set-key (kbd "C-c w c") 'make-frame-command)
+(global-set-key (kbd "C-c w o") 'other-frame)
 
 ;; agenda
 (global-set-key (kbd "C-c a") 'org-agenda)
