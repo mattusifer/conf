@@ -188,7 +188,7 @@ bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
 # turn off laptop when external monitor is connected
-exec_always ((xrandr | grep -i '^DP1 connected') && xrandr --output eDP1 --off --output DP1 --scale 1.25x1.25) || xrandr --output eDP1 --scale 0.5x0.5
+exec_always ((xrandr | grep -i '^DP1 connected') && xrandr --output eDP1 --off --output DP1 --auto --scale 1.25x1.25) || xrandr --output eDP1 --scale 0.5x0.5
 
 # pretty good scaling between the two
 # exec_always xrandr --output eDP1 --scale 0.5x0.5 --output DP1 --auto --left-of eDP1
