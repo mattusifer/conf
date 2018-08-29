@@ -73,4 +73,8 @@
 ;; magithub
 (magithub-feature-autoinject t)
 
+;; diff-hl-mode
+(add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh)
+(global-diff-hl-mode)
+
 (provide 'setup-magit)

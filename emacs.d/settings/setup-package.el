@@ -31,7 +31,7 @@
      window-purpose
      all-the-icons
      iy-go-to-char
-     switch-window
+     dumb-jump
 
      ;; docker
      dockerfile-mode
@@ -39,9 +39,10 @@
      ;; yaml
      yaml-mode
 
-     ;; magit!
+     ;; git
      magit
      magithub
+     diff-hl
 
      ;; clojure/lisp
      paredit
@@ -63,6 +64,7 @@
 
      ;; misc editing
      avy
+     ace-window
      undo-tree
      real-auto-save
      multiple-cursors

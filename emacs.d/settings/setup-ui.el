@@ -154,26 +154,11 @@
 
 ;; auto-complete
 (require 'company)
-(require 'cl)
-(require 'auto-complete-config)
-(ac-config-default)
 (global-company-mode t)
 
 ;; unbind <tab> everywhere in favor of yasnippet
-(define-key ac-mode-map (kbd "TAB") nil)
-(define-key ac-completing-map (kbd "TAB") nil)
-(define-key ac-completing-map [tab] nil)
 (define-key company-active-map [tab] nil)
 (define-key company-active-map (kbd "TAB") nil)
-
-;; hippie-expand
-(global-set-key (kbd "M-/") 'hippie-expand)
-(setq hippie-expand-try-functions-list
-      '(try-expand-dabbrev
-        try-expand-dabbrev-all-buffers
-        try-expand-dabbrev-from-kill
-        try-complete-lisp-symbol-partially
-        try-complete-lisp-symbol))
 
 ;; highlight matching parens
 (show-paren-mode 1)
@@ -195,9 +180,6 @@
 ;; scrolling line-by-line
 (setq scroll-step            1
       scroll-conservatively  10000)
-
-;; show useless whitespace
-(setq show-trailing-whitespace t)
 
 ;; undo tree
 (global-undo-tree-mode)
@@ -255,6 +237,9 @@
   (add-hook 'after-save-hook (lambda () (shell-command "crontab crontab.txt"))
             nil t))
 
+;; DUMB jump
+(dumb-jump-mode)
+
 ;;;;;;;;;;
 ;; window functions
 
@@ -286,21 +271,6 @@
 
 (global-set-key (kbd "C-c C-t") 'toggle-window-split)
 
-(defun delete-current-buffer-file ()
-  "Removes file connected to current buffer and kills buffer."
-  (interactive)
-  (let ((filename (buffer-file-name))
-        (buffer (current-buffer))
-        (name (buffer-name)))
-    (if (not (and filename (file-exists-p filename)))
-        (ido-kill-buffer)
-      (when (yes-or-no-p "Are you sure you want to remove this file? ")
-        (delete-file filename)
-        (kill-buffer buffer)
-        (message "File '%s' successfully removed" filename)))))
-
-(global-set-key (kbd "C-x C-k") 'delete-current-buffer-file)
-
 (defun rename-current-buffer-file ()
   "Renames current buffer and file it is visiting."
   (interactive)
@@ -329,20 +299,11 @@
 (require 'key-chord)
 (key-chord-mode +1)
 
-;; switch window
-(require 'switch-window)
-(setq switch-window-threshold 3)
-(setq switch-window-shortcut-style 'qwerty)
-(setq switch-window-qwerty-shortcuts
-      '("a" "s" "d" "f" "j" "k" "l" ";" "w" "e" "i" "o"))
+;; ace window
+(global-set-key (kbd "M-o") 'ace-window)
+(setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
 
-(global-set-key (kbd "C-x o") 'switch-window)
-(global-set-key (kbd "C-x 1") 'switch-window-then-maximize)
-(global-set-key (kbd "C-x 2") 'switch-window-then-split-below)
-(global-set-key (kbd "C-x 3") 'switch-window-then-split-right)
-(global-set-key (kbd "C-x 0") 'switch-window-then-delete)
-
-;; ace jump
+;; avy (ace jump)
 (global-set-key (kbd "C-c M-SPC") 'avy-goto-char)
 
 ;; multi cursor
