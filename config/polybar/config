@@ -157,10 +157,10 @@ ramp-coreload-0-foreground = ${colors.primary}
 ramp-coreload-1 = ▂
 ramp-coreload-1-font = 4
 ramp-coreload-1-foreground = ${colors.primary}
-ramp-coreload-2 = ▃
+ramp-coreload-2 = ▄
 ramp-coreload-2-font = 4
 ramp-coreload-2-foreground = ${colors.primary}
-ramp-coreload-3 = ▄
+ramp-coreload-3 = █
 ramp-coreload-3-font = 4
 ramp-coreload-3-foreground = ${colors.primary}
 
