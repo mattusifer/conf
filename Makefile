@@ -37,9 +37,9 @@ scala:
 	ln -si $(shell pwd)/sbt ~/.sbt
 
 rust:
-	(mkdir -p ~/src/rust-lang/ && git clone git@github.com:rust-lang/rust.git ~/src/rust-lang/rust) ||  echo "src/rustlang already exists"
 	curl https://sh.rustup.rs -sSf | sh
-	cargo install rustfmt racer --force
+	rustup component add rust-src
+	cargo install rustfmt racer || true
 
 # flake8 config
 python:
@@ -56,6 +56,10 @@ zsh:
 tmux:
 	rm -rf ~/.tmux.conf
 	ln -si $(shell pwd)/tmux.conf ~/.tmux.conf
+
+screen:
+	rm -rf ~/.screenrc
+	ln -si $(shell pwd)/screenrc ~/.screenrc
 
 mbsync:
 	rm -rf ~/.mbsyncrc
