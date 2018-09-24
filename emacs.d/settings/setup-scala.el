@@ -48,8 +48,6 @@ name of the subproject if true."
   (interactive)
   (sbt:command "fmt"))
 
-(bind-key "C-c C-v F" 'ensime-sbt-do-fmt scala-mode-map)
-
 (defun open-scala-scratch-buffer ()
   (interactive)
   (if (one-window-p)
