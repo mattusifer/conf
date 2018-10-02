@@ -32,6 +32,7 @@
      all-the-icons
      iy-go-to-char
      dumb-jump
+     god-mode
 
      ;; docker
      dockerfile-mode
