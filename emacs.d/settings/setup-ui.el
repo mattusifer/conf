@@ -9,7 +9,7 @@
 
 (setq mu/current-theme
       (if (eq system-type 'darwin)
-          'tomorrow-night-bright 'doom-one))
+          'tomorrow-night-eighties 'doom-one))
 
 ;; apply theme to new frames
 (defun apply-color-theme (frame)
@@ -144,10 +144,10 @@
 ;; editing
 
 (require 'god-mode)
-(global-set-key (kbd "<escape>") 'god-local-mode)
+(global-set-key (kbd "<escape>") 'god-mode-all)
 (god-mode)
 
-(define-key god-local-mode-map (kbd "i") 'god-local-mode)
+(define-key god-local-mode-map (kbd "i") 'god-mode-all)
 (define-key god-local-mode-map (kbd ".") 'repeat)
 
 (require 'god-mode-isearch)
@@ -159,6 +159,15 @@
 (global-set-key (kbd "C-x C-2") 'split-window-below)
 (global-set-key (kbd "C-x C-3") 'split-window-right)
 (global-set-key (kbd "C-x C-0") 'delete-window)
+
+;; change cursor style for god mode
+(defun god-mode-update-cursor ()
+  (setq cursor-type (if (or god-local-mode buffer-read-only)
+                        'box
+                      'bar)))
+
+(add-hook 'god-mode-enabled-hook 'god-mode-update-cursor)
+(add-hook 'god-mode-disabled-hook 'god-mode-update-cursor)
 
 ;; No need for ~ files when editing
 (setq create-lockfiles nil)
