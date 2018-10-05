@@ -193,6 +193,14 @@ exec_always ((xrandr | grep -i '^DP1 connected') && xrandr --output eDP1 --off -
 # pretty good scaling between the two
 # exec_always xrandr --output eDP1 --scale 0.5x0.5 --output DP1 --auto --left-of eDP1
 
+##################################################
+# remappings
+# both shift keys toggle caps lock
+exec setxkbmap us -option shift:both_capslock
+
+# caps lock remapped to escape
+exec setxkbmap us -option caps:escape
+##################################################
 
 # kbds
 # bindsym $mod+S move workspace to output right
@@ -206,9 +214,6 @@ client.unfocused        #000000 #000000 #aaaaaa #000000
 client.urgent           #000000 #000000 #ffffff #000000
 
 client.background       #000000
-
-# numlock on boot
-exec_always --no-startup-id numlockx on
 
 # screenshot
 bindsym --release Print exec scrot -m "~/Pictures/Screenshots/%s_%H%M_%d.%m.%Y_$wx$h.png"
