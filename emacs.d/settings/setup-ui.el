@@ -150,6 +150,9 @@
 (define-key god-local-mode-map (kbd "i") 'god-mode-all)
 (define-key god-local-mode-map (kbd ".") 'repeat)
 
+(setq god-exempt-major-modes nil)
+(setq god-exempt-predicates nil)
+
 (require 'god-mode-isearch)
 (define-key isearch-mode-map (kbd "<escape>") 'god-mode-isearch-activate)
 (define-key god-mode-isearch-map (kbd "<escape>") 'god-mode-isearch-disable)
