@@ -219,8 +219,8 @@ client.background       #000000
 bindsym --release Print exec scrot -m "~/Pictures/Screenshots/%s_%H%M_%d.%m.%Y_$wx$h.png"
 
 # desktop bg
-exec (sleep 2 && feh --bg-scale ~/Pictures/everest.jpg &)
+exec (sleep 2 && feh --bg-scale ~/Pictures/black.jpg &)
 
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
-## END CUSTOMIZAATIONS
+## END CUSTOMIZATIONS
