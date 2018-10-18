@@ -174,7 +174,7 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #i
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
 
-# Sreen brightness controls
+# Screen brightness controls
 bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
 bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
 
@@ -186,6 +186,15 @@ bindsym XF86AudioPlay exec playerctl play
 bindsym XF86AudioPause exec playerctl pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
+
+# function keys
+bindsym F12 exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
+bindsym F11 exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
+bindsym F10 exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
+
+# Screen brightness controls
+bindsym F2 exec xbacklight -inc 20 # increase screen brightness
+bindsym F1 exec xbacklight -dec 20 # decrease screen brightness
 
 # turn off laptop when external monitor is connected
 exec_always ((xrandr | grep -i '^DP1 connected') && xrandr --output eDP1 --off --output DP1 --auto --scale 1.25x1.25) || xrandr --output eDP1 --scale 0.5x0.5
