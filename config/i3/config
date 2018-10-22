@@ -205,10 +205,10 @@ exec_always ((xrandr | grep -i '^DP1 connected') && xrandr --output eDP1 --off -
 ##################################################
 # remappings
 # both shift keys toggle caps lock
-exec setxkbmap us -option shift:both_capslock
+exec_always setxkbmap us -option shift:both_capslock
 
 # caps lock remapped to escape
-exec setxkbmap us -option caps:escape
+exec_always setxkbmap us -option caps:escape
 ##################################################
 
 # kbds
