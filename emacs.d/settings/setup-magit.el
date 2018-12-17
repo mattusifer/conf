@@ -70,8 +70,8 @@
 (global-set-key (kbd "C-c m o") 'pop-open-github-repo)
 (global-set-key (kbd "C-c m r") 'pop-open-github-pr)
 
-;; magithub
-(magithub-feature-autoinject t)
+;;; magit-todos
+;(magit-todos-mode)
 
 ;; diff-hl-mode
 (add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh)

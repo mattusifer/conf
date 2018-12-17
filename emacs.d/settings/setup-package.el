@@ -42,7 +42,7 @@
 
      ;; git
      magit
-     magithub
+     magit-todos
      diff-hl
 
      ;; clojure/lisp
