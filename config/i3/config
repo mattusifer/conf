@@ -167,6 +167,9 @@ bindsym $mod+r mode "resize"
 ### CUSTOMIZATIONS
 focus_follows_mouse no
 
+# hide window borders
+hide_edge_borders both
+
 # multimedia keys
 
 # Pulse Audio controls
@@ -197,7 +200,7 @@ bindsym F2 exec xbacklight -inc 20 # increase screen brightness
 bindsym F1 exec xbacklight -dec 20 # decrease screen brightness
 
 # turn off laptop when external monitor is connected
-exec_always ((xrandr | grep -i '^DP1 connected') && xrandr --output eDP1 --off --output DP1 --auto --scale 1.25x1.25) || xrandr --output eDP1 --scale 0.5x0.5
+exec_always ((xrandr | grep -i '^DP1 connected') && xrandr --output eDP1 --off --output DP1 --auto --scale 1.25x1.25) || xrandr --output eDP1 --auto --scale 0.5x0.5
 
 # pretty good scaling between the two
 # exec_always xrandr --output eDP1 --scale 0.5x0.5 --output DP1 --auto --left-of eDP1

@@ -102,21 +102,29 @@ alias sa="sshagent_init"
 # Main prompt
 #
 
-local host_name="%{$fg[cyan]%}musifer"
-local path_string="%{$fg[white]%}%2~"
-local prompt_string="%(!.#.$)"
+case "$TERM" in
+  "dumb")
+    export PS1="> "
+    ;;
+  xterm*|rxvt*|eterm*|screen*)
+    tty -s
+    local host_name="%{$fg[cyan]%}musifer"
+    local path_string="%{$fg[white]%}%2~"
+    local prompt_string="%(!.#.$)"
 
-local return_status="%(?:%{$fg[green]%}$prompt_string:%{$fg[red]%}$prompt_string)"
+    local return_status="%(?:%{$fg[green]%}$prompt_string:%{$fg[red]%}$prompt_string)"
 
-git_custom_prompt() {
-  local branch=$(current_branch)
-  if [ -n "$branch" ]; then
-    echo "$(parse_git_dirty) %{$fg[yellow]%}$branch%{$reset_color%}"
-  fi
-}
+    git_custom_prompt() {
+      local branch=$(current_branch)
+      if [ -n "$branch" ]; then
+        echo "$(parse_git_dirty) %{$fg[yellow]%}$branch%{$reset_color%}"
+      fi
+    }
 
-PROMPT='${path_string} ${return_status} %{$reset_color%}'
-RPROMPT='$(git_custom_prompt)'
+    PROMPT='${path_string} ${return_status} %{$reset_color%}'
+    RPROMPT='$(git_custom_prompt)'
+    ;;
+esac
 
 if [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]
 then

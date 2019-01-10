@@ -19,9 +19,6 @@ mu:
 	mu index --maildir=~/.mbsyncmaildir; \
 
 emacs:
-	touch ~/Dropbox/symlinks/emacs/org-mode/work.org
-	touch ~/Dropbox/symlinks/emacs/org-mode/home.org
-
 	touch emacs.d/custom.el
 	rm -rf emacs.d/elpa
 
