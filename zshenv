@@ -33,6 +33,9 @@ then
   source ~/.blackfynn/env_vars || echo "Env vars file not found!"
 fi
 
+# blackfynn envs
+# export BLACKFYNN_LOG_LEVEL="DEBUG"
+
 # virtualenvwrapper setup (if it exists)
 export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/src
