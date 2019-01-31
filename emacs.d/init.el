@@ -40,7 +40,6 @@
 ;; Though I no longer use emacs as a client for email or slack, I'm
 ;; keeping these here for reference.
 ;; (require 'setup-email)
-;; (require 'setup-org)
 ;; (require 'setup-slack)
 
 (require 'setup-yasnippet)
@@ -63,12 +62,11 @@
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (load custom-file)
 
-;; dashboard
-(require 'setup-dashboard)
+;; ;; dashboard
+;; (require 'setup-dashboard)
 
-;; ;; org agenda
-;; (org-agenda-list)
-;; (delete-other-windows)
-(put 'erase-buffer 'disabled nil)
-(put 'upcase-region 'disabled nil)
-(put 'downcase-region 'disabled nil)
+;; org agenda
+(require 'setup-org)
+
+(org-agenda-list)
+(delete-other-windows)
