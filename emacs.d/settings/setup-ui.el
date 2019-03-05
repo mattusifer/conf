@@ -182,14 +182,6 @@
                  (concat user-emacs-directory "backups")))))
 (setq vc-make-backup-files t)
 
-;; auto-complete
-(require 'company)
-(global-company-mode t)
-
-;; unbind <tab> everywhere in favor of yasnippet
-(define-key company-active-map [tab] nil)
-(define-key company-active-map (kbd "TAB") nil)
-
 ;; highlight matching parens
 (show-paren-mode 1)
 
@@ -223,11 +215,6 @@
 ;; no hard tabs
 (setq-default indent-tabs-mode nil)
 
-;; saveplace
-(require 'saveplace)
-(setq-default save-place t)
-(setq save-place-file (concat user-emacs-directory "places"))
-
 ;; comments
 (defun toggle-comment-on-line ()
   "comment or uncomment current line"
@@ -246,26 +233,9 @@
   (untabify (region-beginning) (region-end))
   (keyboard-quit))
 
-;; fix weird os x kill error
-(defun ns-get-pasteboard ()
-  "Returns the value of the pasteboard, or nil for unsupported formats."
-  (condition-case nil
-      (ns-get-selection-internal 'CLIPBOARD)
-    (quit nil)))
-
-(setq electric-indent-mode nil)
-
 ;; clean up file on save
 (setq require-final-newline t)
 (add-hook 'before-save-hook 'whitespace-cleanup)
-
-;; crontab -e directly from emacs
-(defun crontab-e ()
-  (interactive)
-  (shell-command "crontab -l > crontab.txt")
-  (find-file "crontab.txt")
-  (add-hook 'after-save-hook (lambda () (shell-command "crontab crontab.txt"))
-            nil t))
 
 ;; DUMB jump
 (dumb-jump-mode)
