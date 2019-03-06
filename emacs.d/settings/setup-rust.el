@@ -27,9 +27,6 @@
 (add-hook 'rust-mode-hook
           (lambda () (local-set-key (kbd "<tab>") 'company-indent-or-complete-common)))
 
-(add-hook 'rust-mode-hook
-          (lambda () (local-set-key (kbd "<tab>") 'company-indent-or-complete-common)))
-
 (setq company-tooltip-align-annotations t)
 
 ;; cargo setup
