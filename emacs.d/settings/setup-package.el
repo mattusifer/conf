@@ -21,7 +21,6 @@
    '(better-defaults
      ido-completing-read+
      smex
-     auto-complete
      company
      dashboard
      package-lint
@@ -39,6 +38,9 @@
 
      ;; yaml
      yaml-mode
+
+     ;; protobuf
+     protobuf-mode
 
      ;; git
      magit

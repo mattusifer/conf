@@ -79,7 +79,6 @@
 
 (eval-after-load "projectile" '(modeline-remove-lighter 'projectile-mode))
 (eval-after-load "undo-tree" '(modeline-remove-lighter 'undo-tree-mode))
-(eval-after-load "auto-complete" '(modeline-remove-lighter 'auto-complete-mode))
 (eval-after-load "paredit" '(modeline-remove-lighter 'paredit-mode))
 (modeline-remove-lighter 'auto-revert-mode)
 
