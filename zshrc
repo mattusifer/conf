@@ -1,3 +1,6 @@
+# support dumb terminal
+[[ $TERM == "dumb" ]] && unsetopt zle && PS1='$ ' && return
+
 # oh my zsh config
 export ZSH=${HOME}/.oh-my-zsh
 export ZSH_THEME="mh"
