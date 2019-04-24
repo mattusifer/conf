@@ -6,7 +6,6 @@
 ;; directory
 
 (require 'send-to-buffer)
-(setq ensime-startup-notification nil)
 
 (defun get-last-occurrence (substr string start)
   "Get the last occurrence of a substring within a string"

@@ -1,13 +1,5 @@
-(require 'ensime)
 (require 'repl-utils)
-(setq ensime-startup-notification nil)
-(setq ensime-startup-snapshot-notification nil)
-
-;; remove ensime highlighting for implicit conversion
-(setq ensime-sem-high-faces
-      '((implicitConversion nil)
-        (implicitParams nil)))
-(setq ensime-implicit-gutter-icons nil)
+(require 'lsp-scala)
 
 (defun get-subproject (path)
   "See if the file in PATH is within a subproject. Return the
@@ -44,10 +36,6 @@ name of the subproject if true."
     (other-window 1))
   (sbt:run-sbt nil t))
 
-(defun ensime-sbt-do-fmt ()
-  (interactive)
-  (sbt:command "fmt"))
-
 (defun open-scala-scratch-buffer ()
   (interactive)
   (if (one-window-p)
@@ -61,5 +49,8 @@ name of the subproject if true."
 (add-hook 'scala-mode-hook (lambda () (local-set-key (kbd "C-c C-k") 'eval-scala-buffer)))
 (add-hook 'scala-mode-hook (lambda () (local-set-key (kbd "C-c C-p") 'open-sbt)))
 (add-hook 'scala-mode-hook (lambda () (local-set-key (kbd "C-c C-s") 'open-scala-scratch-buffer)))
+
+(add-hook 'scala-mode-hook 'lsp)
+(setq lsp-prefer-flymake nil)
 
 (provide 'setup-scala)
