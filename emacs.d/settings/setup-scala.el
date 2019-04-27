@@ -1,15 +1,16 @@
 (require 'repl-utils)
+(require 'company-lsp)
 (require 'lsp-scala)
 
 (defun get-subproject (path)
-  "See if the file in PATH is within a subproject. Return the
-name of the subproject if true."
+  "Confirm that the file in PATH is within a subproject.
+Return the name of the subproject if true."
   (let ((base-dir (get-base-dir path)))
     (when (not (member ".git" (directory-files base-dir)))
       (car (last (split-string base-dir "/") 2)))))
 
 (defun eval-scala-buffer ()
-  "will evaluate entire buffer"
+  "Evaluate entire buffer."
   (interactive)
   (let ((prefix
          (if-let ((subproject (get-subproject default-directory)))
@@ -51,6 +52,9 @@ name of the subproject if true."
 (add-hook 'scala-mode-hook (lambda () (local-set-key (kbd "C-c C-s") 'open-scala-scratch-buffer)))
 
 (add-hook 'scala-mode-hook 'lsp)
+(add-hook 'scala-mode-hook 'company-mode)
 (setq lsp-prefer-flymake nil)
+
+(push 'company-lsp company-backends)
 
 (provide 'setup-scala)
