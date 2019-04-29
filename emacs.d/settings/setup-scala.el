@@ -51,6 +51,20 @@ Return the name of the subproject if true."
 (add-hook 'scala-mode-hook (lambda () (local-set-key (kbd "C-c C-p") 'open-sbt)))
 (add-hook 'scala-mode-hook (lambda () (local-set-key (kbd "C-c C-s") 'open-scala-scratch-buffer)))
 
+;; format buffer on save
+(defun format-scala-buffer-with-saved-position
+    ()
+  (let ((w-start (window-start)))
+    (lsp-format-buffer)
+    (set-window-start (selected-window) w-start)))
+(add-hook 'scala-mode-hook
+          (lambda ()
+            (local-set-key (kbd "C-c f") #'format-scala-buffer-with-saved-position)))
+(add-hook 'scala-mode-hook
+          (lambda ()
+            (add-hook 'before-save-hook 'format-scala-buffer-with-saved-position nil t)))
+
+
 (add-hook 'scala-mode-hook 'lsp)
 (add-hook 'scala-mode-hook 'company-mode)
 (setq lsp-prefer-flymake nil)

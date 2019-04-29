@@ -1,2 +1,4 @@
-emacs.d/customizations/slack/client-secret
-emacs.d/customizations/slack/client-id
+emacs.d/backups/
+emacs.d/elpa/
+
+config/chromium/

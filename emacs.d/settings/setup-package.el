@@ -128,6 +128,7 @@
      company-lsp
      lsp-scala
      lsp-mode
+     lsp-ui
 
      ;; markdown
      markdown-mode
