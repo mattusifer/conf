@@ -25,6 +25,7 @@
      dashboard
      package-lint
      dash
+     s
      async
      eyebrowse
      window-purpose

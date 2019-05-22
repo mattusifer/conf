@@ -6,7 +6,7 @@
   "Confirm that the file in PATH is within a subproject.
 Return the name of the subproject if true."
   (let ((base-dir (get-base-dir path)))
-    (when (not (member ".git" (directory-files base-dir)))
+    (when (not (member "build.sbt" (directory-files base-dir)))
       (car (last (split-string base-dir "/") 2)))))
 
 (defun eval-scala-buffer ()
@@ -17,8 +17,8 @@ Return the name of the subproject if true."
              (concat subproject "/") "")))
     (send-buffer-region-to-repl-buffer "*scala-repl*"
                                        (format "sbt -J-Xms3G -J-Xmx6G -J-XX:MaxMetaspaceSize=2G %s %s"
-                                               (concat prefix "compile")
-                                               (concat prefix "console")))))
+                                               (concat prefix "test:compile")
+                                               (concat prefix "test:console")) nil "build.sbt")))
 
 (defun eval-scala-region ()
   (interactive)
@@ -27,8 +27,8 @@ Return the name of the subproject if true."
              (concat subproject "/") "")))
     (send-line-region-to-repl-buffer "*scala-repl*"
                                      (format "sbt -J-Xms3G -J-Xmx6G -J-XX:MaxMetaspaceSize=2G %s %s"
-                                             (concat prefix "compile")
-                                             (concat prefix "console")))))
+                                             (concat prefix "test:compile")
+                                             (concat prefix "test:console")) nil "build.sbt")))
 
 (defun open-sbt ()
   (interactive)
@@ -54,9 +54,10 @@ Return the name of the subproject if true."
 ;; format buffer on save
 (defun format-scala-buffer-with-saved-position
     ()
-  (let ((w-start (window-start)))
-    (lsp-format-buffer)
-    (set-window-start (selected-window) w-start)))
+  (when (not (s-ends-with? ".sbt" buffer-file-name))
+    (let ((w-start (window-start)))
+      (lsp-format-buffer)
+      (set-window-start (selected-window) w-start))))
 (add-hook 'scala-mode-hook
           (lambda ()
             (local-set-key (kbd "C-c f") #'format-scala-buffer-with-saved-position)))

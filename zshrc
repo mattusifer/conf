@@ -126,7 +126,7 @@ RPROMPT='$(git_custom_prompt)'
 if [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]
 then
   exec startx
-elif ! { [ -n "$STY" ]; }
+elif [ -z $EMACS ] && [ -z $TMUX ]
 then
-  screen -DR
+  tmux attach || tmux
 fi

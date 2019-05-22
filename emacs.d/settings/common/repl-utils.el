@@ -14,14 +14,16 @@
         (get-last-occurrence substr string (+ match-index (length substr)))
       match-index)))
 
-(defun get-base-dir-or-parent (str)
+(defun get-base-dir-or-parent (str &optional indicator)
   "Get the base directory of the current project. If that base
 directory isn't itself a git repo, assume it's a subproject and
 return the parent of the base directory."
-  (if (member ".git" (directory-files str)) str
+  (or indicator (setq indicator ".git"))
+
+  (if (member indicator (directory-files str)) str
     (let ((potential-dir (get-base-dir str)))
-      (if (member ".git" (directory-files potential-dir))
-        potential-dir
+      (if (member indicator (directory-files potential-dir))
+          potential-dir
         (mapconcat 'identity (butlast (split-string potential-dir "/") 2) "/") ))))
 
 (defun get-base-dir (str)
@@ -31,13 +33,13 @@ return the parent of the base directory."
 (defun send-string-to-repl-buffer (execution-fn
                                    repl-buffer-name
                                    repl-create-cmd
-                                   &optional repl-mode)
+                                   &optional repl-mode indicator)
   (when (not (get-buffer repl-buffer-name))
     ;; look for a 'src' folder in the current dir
     ;; if none exists, get the base dir
     (let ((default-directory
             (if (not (member "src" (directory-files default-directory)))
-                (get-base-dir-or-parent default-directory) default-directory)))
+                (get-base-dir-or-parent default-directory indicator) default-directory)))
       (async-shell-command repl-create-cmd repl-buffer-name)))
 
   (funcall execution-fn)
@@ -51,27 +53,30 @@ return the parent of the base directory."
 
 (defun send-buffer-region-to-repl-buffer (repl-buffer-name
                                           repl-create-cmd
-                                          &optional repl-mode)
+                                          &optional repl-mode indicator)
   (send-string-to-repl-buffer (lambda () (send-buffer-region-to-buffer repl-buffer-name))
                        repl-buffer-name
                        repl-create-cmd
-                       repl-mode))
+                       repl-mode
+                       indicator))
 
 (defun send-line-region-to-repl-buffer (repl-buffer-name
                                         repl-create-cmd
-                                        &optional repl-mode)
+                                        &optional repl-mode indicator)
   (send-string-to-repl-buffer (lambda () (send-line-region-to-buffer repl-buffer-name))
                               repl-buffer-name
                               repl-create-cmd
-                              repl-mode))
+                              repl-mode
+                              indicator))
 
 (defun send-custom-string-to-repl-buffer (custom-string
                                           repl-buffer-name
                                           repl-create-cmd
-                                          &optional repl-mode)
+                                          &optional repl-mode indicator)
   (send-string-to-repl-buffer (lambda () (send-string-to-buffer repl-buffer-name (concat custom-string "\n")))
                               repl-buffer-name
                               repl-create-cmd
-                              repl-mode))
+                              repl-mode
+                              indicator))
 
 (provide 'repl-utils)
