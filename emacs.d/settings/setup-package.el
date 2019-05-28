@@ -40,6 +40,9 @@
      ;; yaml
      yaml-mode
 
+     ;; vue
+     vue-mode
+
      ;; protobuf
      protobuf-mode
 

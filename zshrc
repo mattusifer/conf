@@ -103,6 +103,14 @@ function sshagent_init {
 
 alias sa="sshagent_init"
 
+alias l='lsd -l'
+alias ll='l'
+alias la='lsd -a'
+alias lla='lsd -la'
+alias lt='lsd --tree'
+
+alias please='sudo'
+
 #
 # Main prompt
 #
