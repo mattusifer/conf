@@ -65,33 +65,6 @@ Return the name of the subproject if true."
           (lambda ()
             (add-hook 'before-save-hook 'format-scala-buffer-with-saved-position nil t)))
 
-(defmacro make-coalescing (fn default-timeout) ()
-          (let* ((fn-name (intern (symbol-name fn)))
-                 (timer-sym (intern (format "coalescing-%s-timer-id" fn-name)))
-                 (timeout-var-sym (intern (format "coalescing-%s-timeout" fn-name)))
-                 (cls-fn (intern (format "coalescing-%s" fn-name)))
-                 (timer-docstring (format "Timeout to invoke %s" fn-name))
-                 (cls-fn-docstring (format "Execute %s when idle" fn-name)))
-            `(progn
-               (defcustom ,timeout-var-sym ,default-timeout ,timer-docstring :type 'number)
-               (defvar ,timer-sym nil)
-               (defun ,cls-fn (&rest args) ,cls-fn-docstring
-                      (-some->> ,timer-sym (cancel-timer))
-                      (setq ,timer-sym
-                            (run-with-idle-timer ,timeout-var-sym nil
-                                                 ;; don't know if we have to
-                                                 ;; pass around args in this
-                                                 ;; clumsy manner
-                                                 (lambda (args)
-                                                   (apply #',fn args)
-                                                   (setq ,timer-sym nil)) args))))))
-
-;; defines a function named coalescing-some-function that (I hope) accepts the
-;; same arguments as some-function and executes after 0.2 seconds of idle time
-;; (user-configurable via coalescing-some-function-timeout)
-;; Also, something like this might already exist in Emacs's standard library?
-(make-coalescing lsp-on-change 0.2)
-
 (add-hook 'scala-mode-hook 'lsp)
 (add-hook 'scala-mode-hook 'company-mode)
 (setq lsp-prefer-flymake nil)

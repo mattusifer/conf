@@ -132,7 +132,8 @@
      company-lsp
      lsp-scala
      lsp-mode
-     lsp-ui
+;; way too slow!
+;;     lsp-ui
 
      ;; markdown
      markdown-mode
