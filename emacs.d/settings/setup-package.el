@@ -43,6 +43,9 @@
      ;; vue
      vue-mode
 
+     ;; elm
+     elm-mode
+
      ;; protobuf
      protobuf-mode
 
