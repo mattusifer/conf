@@ -187,8 +187,6 @@
 ;; highlight current line
 (global-hl-line-mode 1)
 
-(global-flycheck-mode)
-
 ;; swap super and meta on OSX
 (setq mac-option-modifier 'super)
 (setq mac-command-modifier 'meta)

@@ -10,10 +10,10 @@ else
   export JDK_HOME=/usr/lib/jvm/java-8-openjdk
 fi
 
-# spark setup
+# spark
 # note: requires py4j
 #   $ pip install py4j
-export SPARK_HOME=~/src/apache/spark-2.2.1-bin-hadoop2.7
+export SPARK_HOME=~/src/apache/spark-2.4.3-bin-hadoop2.7
 export PYTHONPATH=$SPARK_HOME/python/build
 export PYTHONPATH=$SPARK_HOME/python/:$PYTHONPATH
 export PYTHONPATH=$SPARK_HOME/python/lib:$PYTHONPATH
@@ -26,6 +26,9 @@ export PATH=$PATH:$GOPATH/bin
 # rust
 export PATH=$PATH:~/.cargo/bin
 export RUST_BACKTRACE=1
+
+# node
+export PATH=$PATH:/usr/local/Cellar/node/11.7.0/bin
 
 # settings specific to my work computer (mac)
 if [ $(uname) = "Darwin" ]

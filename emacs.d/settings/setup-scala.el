@@ -1,5 +1,4 @@
 (require 'repl-utils)
-(require 'company-lsp)
 (require 'lsp-scala)
 
 (defun get-subproject (path)
@@ -67,8 +66,5 @@ Return the name of the subproject if true."
 
 (add-hook 'scala-mode-hook 'lsp)
 (add-hook 'scala-mode-hook 'company-mode)
-(setq lsp-prefer-flymake nil)
-
-(push 'company-lsp company-backends)
 
 (provide 'setup-scala)

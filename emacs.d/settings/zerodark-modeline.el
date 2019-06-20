@@ -102,32 +102,6 @@
                                                              'face (when (zerodark--active-window-p)
                                                                      (zerodark-git-face))))))))
 
-(defun zerodark-modeline-flycheck-status ()
-  "Return the status of flycheck to be displayed in the mode-line."
-  (when flycheck-mode
-    (let* ((text (pcase flycheck-last-status-change
-                   (`finished (if flycheck-current-errors
-                                  (let ((count (let-alist (flycheck-count-errors flycheck-current-errors)
-                                                 (+ (or .warning 0) (or .error 0)))))
-                                    (propertize (format "✖ %s Issue%s" count (if (eq 1 count) "" "s"))
-                                                'face (zerodark-face-when-active 'zerodark-error-face)))
-                                (propertize "✔ No Issues"
-                                            'face (zerodark-face-when-active 'zerodark-ok-face))))
-                   (`running     (propertize "⟲ Running"
-                                             'face (zerodark-face-when-active 'zerodark-warning-face)))
-                   (`no-checker  (propertize "⚠ No Checker"
-                                             'face (zerodark-face-when-active 'zerodark-warning-face)))
-                   (`not-checked "✖ Disabled")
-                   (`errored     (propertize "⚠ Error"
-                                             'face (zerodark-face-when-active 'zerodark-error-face)))
-                   (`interrupted (propertize "⛔ Interrupted"
-                                             'face (zerodark-face-when-active 'zerodark-error-face)))
-                   (`suspicious  ""))))
-      (propertize (concat text "  ")
-                  'help-echo "Show Flycheck Errors"
-                  'local-map (make-mode-line-mouse-map
-                              'mouse-1 #'flycheck-list-errors)))))
-
 (defun true-color-p ()
   "Return non-nil on displays that support 256 colors."
   (or
@@ -156,11 +130,6 @@
 The result is cached for one second to avoid hiccups."
   (funcall zerodark--git-face-cached))
 
-(defun zerodark-face-when-active (face)
-  "Return FACE if the window is active."
-  (when (zerodark--active-window-p)
-    face))
-
 ;; So the mode-line can keep track of "the current window"
 (defvar zerodark-selected-window nil
   "Selected window.")
@@ -182,44 +151,9 @@ The result is cached for one second to avoid hiccups."
 (advice-add 'select-frame  :after #'zerodark--set-selected-window)
 
 (setq-default display-time-format "%F %H:%M")
-(defun simple-mode-line-render (left right)
-  "Return a string of `window-width' length containing LEFT, and RIGHT
- aligned respectively."
-  (let* ((available-width (- (window-width) (length left) 2)))
-    (format (format " %%s %%%ds " available-width) left right)))
-
-;; (setq-default mode-line-format
-;;               '((:eval (simple-mode-line-render
-;;                         (format-mode-line `(
-;;                                             "%e"
-;;                                             mu/mode-line-ro
-;;                                             ;; ,mode-line-mule-info
-;;                                             ,mode-line-client
-;;                                             ,mu/mode-line-modified
-;;                                             ,mode-line-frame-identification
-;;                                             " %[" mode-line-buffer-identification "%] %2 %m %2 "
-;;                                             "%l/" ,(number-to-string (line-number-at-pos (point-max)))
-;;                                             " "
-;;                                             ,mu/mode-line-vc
-;;                                             ))
-;;                         (format-mode-line '(mode-line-misc-info
-;;                                             display-time-string
-;;                                             mode-line-end-spaces))))))
-
-(defun zerodark-line-number ()
-  "Setup the line numbering"
-  (interactive)
-  (if (member 'linum-mode (mapcar #'car minor-mode-alist))
-      (concat (number-to-string (line-number-at-pos))
-              "/" (number-to-string (line-number-at-pos (point-max))))
-    ""))
-
-(line-number-at-pos)
 
 (defun zerodark-setup-modeline-format ()
-  "Setup the mode-line format for zerodark."
   (interactive)
-  (require 'flycheck)
   (require 'magit)
   (let ((class '((class color) (min-colors 89)))
         (light (if (true-color-p) "#ccd4e3" "#d7d7d7"))
@@ -256,7 +190,6 @@ The result is cached for one second to avoid hiccups."
                        zerodark-modeline-vc
                      "")
                   "  "
-                  (:eval (zerodark-modeline-flycheck-status))
                   mode-line-modes mode-line-misc-info mode-line-end-spaces
                   )))
 

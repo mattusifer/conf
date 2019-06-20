@@ -24,7 +24,6 @@
 
 (add-hook 'python-mode-hook 'highlight-indentation-mode)
 (add-hook 'python-mode-hook 'elpy-mode)
-(add-hook 'python-mode-hook 'flycheck-mode)
 
 ;; (defun python-setup-current-project ()
 ;;   (with-temp-buffer

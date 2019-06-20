@@ -27,4 +27,7 @@
 ;; ember
 (add-to-list 'auto-mode-alist '("\\.hbs\\'" . html-mode))
 
+;; elm
+(setq elm-format-on-save t)
+
 (provide 'setup-javascript)
