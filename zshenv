@@ -28,7 +28,7 @@ export PATH=$PATH:~/.cargo/bin
 export RUST_BACKTRACE=1
 
 # node
-export PATH=$PATH:/usr/local/Cellar/node/11.7.0/bin
+export PATH=$PATH:/usr/local/Cellar/node/12.4.0/bin
 
 # settings specific to my work computer (mac)
 if [ $(uname) = "Darwin" ]
