@@ -34,6 +34,10 @@
      dumb-jump
      god-mode
 
+     ;; language server support
+     lsp-mode
+     company-lsp
+
      ;; docker
      dockerfile-mode
 
@@ -91,9 +95,7 @@
      groovy-mode
 
      ;; java
-     eclim
-     ac-emacs-eclim
-     company-emacs-eclim
+     lsp-java
 
      ;; sql
      sql-indent
@@ -125,9 +127,7 @@
 
      ;; scala
      scala-mode
-     company-lsp
      lsp-scala
-     lsp-mode
 
      ;; markdown
      markdown-mode
@@ -150,6 +150,8 @@
      zenburn-theme
      nord-theme
      dracula-theme
+     color-theme-sanityinc-solarized
+     color-theme-sanityinc-tomorrow
      )))
 
 ;; install any packages that haven't been installed yet

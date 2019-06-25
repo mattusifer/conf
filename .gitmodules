@@ -1,3 +1,0 @@
-[submodule "emacs.d/vendor/themes/tomorrow-theme"]
-	path = emacs.d/vendor/themes/tomorrow-theme
-	url = git@github.com:chriskempson/tomorrow-theme.git
