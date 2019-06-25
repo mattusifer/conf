@@ -40,12 +40,6 @@
      ;; yaml
      yaml-mode
 
-     ;; vue
-     vue-mode
-
-     ;; elm
-     elm-mode
-
      ;; protobuf
      protobuf-mode
 
@@ -93,9 +87,6 @@
      toml-mode
      cargo
 
-     ;; coffeescript
-     coffee-mode
-
      ;; groovy
      groovy-mode
 
@@ -124,6 +115,10 @@
 
      ;; javascript
      js2-mode
+     elm-mode
+     coffee-mode
+     vue-mode
+     tide
 
      ;; scss
      scss-mode
@@ -133,8 +128,6 @@
      company-lsp
      lsp-scala
      lsp-mode
-;; way too slow!
-;;     lsp-ui
 
      ;; markdown
      markdown-mode

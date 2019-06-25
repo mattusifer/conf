@@ -9,7 +9,7 @@
 
 (setq mu/current-theme
       (if (eq system-type 'darwin)
-          'tomorrow-night-bright 'doom-one))
+          'tomorrow-night-bright 'solarized-light))
 
 ;; apply theme to new frames
 (defun apply-color-theme (frame)
@@ -66,8 +66,8 @@
 (setq-default frame-title-format "%b")
 
 ;; mode line format
-(require 'zerodark-modeline)
-(zerodark-setup-modeline-format)
+;; (require 'zerodark-modeline)
+;; (zerodark-setup-modeline-format)
 
 ;; diminish modes in the modeline
 (defun modeline-set-lighter (minor-mode lighter)
