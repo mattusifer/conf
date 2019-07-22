@@ -9,4 +9,11 @@
 ;; notify appts
 (org-agenda-to-appt)
 
+;; load commands for code blocks
+(org-babel-do-load-languages 'org-babel-load-languages
+    '(
+        (shell . t)
+    )
+)
+
 (provide 'setup-org)

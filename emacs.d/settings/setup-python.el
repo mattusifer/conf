@@ -1,12 +1,14 @@
 (elpy-enable)
 (require 'python-pytest)
 
-;; this is not backwards compatible to ipython versions <5!
-(setq python-shell-interpreter "ipython"
-      python-shell-interpreter-args "--simple-prompt")
+(setq elpy-rpc-python-command "python3")
 
-(setq-default py-shell-name "ipython")
-(setq-default py-which-bufname "ipython")
+(setq python-shell-interpreter "ipython"
+      python-shell-interpreter-args "--simple-prompt -c exec('__import__(\\'readline\\')') -i"
+      python-shell-prompt-detect-failure-warning nil)
+
+(setq-default py-shell-name "ipython3")
+(setq-default py-which-bufname "ipython3")
 (setq py-python-command-args
       '("--gui=wx" "--pylab=wx" "-colors" "Linux"))
 (setq python-shell-prompt-detect-failure-warning nil)
@@ -24,6 +26,19 @@
 
 (add-hook 'python-mode-hook 'highlight-indentation-mode)
 (add-hook 'python-mode-hook 'elpy-mode)
+
+;; format buffer on save
+(defun format-python-buffer-with-saved-position
+    ()
+  (let ((w-start (window-start)))
+    (elpy-format-code)
+    (set-window-start (selected-window) w-start)))
+(add-hook 'python-mode-hook
+          (lambda ()
+            (local-set-key (kbd "C-c f") #'format-python-buffer-with-saved-position)))
+(add-hook 'python-mode-hook
+          (lambda ()
+            (add-hook 'before-save-hook 'format-python-buffer-with-saved-position nil t)))
 
 ;; (defun python-setup-current-project ()
 ;;   (with-temp-buffer
