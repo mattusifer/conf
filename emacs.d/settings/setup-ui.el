@@ -9,7 +9,7 @@
 
 (setq mu/current-theme
       (if (eq system-type 'darwin)
-          'sanityinc-tomorrow-eighties 'solarized-dark))
+          'sanityinc-tomorrow-eighties 'doom-tomorrow-night))
 
 ;; apply theme to new frames
 (defun apply-color-theme (frame)
