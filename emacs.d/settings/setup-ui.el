@@ -9,14 +9,7 @@
 
 (setq mu/current-theme
       (if (eq system-type 'darwin)
-          'sanityinc-tomorrow-eighties 'doom-tomorrow-night))
-
-;; apply theme to new frames
-(defun apply-color-theme (frame)
-  (select-frame frame)
-  (load-theme mu/current-theme t))
-(setq color-theme-is-global nil)
-(add-hook 'after-make-frame-functions 'apply-color-theme)
+          'doom-tomorrow-night 'doom-tomorrow-night))
 
 ;; load theme in current window
 (load-theme mu/current-theme t)

@@ -40,6 +40,10 @@
           (lambda ()
             (add-hook 'before-save-hook 'format-python-buffer-with-saved-position nil t)))
 
+;; proper syntax highlighting for Pipfile/Pipfile.lock
+(add-to-list 'auto-mode-alist '("Pipfile\\'" . toml-mode))
+(add-to-list 'auto-mode-alist '("Pipfile\\.lock\\'" . js2-mode))
+
 ;; (defun python-setup-current-project ()
 ;;   (with-temp-buffer
 ;;     (let ((python-set-proj-dir-code
