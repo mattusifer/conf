@@ -58,6 +58,8 @@
 (require 'setup-rust)
 (require 'setup-python)
 
+(require 'setup-blackfynn)
+
 ;; Keep custom settings out of init.el
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (load custom-file)
