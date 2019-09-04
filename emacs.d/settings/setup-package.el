@@ -66,6 +66,7 @@
 
      ;; html
      tagedit
+     web-mode
 
      ;; terraform
      terraform-mode
@@ -121,6 +122,7 @@
      coffee-mode
      vue-mode
      tide
+     rjsx-mode
 
      ;; scss
      scss-mode

@@ -1,5 +1,6 @@
 ;; javascript / html
-(add-to-list 'auto-mode-alist '("\\.js$" . js-mode))
+(add-to-list 'auto-mode-alist '("components\\/.*\\.js\\'" . rjsx-mode))
+(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
 (add-hook 'js-mode-hook 'subword-mode)
 (add-hook 'js-mode-hook 'js2-minor-mode)
 (add-hook 'html-mode-hook 'subword-mode)
@@ -29,6 +30,9 @@
 ;; elm
 (setq elm-format-on-save t)
 
+;; svelte
+(add-to-list 'auto-mode-alist '("\\.svelte\\'" . web-mode))
+
 ;; typescript
 (defun setup-tide-mode ()
   (interactive)
@@ -49,5 +53,6 @@
 (add-hook 'before-save-hook 'tide-format-before-save)
 
 (add-hook 'typescript-mode-hook #'setup-tide-mode)
+(add-hook 'rjsx-mode-hook #'setup-tide-mode)
 
 (provide 'setup-javascript)
