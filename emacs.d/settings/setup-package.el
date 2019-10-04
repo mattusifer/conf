@@ -32,7 +32,10 @@
      all-the-icons
      iy-go-to-char
      dumb-jump
-     god-mode
+
+     ;; EVIL
+     evil
+     evil-collection
 
      ;; language server support
      lsp-mode
