@@ -202,9 +202,6 @@ bindsym F1 exec xbacklight -dec 20 # decrease screen brightness
 # turn off laptop when external monitor is connected
 exec_always ((xrandr | grep -i '^DP1 connected') && xrandr --output eDP1 --off --output DP1 --auto --scale 1.25x1.25) || xrandr --output eDP1 --auto --scale 0.5x0.5
 
-# pretty good scaling between the two
-# exec_always xrandr --output eDP1 --scale 0.5x0.5 --output DP1 --auto --left-of eDP1
-
 ##################################################
 # remappings
 # both shift keys toggle caps lock
@@ -233,6 +230,10 @@ bindsym --release Print exec scrot -m "~/Pictures/Screenshots/%s_%H%M_%d.%m.%Y_$
 # desktop bg
 exec (sleep 2 && feh --bg-scale ~/Pictures/black.jpg &)
 
-exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+bar {
+    status_command i3status
+}
+
+# exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 ## END CUSTOMIZATIONS
