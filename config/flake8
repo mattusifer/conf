@@ -45,5 +45,8 @@ ignore =
        F403,
        F405,
 
+       # internal mypy errors (flake8-mypy is basically broken)
+       T499,
+
        # line break before binary operator
        W503

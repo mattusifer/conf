@@ -25,6 +25,9 @@ emacs:
 	rm -rf ~/.emacs.d
 	ln -s $(shell pwd)/emacs.d/ ~/.emacs.d
 
+vim:
+	ln -si $(shell pwd)/vimrc ~/.vimrc
+
 git:
 	git config --global user.name "Matt Usifer"
 	git config --global user.email "mattusifer@gmail.com"
@@ -68,4 +71,4 @@ mbsync:
 build-lein:
 	ln -s $(shell pwd)/lein ~/.lein
 
-all: arch-deps git scala rust python zsh tmux emacs lein
+all: arch-deps git scala rust python zsh tmux emacs lein vim

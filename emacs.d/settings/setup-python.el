@@ -16,6 +16,8 @@
 (setq python-shell-completion-native nil)
 (setq python-shell-completion-native-enable nil)
 
+(setq elpy-syntax-check-command "flake8 --ignore=T499")
+
 (setq py-shell-switch-buffers-on-execute-p t)
 (setq elpy-interactive-python-command t)
 (setq py-switch-buffers-on-execute-p t)
@@ -27,11 +29,15 @@
 (add-hook 'python-mode-hook 'highlight-indentation-mode)
 (add-hook 'python-mode-hook 'elpy-mode)
 
+;; company completion
+(push 'elpy-company-backend company-backends)
+(add-hook 'elpy-mode-hook 'company-mode)
+
 ;; format buffer on save
 (defun format-python-buffer-with-saved-position
     ()
   (let ((w-start (window-start)))
-    (elpy-format-code)
+    (elpy-black-fix-code)
     (set-window-start (selected-window) w-start)))
 (add-hook 'python-mode-hook
           (lambda ()

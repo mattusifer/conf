@@ -12,7 +12,8 @@
 ;; load commands for code blocks
 (org-babel-do-load-languages 'org-babel-load-languages
     '(
-        (shell . t)
+      (shell . t)
+      (sql . t)
     )
 )
 

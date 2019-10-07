@@ -20,15 +20,50 @@
 ;; font
 (add-to-list 'default-frame-alist '(font . "Hack"))
 (set-face-attribute 'default nil
-            :family "Hack")
+                    :family "Hack")
+
+;; ligatures
+(let ((alist '((33 . ".\\(?:\\(?:==\\|!!\\)\\|[!=]\\)")
+               (35 . ".\\(?:###\\|##\\|_(\\|[#(?[_{]\\)")
+               (36 . ".\\(?:>\\)")
+               (37 . ".\\(?:\\(?:%%\\)\\|%\\)")
+               (38 . ".\\(?:\\(?:&&\\)\\|&\\)")
+               (42 . ".\\(?:\\(?:\\*\\*/\\)\\|\\(?:\\*[*/]\\)\\|[*/>]\\)")
+               (43 . ".\\(?:\\(?:\\+\\+\\)\\|[+>]\\)")
+               (45 . ".\\(?:\\(?:-[>-]\\|<<\\|>>\\)\\|[<>}~-]\\)")
+               (46 . ".\\(?:\\(?:\\.[.<]\\)\\|[.=-]\\)")
+               (47 . ".\\(?:\\(?:\\*\\*\\|//\\|==\\)\\|[*/=>]\\)")
+               (48 . ".\\(?:x[a-zA-Z]\\)")
+               (58 . ".\\(?:::\\|[:=]\\)")
+               (59 . ".\\(?:;;\\|;\\)")
+               (60 . ".\\(?:\\(?:!--\\)\\|\\(?:~~\\|->\\|\\$>\\|\\*>\\|\\+>\\|--\\|<[<=-]\\|=[<=>]\\||>\\)\\|[*$+~/<=>|-]\\)")
+               (61 . ".\\(?:\\(?:/=\\|:=\\|<<\\|=[=>]\\|>>\\)\\|[<=>~]\\)")
+               (62 . ".\\(?:\\(?:=>\\|>[=>-]\\)\\|[=>-]\\)")
+               (63 . ".\\(?:\\(\\?\\?\\)\\|[:=?]\\)")
+               (91 . ".\\(?:]\\)")
+               (92 . ".\\(?:\\(?:\\\\\\\\\\)\\|\\\\\\)")
+               (94 . ".\\(?:=\\)")
+               (119 . ".\\(?:ww\\)")
+               (123 . ".\\(?:-\\)")
+               (124 . ".\\(?:\\(?:|[=|]\\)\\|[=>|]\\)")
+               (126 . ".\\(?:~>\\|~~\\|[>=@~-]\\)")
+               )
+             ))
+ (dolist (char-regexp alist)
+   (set-char-table-range composition-function-table (car char-regexp)
+                         `([,(cdr char-regexp) 0 font-shape-gstring]))))
+
+;; Ligatures don't work everywhere...
+;; https://github.com/tonsky/FiraCode/issues/158
+(add-hook 'python-mode-hook (lambda () (setq-local auto-composition-mode nil)))
 
 ;; font size
 (if (eq system-type 'darwin)
 
-    ; OS X
+                                        ; OS X
     (set-face-attribute 'default nil :height 130)
 
-  ; linux
+                                        ; linux
   (set-face-attribute 'default nil :height 105))
 
 ;; various settings
@@ -99,13 +134,6 @@
 (setq ido-auto-merge-work-directories-length -1)
 (setq ido-use-virtual-buffers t)
 (ido-ubiquitous-mode 1)
-
-(defadvice ido-find-file (after find-file-sudo activate)
-  "Attempt to open file as root if we don't have write permissions."
-  (unless (and (not (eq major-mode 'dired-mode))
-               buffer-file-name
-               (file-writable-p buffer-file-name))
-    (find-alternate-file (concat "/sudo:root@localhost:" buffer-file-name))))
 
 ;; Show a list of buffers
 (global-set-key (kbd "C-x C-b") 'ibuffer)

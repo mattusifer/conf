@@ -111,6 +111,9 @@ alias lt='lsd --tree'
 
 alias please='sudo'
 
+# Fix psycopg2 compilation errors on osx
+export LDFLAGS=$(pg_config --ldflags)
+
 #
 # Main prompt
 #
