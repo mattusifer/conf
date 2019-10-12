@@ -129,7 +129,6 @@
 
      ;; scala
      scala-mode
-     lsp-scala
 
      ;; markdown
      markdown-mode

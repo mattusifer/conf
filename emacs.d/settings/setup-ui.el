@@ -56,6 +56,7 @@
 ;; Ligatures don't work everywhere...
 ;; https://github.com/tonsky/FiraCode/issues/158
 (add-hook 'python-mode-hook (lambda () (setq-local auto-composition-mode nil)))
+(add-hook 'java-mode-hook (lambda () (setq-local auto-composition-mode nil)))
 
 ;; font size
 (if (eq system-type 'darwin)

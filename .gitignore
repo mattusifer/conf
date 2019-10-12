@@ -9,6 +9,9 @@ emacs.d/tramp
 emacs.d/url
 emacs.d/vendor
 emacs.d/workspace
+emacs.d/projectile.cache
+emacs.d/ido.last
+emacs.d/magithub
 
 sbt/0.13/plugins/target
 sbt/0.13/plugins/project
@@ -17,6 +20,7 @@ sbt/1.0/plugins/project
 sbt/1.0/target
 sbt/1.0/project
 sbt/1.0/zinc
+sbt/preloaded
 sbt/boot
 
 config/chromium/

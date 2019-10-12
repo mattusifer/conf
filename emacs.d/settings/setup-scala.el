@@ -1,5 +1,4 @@
 (require 'repl-utils)
-(require 'lsp-scala)
 
 (defun get-subproject (path)
   "Confirm that the file in PATH is within a subproject.
