@@ -141,6 +141,3 @@ elif [ -z $EMACS ] && [ -z $TMUX ]
 then
   tmux attach || tmux
 fi
-
-export NVM_DIR="/home/matt/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm

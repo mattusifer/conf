@@ -2,6 +2,7 @@
 (require 'python-pytest)
 
 (setq elpy-rpc-python-command "python3")
+(setq elpy-rpc-virtualenv-path 'current)
 
 (setq python-shell-interpreter "ipython"
       python-shell-interpreter-args "--simple-prompt -c exec('__import__(\\'readline\\')') -i"
