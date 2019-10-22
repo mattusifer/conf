@@ -388,6 +388,7 @@
 ;; s3ed
 (require 's3ed)
 (global-set-key (kbd "C-c s f") (lambda () (interactive) (s3ed-find-file)))
+(global-set-key (kbd "C-c s s") (lambda () (interactive) (s3ed-save-file)))
 ;; (s3ed-mode)
 
 (provide 'setup-ui)

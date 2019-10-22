@@ -129,6 +129,7 @@
 
      ;; scala
      scala-mode
+     sbt-mode
 
      ;; markdown
      markdown-mode
