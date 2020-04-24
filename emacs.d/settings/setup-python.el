@@ -1,15 +1,15 @@
 (elpy-enable)
 (require 'python-pytest)
 
-(setq elpy-rpc-python-command "python3")
+(setq elpy-rpc-python-command "python")
 (setq elpy-rpc-virtualenv-path 'current)
 
 (setq python-shell-interpreter "ipython"
       python-shell-interpreter-args "--simple-prompt -c exec('__import__(\\'readline\\')') -i"
       python-shell-prompt-detect-failure-warning nil)
 
-(setq-default py-shell-name "ipython3")
-(setq-default py-which-bufname "ipython3")
+(setq-default py-shell-name "ipython")
+(setq-default py-which-bufname "ipython")
 (setq py-python-command-args
       '("--gui=wx" "--pylab=wx" "-colors" "Linux"))
 (setq python-shell-prompt-detect-failure-warning nil)
@@ -25,7 +25,10 @@
 (setq py-split-windows-on-execute-p nil)
 (setq py-smart-indentation t)
 
-(setq elpy-shell-echo-input nil)
+(setq elpy-shell-echo-input nil
+      elpy-shell-echo-output nil
+      elpy-shell-starting-directory 'project-root
+      )
 
 (add-hook 'python-mode-hook 'highlight-indentation-mode)
 (add-hook 'python-mode-hook 'elpy-mode)
@@ -50,21 +53,5 @@
 ;; proper syntax highlighting for Pipfile/Pipfile.lock
 (add-to-list 'auto-mode-alist '("Pipfile\\'" . toml-mode))
 (add-to-list 'auto-mode-alist '("Pipfile\\.lock\\'" . js2-mode))
-
-;; (defun python-setup-current-project ()
-;;   (with-temp-buffer
-;;     (let ((python-set-proj-dir-code
-;;            "
-;; import os
-;; home = os.path.expanduser('~')
-;; while os.path.isfile('__init__.py') and (os.getcwd() != home): os.chdir('..')
-;; del os
-
-;; "))
-;;       (insert python-set-proj-dir-code)
-;;       (elpy-shell-send-region-or-buffer)
-;;       (message "Setup project path"))))
-
-;; (add-hook 'inferior-python-mode-hook 'python-setup-current-project)
 
 (provide 'setup-python)
