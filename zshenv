@@ -1,15 +1,5 @@
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-# java
-if [ $(uname) = "Darwin" ]
-then
-  export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_121.jdk/Contents/Home/jre
-  export JDK_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_121.jdk/Contents/Home
-else
-  export JAVA_HOME=/usr/lib/jvm/java-8-openjdk/jre
-  export JDK_HOME=/usr/lib/jvm/java-8-openjdk
-fi
-
 # spark
 # note: requires py4j
 #   $ pip install py4j

@@ -114,6 +114,10 @@ alias please='sudo'
 # Fix psycopg2 compilation errors on osx
 export LDFLAGS=$(pg_config --ldflags)
 
+# jenv for java environment handling
+export PATH=$HOME/.jenv/bin:$PATH
+eval "$(jenv init -)"
+
 #
 # Main prompt
 #

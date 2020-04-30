@@ -1,8 +1,11 @@
 (require 'repl-utils)
 (require 'sbt-mode)
 
+;;For sbt 1.3.x (setq sbt:program-options '("-Dsbt.supershell=false"))
+
 (setq sbt:program-options '("-Djline.terminal=false")
-      sbt:prefer-nested-projects t)
+      sbt:prefer-nested-projects t
+      sbt:scroll-to-bottom-on-output nil)
 
 (defun get-subproject (path)
   "Confirm that the file in PATH is within a subproject.
