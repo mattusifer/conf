@@ -49,10 +49,14 @@
 ;; aligns annotation to the right hand side
 (setq company-tooltip-align-annotations t)
 
-;; formats the buffer before saving
-(add-hook 'before-save-hook 'tide-format-before-save)
-
 (add-hook 'typescript-mode-hook #'setup-tide-mode)
 (add-hook 'rjsx-mode-hook #'setup-tide-mode)
+
+(add-hook 'typescript-mode-hook
+          (lambda ()
+            (add-hook 'before-save-hook 'tide-format-before-save nil t)))
+(add-hook 'rsjx-mode-hook
+          (lambda ()
+            (add-hook 'before-save-hook 'tide-format-before-save nil t)))
 
 (provide 'setup-javascript)

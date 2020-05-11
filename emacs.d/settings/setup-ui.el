@@ -17,6 +17,13 @@
 ;;;;;;;;;;
 ;; ui
 
+;; font size
+(if (eq system-type 'darwin)
+                                        ; OS X
+    (set-face-attribute 'default nil :height 130)
+                                        ; linux
+  (set-face-attribute 'default nil :height 105))
+
 ;; font
 (add-to-list 'default-frame-alist '(font . "Hack"))
 (set-face-attribute 'default nil
@@ -57,15 +64,6 @@
 ;; https://github.com/tonsky/FiraCode/issues/158
 (add-hook 'python-mode-hook (lambda () (setq-local auto-composition-mode nil)))
 (add-hook 'java-mode-hook (lambda () (setq-local auto-composition-mode nil)))
-
-;; font size
-(if (eq system-type 'darwin)
-
-                                        ; OS X
-    (set-face-attribute 'default nil :height 130)
-
-                                        ; linux
-  (set-face-attribute 'default nil :height 105))
 
 ;; various settings
 (setq ;; killing/yanking interacts with the clipboard
@@ -130,10 +128,11 @@
 
 ;; ido
 (ido-mode t)
-(setq ido-enable-flex-matching t)
-(setq ido-use-filename-at-point nil)
-(setq ido-auto-merge-work-directories-length -1)
-(setq ido-use-virtual-buffers t)
+(setq ido-enable-flex-matching t
+      ido-use-filename-at-point nil
+      ido-auto-merge-work-directories-length -1
+      ido-use-virtual-buffers t
+      ido-case-fold t)
 (ido-ubiquitous-mode 1)
 
 ;; Show a list of buffers

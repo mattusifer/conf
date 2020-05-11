@@ -9,8 +9,6 @@
 
 ;; todo: setup SSH agent
 
-(set-face-attribute 'comint-highlight-prompt nil
-                    :inherit nil)
 (setq comint-process-echoes t)
 
 (defun create-shell-buffer ()

@@ -1,5 +1,11 @@
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 
+# jenv for java environment handling
+export PATH=$HOME/.jenv/bin:$PATH
+
+# Fix psycopg2 compilation errors on osx
+export LDFLAGS=$(pg_config --ldflags)
+
 # spark
 # note: requires py4j
 #   $ pip install py4j
@@ -38,3 +44,4 @@ source /usr/local/bin/virtualenvwrapper.sh 2> /dev/null       \
 
 # export AWS_ACCESS_KEY_ID=$(grep aws_access_key_id ~/.aws/credentials | awk '{print $3}' || echo '')
 # export AWS_SECRET_ACCESS_KEY=$(grep aws_secret_access_key ~/.aws/credentials | awk '{print $3}' || echo '')
+

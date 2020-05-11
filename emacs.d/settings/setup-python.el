@@ -1,4 +1,6 @@
+(require 'elpy)
 (elpy-enable)
+
 (require 'python-pytest)
 
 (setq elpy-rpc-python-command "python")

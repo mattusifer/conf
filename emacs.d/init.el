@@ -26,10 +26,12 @@
 ;; configure
 (require 'setup-package)
 
-(require 'setup-ui)
-(require 'setup-purposes)
+; this was getting a little annoying
+;(require 'setup-purposes)
 
 (require 'setup-shell)
+
+(require 'setup-ui)
 
 ;; I wrote these integrations when working in tech support to allow
 ;; emacs to communicate directly with Zendesk for ticket management
