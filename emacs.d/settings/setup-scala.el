@@ -7,6 +7,8 @@
       sbt:prefer-nested-projects t
       sbt:scroll-to-bottom-on-output nil)
 
+(setq lsp-metals-bloop-version "1.3.5")
+
 (defun get-subproject (path)
   "Confirm that the file in PATH is within a subproject.
 Return the name of the subproject if true."
