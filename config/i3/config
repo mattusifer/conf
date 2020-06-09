@@ -199,8 +199,8 @@ bindsym F10 exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
 bindsym F2 exec xbacklight -inc 20 # increase screen brightness
 bindsym F1 exec xbacklight -dec 20 # decrease screen brightness
 
-# turn off laptop when external monitor is connected
-exec_always ((xrandr | grep -i '^DP1 connected') && xrandr --output eDP1 --off --output DP1 --auto --scale 1.25x1.25) || xrandr --output eDP1 --auto --scale 0.5x0.5
+# double windows
+exec_always xrandr --output DP1 --primary --mode 1920x1080 --pos 1920x0 --output eDP1 --mode 1920x1080 --pos 0 || xrandr --output eDP1 --auto --scale 0.5x0.5
 
 ##################################################
 # remappings
