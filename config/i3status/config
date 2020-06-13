@@ -3,14 +3,14 @@ general {
         interval = 5
 }
 
-order += "volume master"
 order += "cpu_usage"
+order += "memory"
 order += "disk /"
 order += "disk /home"
 order += "wireless _first_"
 order += "ethernet _first_"
+order += "volume master"
 order += "battery all"
-order += "memory"
 order += "tztime local"
 
 volume master {
@@ -22,12 +22,12 @@ volume master {
 }
 
 cpu_usage {
-        format= "CPU %usage <%cpu0 %cpu1 %cpu2 %cpu3>"
+        format= "CPU %usage"
         max_threshold= 75
 }
 
 wireless _first_ {
-        format_up = "W (%quality at %essid, %bitrate) %ip"
+        format_up = "%essid %quality %bitrate (%ip)"
         format_down = ""
 }
 

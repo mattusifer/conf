@@ -49,10 +49,10 @@ python:
 zsh:
 	chsh -s $(shell which zsh) || echo "Could not change the shell type to ZSH."
 
-	git clone https://github.com/zsh-users/zsh-autosuggestions $${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions || true
+	mkdir -p ~/.zsh
+	git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
 
 	rm -rf ~/.zshrc ~/.zshenv
-	ln -si $(shell pwd)/zshcustomizations.zsh $${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/customizations.zsh
 	ln -si $(shell pwd)/zshrc ~/.zshrc
 	ln -si $(shell pwd)/zshenv ~/.zshenv
 
