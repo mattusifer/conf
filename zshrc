@@ -9,7 +9,10 @@ alias la='lsd -a'
 alias lla='lsd -la'
 alias lt='lsd --tree'
 
-source <(jenv init -)
+# java version management
+# (rehash in the background to speed up load time)
+source <(jenv init - --no-rehash)
+(jenv rehash &) 2> /dev/null
 
 # Autosuggestions
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
