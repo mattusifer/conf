@@ -18,6 +18,14 @@ source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 bindkey 'C-f' autosuggest-accept
 
+# Ensure virtualenvs are all in the same directory
+function mkvirtualenv() {
+  virtualenv_name=$1
+  shift
+
+  virtualenv $@ "$WORKON_HOME/$virtualenv_name"
+}
+
 # Main prompt
 PROMPT='%M %(?.%F{green}√.%F{red}?%?)%f %B%F{240}%2~%f%b %# '
 
