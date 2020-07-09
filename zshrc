@@ -9,6 +9,10 @@ alias la='lsd -a'
 alias lla='lsd -la'
 alias lt='lsd --tree'
 
+# kill word
+autoload -U select-word-style
+select-word-style bash
+
 # java version management
 # (rehash in the background to speed up load time)
 source <(jenv init - --no-rehash)
@@ -30,7 +34,7 @@ function mkvirtualenv() {
 }
 
 # Main prompt
-PROMPT='%M %(?.%F{green}√.%F{red}?%?)%f %B%F{240}%2~%f%b %# '
+PROMPT='%(?.%F{green}√.%F{red}?%?)%f %B%F{240}%2~%f%b %# '
 
 if [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]
 then

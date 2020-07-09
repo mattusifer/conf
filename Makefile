@@ -28,6 +28,10 @@ emacs:
 vim:
 	ln -si $(shell pwd)/vimrc ~/.vimrc
 
+psql:
+	ln -si $(shell pwd)/psqlrc ~/.psqlrc
+
+
 git:
 	git config --global user.name "Matt Usifer"
 	git config --global user.email "mattusifer@gmail.com"
@@ -71,4 +75,4 @@ mbsync:
 build-lein:
 	ln -s $(shell pwd)/lein ~/.lein
 
-all: arch-deps git scala rust python zsh tmux emacs lein vim
+all: arch-deps git scala rust python zsh tmux emacs lein vim psql
