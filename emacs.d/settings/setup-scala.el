@@ -3,7 +3,7 @@
 
 ;;For sbt 1.3.x (setq sbt:program-options '("-Dsbt.supershell=false"))
 
-(setq sbt:program-options '("-Djline.terminal=false")
+(setq sbt:program-options '("-Djline.terminal=false" "-Dsbt.supershell=false")
       sbt:prefer-nested-projects t
       sbt:scroll-to-bottom-on-output nil)
 
