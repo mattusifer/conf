@@ -137,6 +137,7 @@
 
      ;; shell
      exec-path-from-shell
+     vterm
 
      ;; themes
      monokai-theme

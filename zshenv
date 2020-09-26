@@ -1,4 +1,5 @@
 export PATH=$HOME/bin:/usr/local/bin:$PATH
+export EDITOR=emacsclient
 
 # History
 HISTSIZE=1000000000

@@ -12,7 +12,7 @@
 (setq comint-process-echoes t)
 
 (defun create-shell-buffer ()
-  (ansi-term "/bin/zsh")
+  (vterm)
   (make-shell-buffer-current))
 
 (defun make-shell-buffer-current ()
@@ -51,21 +51,6 @@
     (switch-to-buffer (get-buffer current-terminal-buffer))))
 
 (global-set-key (kbd "C-c t t") 'create-or-show-small-terminal-eshell)
-
-;; paste stuff into ansi-term
-(eval-after-load "term"
-  '(define-key term-raw-map (kbd "C-c C-y") 'term-paste))
-
-;; exit out of ansi-term when the process exits
-(defun close-after-exit-term-exec-hook ()
-  (let* ((buff (current-buffer))
-         (proc (get-buffer-process buff)))
-    (set-process-sentinel
-     proc
-     `(lambda (process event)
-        (if (string= event "finished\n")
-            (kill-buffer ,buff))))))
-(add-hook 'term-exec-hook 'close-after-exit-term-exec-hook)
 
 ;; colorize compilation buffer
 (require 'ansi-color)

@@ -41,13 +41,30 @@ function mkvirtualenv() {
   virtualenv $@ "$WORKON_HOME/$virtualenv_name"
 }
 
+ # Shell only exists after the 10th consecutive Ctrl-d
+set -o ignoreeof
+
+# Setup vterm
+vterm_printf() {
+    if [ -n "$TMUX" ]; then
+        # Tell tmux to pass the escape sequences through
+        # (Source: http://permalink.gmane.org/gmane.comp.terminal-emulators.tmux.user/1324)
+        printf "\ePtmux;\e\e]%s\007\e\\" "$1"
+    elif [ "${TERM%%-*}" = "screen" ]; then
+        # GNU screen (screen, screen-256color, screen-256color-bce)
+        printf "\eP\e]%s\007\e\\" "$1"
+    else
+        printf "\e]%s\e\\" "$1"
+    fi
+}
+
 # Main prompt
 PROMPT='%(?.%F{green}√.%F{red}?%?)%f %B%F{240}%2~%f%b %# '
 
 if [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]
 then
   exec startx
-elif [ -z $EMACS ] && [ -z $TMUX ]
-then
-  tmux attach || tmux
+# elif [ -z $EMACS ] && [ -z $TMUX ]
+# then
+#   tmux attach || tmux
 fi
