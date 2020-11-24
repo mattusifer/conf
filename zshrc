@@ -13,6 +13,12 @@ alias lt='lsd --tree'
 autoload -U select-word-style
 select-word-style bash
 
+# python version management
+if command -v pyenv 1>/dev/null 2>&1
+then
+  eval "$(pyenv init -)"
+fi
+
 # java version management
 # (rehash in the background to speed up load time)
 source <(jenv init - --no-rehash)

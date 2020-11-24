@@ -17,17 +17,8 @@
 ;;;;;;;;;;
 ;; ui
 
-;; font size
-(if (eq system-type 'darwin)
-                                        ; OS X
-    (set-face-attribute 'default nil :height 130)
-                                        ; linux
-  (set-face-attribute 'default nil :height 105))
-
 ;; font
-(add-to-list 'default-frame-alist '(font . "Hack"))
-(set-face-attribute 'default nil
-                    :family "Hack")
+(set-frame-font "Hack 12")
 
 ;; ;; ligatures - these cause occasional freezes, use with caution
 ;; (let ((alist '((33 . ".\\(?:\\(?:==\\|!!\\)\\|[!=]\\)")
