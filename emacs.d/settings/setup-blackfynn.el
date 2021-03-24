@@ -20,7 +20,6 @@
         (set-process-sentinel proc #'set-aws-keys)
       (message "No process running."))))
 
-(global-set-key (kbd "C-c b p") (lambda () (interactive) (assume-admin-role "prod")))
 (global-set-key (kbd "C-c b n") (lambda () (interactive) (assume-admin-role "non-prod")))
 
 (provide 'setup-blackfynn)

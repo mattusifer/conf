@@ -3,8 +3,15 @@
 
 (require 'python-pytest)
 
-(setq elpy-rpc-python-command "python")
-(setq elpy-rpc-virtualenv-path 'current)
+(setq elpy-shell-echo-input nil
+      elpy-shell-echo-output nil
+      elpy-shell-starting-directory 'project-root
+      elpy-rpc-timeout 10
+      elpy-rpc-python-command "python"
+      elpy-rpc-virtualenv-path 'current
+      elpy-syntax-check-command "flake8 --ignore=T499"
+      elpy-interactive-python-command t
+      )
 
 (setq python-shell-interpreter "ipython"
       python-shell-interpreter-args "--simple-prompt -c exec('__import__(\\'readline\\')') -i"
@@ -19,18 +26,10 @@
 (setq python-shell-completion-native nil)
 (setq python-shell-completion-native-enable nil)
 
-(setq elpy-syntax-check-command "flake8 --ignore=T499")
-
 (setq py-shell-switch-buffers-on-execute-p t)
-(setq elpy-interactive-python-command t)
 (setq py-switch-buffers-on-execute-p t)
 (setq py-split-windows-on-execute-p nil)
 (setq py-smart-indentation t)
-
-(setq elpy-shell-echo-input nil
-      elpy-shell-echo-output nil
-      elpy-shell-starting-directory 'project-root
-      )
 
 (add-hook 'python-mode-hook 'highlight-indentation-mode)
 (add-hook 'python-mode-hook 'elpy-mode)

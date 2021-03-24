@@ -39,14 +39,6 @@ zle -N down-line-or-beginning-search
 bindkey "^[[A" up-line-or-beginning-search # Up
 bindkey "^[[B" down-line-or-beginning-search # Down
 
-# Ensure virtualenvs are all in the same directory
-function mkvirtualenv() {
-  virtualenv_name=$1
-  shift
-
-  virtualenv $@ "$WORKON_HOME/$virtualenv_name"
-}
-
  # Shell only exists after the 10th consecutive Ctrl-d
 set -o ignoreeof
 

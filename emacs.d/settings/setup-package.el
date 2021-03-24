@@ -30,12 +30,12 @@
      eyebrowse
      window-purpose
      all-the-icons
-     iy-go-to-char
      dumb-jump
      god-mode
 
      ;; language server support
      lsp-mode
+     lsp-metals
      company-lsp
 
      ;; docker
@@ -78,7 +78,6 @@
      real-auto-save
      multiple-cursors
      expand-region
-     key-chord
      ripgrep
 
      ;; python
@@ -153,8 +152,6 @@
      zenburn-theme
      nord-theme
      dracula-theme
-     color-theme-sanityinc-solarized
-     color-theme-sanityinc-tomorrow
      )))
 
 ;; install any packages that haven't been installed yet
@@ -163,34 +160,5 @@
   (error
    (package-refresh-contents)
    (install-custom-packages)))
-
-;; Add external projects to load path
-(defun search-for-elisp-dir (dir level)
-  (let ((exclusions '("yasnippet-snippets")))
-
-    ;; filter out exclusions
-    (dolist (project (delq nil
-                           (mapcar (lambda (proj)
-                                     (when (not (member (car (last (split-string proj "/"))) exclusions))
-                                         proj))
-                                   (directory-files dir t "\\w+"))))
-      (when (file-directory-p project)
-        (let ((project-lisp-files
-               (delq nil
-                     (mapcar (lambda (subdir) (string-match ".el$" subdir))
-                             (directory-files project t "\\w+"))))
-              (project-directories
-               (delq nil
-                     (mapcar (lambda (subdir)
-                               (when (file-directory-p subdir)
-                                 subdir))
-                             (directory-files project t "\\w+")))))
-          (if (and (null project-lisp-files) (not (null project-directories)))
-              (when (< level 2)
-                (search-for-elisp-dir project (+ level 1)))
-            (add-to-list 'load-path project)))))))
-
-;; begin search at vendor dir
-(search-for-elisp-dir vendor-dir 1)
 
 (provide 'setup-package)

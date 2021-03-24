@@ -75,4 +75,4 @@ mbsync:
 build-lein:
 	ln -s $(shell pwd)/lein ~/.lein
 
-all: arch-deps git scala rust python zsh tmux emacs lein vim psql
+all: arch-deps scala rust python zsh tmux emacs vim psql

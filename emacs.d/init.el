@@ -10,9 +10,6 @@
 ;; let me handle (package-initialize)
 (setq package--init-file-ensured t)
 
-(setq vendor-dir
-      (expand-file-name "vendor" user-emacs-directory))
-
 (setq settings-dir
       (expand-file-name "settings" user-emacs-directory))
 
@@ -21,7 +18,6 @@
 
 (add-to-list 'load-path settings-dir)
 (add-to-list 'load-path settings-common-dir)
-(add-to-list 'load-path vendor-dir)
 
 ;; configure
 (require 'setup-package)

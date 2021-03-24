@@ -1,12 +1,6 @@
 ;;;;;;;;;;
 ;; theme
 
-;; load themes from submodules
-(let ((custom-theme-paths '("~/.emacs.d/vendor/themes/tomorrow-theme/GNU Emacs")))
-  (dolist (element custom-theme-paths)
-    (add-to-list 'custom-theme-load-path element)
-    (add-to-list 'load-path element)))
-
 (setq mu/current-theme
       (if (eq system-type 'darwin)
           'doom-tomorrow-night 'doom-tomorrow-night))
@@ -18,7 +12,7 @@
 ;; ui
 
 ;; font
-(set-frame-font "Hack 12")
+(set-frame-font "Hack Nerd Font Mono 12")
 
 ;; ;; ligatures - these cause occasional freezes, use with caution
 ;; (let ((alist '((33 . ".\\(?:\\(?:==\\|!!\\)\\|[!=]\\)")
@@ -307,8 +301,6 @@
 
 ;;;;;;;;;;
 ;; misc keybindings
-(require 'key-chord)
-(key-chord-mode +1)
 
 ;; ace window
 (global-set-key (kbd "M-o") 'ace-window)
@@ -370,10 +362,6 @@
                   (interactive)
                   (ignore-errors (backward-char 5))))
 
-;; iy-go-to-char
-(require 'iy-go-to-char)
-(key-chord-define-global "jk" 'iy-go-to-char)
-(key-chord-define-global "hj" 'iy-go-to-char-backward)
 
 ;; s3ed
 (require 's3ed)
