@@ -220,6 +220,9 @@
 ;; no hard tabs
 (setq-default indent-tabs-mode nil)
 
+;; tab width
+(setq-default tab-width 4)
+
 ;; comments
 (defun toggle-comment-on-line ()
   "comment or uncomment current line"
@@ -229,14 +232,6 @@
 
 ;; rainbow delims
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
-
-;; use 2 spaces for tabs
-(defun die-tabs ()
-  (interactive)
-  (set-variable 'tab-width 2)
-  (mark-whole-buffer)
-  (untabify (region-beginning) (region-end))
-  (keyboard-quit))
 
 ;; clean up file on save
 (setq require-final-newline t)

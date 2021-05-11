@@ -36,7 +36,6 @@
      ;; language server support
      lsp-mode
      lsp-metals
-     company-lsp
 
      ;; docker
      dockerfile-mode
@@ -46,6 +45,9 @@
 
      ;; protobuf
      protobuf-mode
+
+     ;; go
+     go-mode
 
      ;; git
      magit

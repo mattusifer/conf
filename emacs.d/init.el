@@ -56,6 +56,9 @@
 (require 'setup-java)
 (require 'setup-rust)
 (require 'setup-python)
+(require 'setup-go)
+
+(require 'setup-lsp)
 
 (require 'setup-blackfynn)
 

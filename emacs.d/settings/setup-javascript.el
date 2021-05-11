@@ -21,8 +21,6 @@
           (defun coffee-mode-newline-and-indent ()
             (define-key coffee-mode-map "\C-j" 'coffee-newline-and-indent)
             (setq coffee-cleanup-whitespace nil)))
-(custom-set-variables
- '(coffee-tab-width 2))
 
 ;; ember
 (add-to-list 'auto-mode-alist '("\\.hbs\\'" . html-mode))
