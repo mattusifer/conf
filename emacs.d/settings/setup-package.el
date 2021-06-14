@@ -31,11 +31,11 @@
      window-purpose
      all-the-icons
      dumb-jump
-     god-mode
+     evil
+     evil-collection
 
      ;; language server support
      lsp-mode
-     lsp-metals
 
      ;; docker
      dockerfile-mode
@@ -134,6 +134,7 @@
      ;; scala
      scala-mode
      sbt-mode
+     lsp-metals
 
      ;; markdown
      markdown-mode

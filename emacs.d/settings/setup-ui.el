@@ -149,19 +149,10 @@
 ;;;;;;;;;;
 ;; editing
 
-(require 'god-mode)
-(global-set-key (kbd "<escape>") 'god-mode-all)
-(god-mode)
-
-(define-key god-local-mode-map (kbd "i") 'god-mode-all)
-(define-key god-local-mode-map (kbd ".") 'repeat)
-
-(setq god-exempt-major-modes nil)
-(setq god-exempt-predicates nil)
-
-(require 'god-mode-isearch)
-(define-key isearch-mode-map (kbd "<escape>") 'god-mode-isearch-activate)
-(define-key god-mode-isearch-map (kbd "<escape>") 'god-mode-isearch-disable)
+(evil-mode 1)
+(setq evil-want-keybinding nil)
+(evil-collection-init)
+(define-key evil-ex-map "e " 'ido-find-file)
 
 ;; more convenient window functions for god mode
 (global-set-key (kbd "C-x C-1") 'delete-other-windows)
