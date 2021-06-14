@@ -149,9 +149,11 @@
 ;;;;;;;;;;
 ;; editing
 
-(evil-mode 1)
 (setq evil-want-keybinding nil)
+(require 'evil)
+(evil-mode 1)
 (evil-collection-init)
+(evil-set-undo-system 'undo-tree)
 (define-key evil-ex-map "e " 'ido-find-file)
 
 ;; more convenient window functions for god mode
