@@ -17,4 +17,6 @@
 ;; cargo setup
 (add-hook 'rust-mode-hook 'cargo-minor-mode)
 
+(setq lsp-rust-server 'rust-analyzer)
+
 (provide 'setup-rust)

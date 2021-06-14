@@ -1,5 +1,6 @@
 ;; javascript / html
-(add-to-list 'auto-mode-alist '("components\\/.*\\.js\\'" . rjsx-mode))
+;(add-to-list 'auto-mode-alist '("components\\/.*\\.js\\'" . rjsx-mode))
+(add-to-list 'auto-mode-alist '("\\.js\\'" . rjsx-mode))
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
 (add-hook 'js-mode-hook 'subword-mode)
 (add-hook 'js-mode-hook 'js2-minor-mode)

@@ -96,6 +96,9 @@
      ;; groovy
      groovy-mode
 
+     ;; ruby
+     ruby-mode
+
      ;; java
      lsp-java
 

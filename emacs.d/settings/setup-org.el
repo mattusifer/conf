@@ -15,6 +15,7 @@
       (shell . t)
       (sql . t)
       (R . t)
+      (python . t)
     )
 )
 

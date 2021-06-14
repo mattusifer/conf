@@ -19,7 +19,7 @@ export LDFLAGS=$(pg_config --ldflags)
 # spark
 # note: requires py4j
 #   $ pip install py4j
-export SPARK_HOME=~/src/apache/spark-2.4.3-bin-hadoop2.7
+export SPARK_HOME=~/src/apache/spark-3.1.1-bin-hadoop2.7
 export PYTHONPATH=$SPARK_HOME/python/build
 export PYTHONPATH=$SPARK_HOME/python/:$PYTHONPATH
 export PYTHONPATH=$SPARK_HOME/python/lib:$PYTHONPATH
@@ -35,6 +35,9 @@ export RUST_BACKTRACE=1
 
 # node
 export PATH=$PATH:/usr/local/Cellar/node/12.4.0/bin
+
+# ruby
+export PATH=$PATH:$HOME/.local/share/gem/ruby/3.0.0/bin
 
 # settings specific to my work computer (mac)
 if [ $(uname) = "Darwin" ]
