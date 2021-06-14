@@ -10,6 +10,11 @@ setopt appendhistory
 setopt sharehistory
 setopt incappendhistory
 
+# pyenv for python environment handling
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init --path)"
+
 # jenv for java environment handling
 export PATH=$HOME/.jenv/bin:$PATH
 
