@@ -15,8 +15,11 @@ export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init --path)"
 
-# jenv for java environment handling
-export PATH=$HOME/.jenv/bin:$PATH
+# Work computer setup
+if [[ $(hostname) = '9281' ]]
+then
+  export JAVA_HOME=$(/usr/libexec/java_home -v11)
+fi
 
 # Fix psycopg2 compilation errors on osx
 export LDFLAGS=$(pg_config --ldflags)
@@ -44,17 +47,5 @@ export PATH=$PATH:/usr/local/Cellar/node/12.4.0/bin
 # ruby
 export PATH=$PATH:$HOME/.local/share/gem/ruby/3.0.0/bin
 
-# settings specific to my work computer (mac)
-if [ $(uname) = "Darwin" ]
-then
-  source ~/.blackfynn/env_vars || echo "Env vars file not found!"
-fi
-
-# blackfynn envs
-# export BLACKFYNN_LOG_LEVEL="DEBUG"
-
 # virtualenv setup
 export WORKON_HOME=$HOME/.virtualenvs
-
-# export AWS_ACCESS_KEY_ID=$(grep aws_access_key_id ~/.aws/credentials | awk '{print $3}' || echo '')
-# export AWS_SECRET_ACCESS_KEY=$(grep aws_secret_access_key ~/.aws/credentials | awk '{print $3}' || echo '')

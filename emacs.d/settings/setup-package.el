@@ -37,6 +37,9 @@
      ;; language server support
      lsp-mode
 
+     ;; jsonnet
+     jsonnet-mode
+
      ;; docker
      dockerfile-mode
 
@@ -143,6 +146,7 @@
      ;; shell
      exec-path-from-shell
      vterm
+     multi-vterm
 
      ;; themes
      monokai-theme

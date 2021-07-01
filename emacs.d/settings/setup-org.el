@@ -1,7 +1,13 @@
 ;; configure agenda files
-(setq org-agenda-files
-      (mapcar (lambda (x)  (concat "~/Seafile/seafile/Org Agenda/Org Agenda/" x))
-              (-filter (lambda (x) (s-suffix? ".org" x)) (directory-files "~/Seafile/seafile/Org Agenda/Org Agenda"))))
+(defun list-agenda-files (loc)
+  (mapcar (lambda (x)  (concat loc x))
+              (-filter (lambda (x) (s-suffix? ".org" x)) (directory-files loc))))
+
+(setq org-agenda-files-location "~/Seafile/Org/"
+      org-agenda-files (list-agenda-files org-agenda-files-location))
+
+(when (equal (system-name) "9281")
+  (setq org-agenda-files (append org-agenda-files (list-agenda-files "~/Seafile/Etsy/Notes/"))))
 
 ;; always store relative paths for links
 (setq org-link-file-path-type 'relative)
