@@ -152,6 +152,7 @@
 (setq evil-want-keybinding nil)
 (require 'evil)
 (evil-mode 1)
+(global-evil-mc-mode 1)
 (evil-collection-init)
 (evil-set-undo-system 'undo-tree)
 (define-key evil-ex-map "e " 'ido-find-file)
@@ -296,12 +297,6 @@
 
 ;; avy (ace jump)
 (global-set-key (kbd "C-c M-SPC") 'avy-goto-char)
-
-;; multi cursor
-(global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
-(global-set-key (kbd "C->") 'mc/mark-next-like-this)
-(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
-(global-set-key (kbd "C-S-c C->") 'mc/mark-all-like-this)
 
 ;; killing
 (global-set-key (kbd "C-w") 'backward-kill-word)

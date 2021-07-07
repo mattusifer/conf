@@ -16,7 +16,7 @@ export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init --path)"
 
 # Work computer setup
-if [[ $(hostname) = '9281' ]]
+if [[ $(hostname) = 'matts-mbp' ]]
 then
   export JAVA_HOME=$(/usr/libexec/java_home -v11)
 fi

@@ -21,7 +21,7 @@ then
 fi
 
 # Work computer setup
-if [[ $(hostname) = '9281' ]]
+if [[ $(hostname) = 'matts-mbp' ]]
 then
   source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
   source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
