@@ -149,19 +149,13 @@
 ;;;;;;;;;;
 ;; editing
 
-(require 'god-mode)
-(global-set-key (kbd "<escape>") 'god-mode-all)
-(god-mode)
-
-(define-key god-local-mode-map (kbd "i") 'god-mode-all)
-(define-key god-local-mode-map (kbd ".") 'repeat)
-
-(setq god-exempt-major-modes nil)
-(setq god-exempt-predicates nil)
-
-(require 'god-mode-isearch)
-(define-key isearch-mode-map (kbd "<escape>") 'god-mode-isearch-activate)
-(define-key god-mode-isearch-map (kbd "<escape>") 'god-mode-isearch-disable)
+(setq evil-want-keybinding nil)
+(require 'evil)
+(evil-mode 1)
+(global-evil-mc-mode 1)
+(evil-collection-init)
+(evil-set-undo-system 'undo-tree)
+(define-key evil-ex-map "e " 'ido-find-file)
 
 ;; more convenient window functions for god mode
 (global-set-key (kbd "C-x C-1") 'delete-other-windows)
@@ -303,12 +297,6 @@
 
 ;; avy (ace jump)
 (global-set-key (kbd "C-c M-SPC") 'avy-goto-char)
-
-;; multi cursor
-(global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
-(global-set-key (kbd "C->") 'mc/mark-next-like-this)
-(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
-(global-set-key (kbd "C-S-c C->") 'mc/mark-all-like-this)
 
 ;; killing
 (global-set-key (kbd "C-w") 'backward-kill-word)

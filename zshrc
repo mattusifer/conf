@@ -20,10 +20,12 @@ then
   eval "$(pyenv virtualenv-init -)"
 fi
 
-# java version management
-# (rehash in the background to speed up load time)
-source <(jenv init - --no-rehash)
-(jenv rehash &) 2> /dev/null
+# Work computer setup
+if [[ $(hostname) = 'matts-mbp' ]]
+then
+  source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
+  source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
+fi
 
 # Autosuggestions
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
