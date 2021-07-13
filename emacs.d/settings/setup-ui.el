@@ -149,29 +149,6 @@
 ;;;;;;;;;;
 ;; editing
 
-(setq evil-want-keybinding nil)
-(require 'evil)
-(evil-mode 1)
-(global-evil-mc-mode 1)
-(evil-collection-init)
-(evil-set-undo-system 'undo-tree)
-(define-key evil-ex-map "e " 'ido-find-file)
-
-;; more convenient window functions for god mode
-(global-set-key (kbd "C-x C-1") 'delete-other-windows)
-(global-set-key (kbd "C-x C-2") 'split-window-below)
-(global-set-key (kbd "C-x C-3") 'split-window-right)
-(global-set-key (kbd "C-x C-0") 'delete-window)
-
-;; change cursor style for god mode
-(defun god-mode-update-cursor ()
-  (setq cursor-type (if (or god-local-mode buffer-read-only)
-                        'box
-                      'bar)))
-
-(add-hook 'god-mode-enabled-hook 'god-mode-update-cursor)
-(add-hook 'god-mode-disabled-hook 'god-mode-update-cursor)
-
 ;; No need for ~ files when editing
 (setq create-lockfiles nil)
 

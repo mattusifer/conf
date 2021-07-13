@@ -57,6 +57,7 @@
 (require 'setup-rust)
 (require 'setup-python)
 (require 'setup-go)
+(require 'setup-php)
 
 (require 'setup-lsp)
 

@@ -33,15 +33,15 @@
      window-purpose
      all-the-icons
      dumb-jump
-     evil
-     evil-collection
-     evil-mc
 
      ;; language server support
      lsp-mode
 
      ;; jsonnet
      jsonnet-mode
+
+     ;; bazel
+     bazel
 
      ;; docker
      dockerfile-mode
@@ -171,6 +171,28 @@
   (error
    (package-refresh-contents)
    (install-custom-packages)))
+
+(use-package evil
+  :ensure t
+  :init
+  (setq evil-want-keybinding nil)
+  :config
+  (evil-mode 1)
+  (evil-set-undo-system 'undo-tree)
+  (define-key evil-ex-map "e " 'ido-find-file))
+
+(use-package evil-collection
+  :after evil
+  :ensure t
+  :config
+  (evil-collection-init))
+
+(use-package evil-mc
+  :after evil
+  :ensure t
+  :config
+  (global-evil-mc-mode 1))
+
 
 ;; use-package installs
 (use-package multi-vterm
