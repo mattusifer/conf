@@ -153,16 +153,11 @@
      monokai-theme
      base16-theme
      solarized-theme
-     gruvbox-theme
      ujelly-theme
-     kaolin-themes
      material-theme
-     challenger-deep-theme
      doom-themes
-     moe-theme
      zenburn-theme
-     nord-theme
-     dracula-theme
+     color-theme-sanityinc-tomorrow
      )))
 
 ;; install any packages that haven't been installed yet

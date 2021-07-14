@@ -3,7 +3,7 @@
 
 (setq mu/current-theme
       (if (eq system-type 'darwin)
-          'doom-tomorrow-night 'doom-tomorrow-night))
+          'sanityinc-tomorrow-bright doom-tomorrow-night-bright))
 
 ;; load theme in current window
 (load-theme mu/current-theme t)
