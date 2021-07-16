@@ -1,9 +1,7 @@
 ;;;;;;;;;;
 ;; theme
 
-(setq mu/current-theme
-      (if (eq system-type 'darwin)
-          'sanityinc-tomorrow-bright doom-tomorrow-night-bright))
+(setq mu/current-theme 'sanityinc-tomorrow-eighties)
 
 ;; load theme in current window
 (load-theme mu/current-theme t)
